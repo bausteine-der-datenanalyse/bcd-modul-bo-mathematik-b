@@ -1,0 +1,23 @@
+project:
+  type: book
+  output-dir: ../_output/skript
+
+lang: de
+number-depth: 3
+number-sections: true
+
+book:
+  title: "Mathematik B"
+  author: "Matthias Baitsch"
+  chapters:
+    - index.qmd
+    - ../bausteine/bcd-bausteine-statistik/m-statistische-daten/skript/skript.qmd
+    - literatur.qmd
+
+format: 
+  html: 
+    css: bcd-style.css
+    license: CC BY-SA
+    embed-resources: true
+
+bibliography: ../bausteine/bcd-bausteine-statistik/bcd-bausteine-statistik.bib
