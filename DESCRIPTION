@@ -7,9 +7,10 @@ Authors@R: c(
 Depends: 
     R
 Imports:
-    hexbin,
-    ggridges,
     cowplot,
+    ggridges,
+    hexbin,
+    kableExtra,
     tidyverse
 Encoding: UTF-8
 License: CC NC ND 3.0

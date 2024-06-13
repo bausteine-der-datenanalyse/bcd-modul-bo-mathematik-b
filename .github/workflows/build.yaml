@@ -28,7 +28,10 @@ jobs:
       - name: R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
 
-      - name: Render
-        run: |
-          cd skript && quarto render
-
+      - name: Render and publish to GitHub Pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          path: skript
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
