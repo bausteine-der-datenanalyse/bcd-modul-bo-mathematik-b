@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
       
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out
+        uses: actions/checkout@v2
         with:
           submodules: recursive
 
@@ -25,7 +26,7 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: R dependencies
+      - name: Set up R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
 
       - name: Render and publish to GitHub Pages
