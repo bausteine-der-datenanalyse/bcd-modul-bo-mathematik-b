@@ -1,0 +1,16 @@
+Package: bcd-statistik
+Title: BCD Statistik
+Version: 0.1
+Authors@R: c(
+    person("Matthias", "Baitsch", ,"matthias.baitsch@hs-bochum.de", role = c("aut", "cre"))
+  )
+Depends: 
+    R
+Imports:
+    cowplot,
+    ggridges,
+    hexbin,
+    kableExtra,
+    tidyverse
+Encoding: UTF-8
+License: CC NC ND 3.0
