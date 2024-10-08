@@ -18,5 +18,6 @@ format:
   html: 
     css: bcd-style.css
     license: CC BY-SA
+  pdf: default
 
 bibliography: ../bausteine/bcd-bausteine-statistik/bcd-bausteine-statistik.bib

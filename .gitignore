@@ -1,4 +1,5 @@
 /_output/
 .quarto
 index_files
+site_libs
 

@@ -1,18 +1,11 @@
 .neuerbegriff { 
-    color: midnightblue; 
+    color: rgba(177, 52, 52, 0.746); 
+    font-weight: bolder;
 } 
 	
-.einzug {
-  text-indent: 5%;
-}
-
-.eintest {
-  text-indent: 10%;
-}
-
 .beispiel {
-  background-color: WhiteSmoke;
-  border-left: 6px solid;
+  border-left: 5px solid;
+  border-color: darksalmon;
   padding-left: 8px;
 }
 
