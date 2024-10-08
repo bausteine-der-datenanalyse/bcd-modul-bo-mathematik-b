@@ -7,10 +7,13 @@ Authors@R: c(
 Depends: 
     R
 Imports:
+    here,
+    readr,
+    hexbin,
+    stringr,
     cowplot,
     ggridges,
-    hexbin,
-    kableExtra,
-    tidyverse
+    tidyverse,
+    kableExtra
 Encoding: UTF-8
 License: CC NC ND 3.0

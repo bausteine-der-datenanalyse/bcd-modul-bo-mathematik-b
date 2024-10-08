@@ -1,5 +1,7 @@
 /_output/
-.quarto
-index_files
-site_libs
+/.quarto/
 
+aufgaben/c
+aufgaben/.quarto
+
+skript/index_files

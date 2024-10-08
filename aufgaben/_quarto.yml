@@ -1,0 +1,13 @@
+project:
+  output-dir: ../_output/aufgaben
+  pre-render: ../bausteine/bcd-bausteine-statistik/collect-content.R
+
+lang: de
+number-depth: 3
+number-sections: true
+
+format: 
+  html: 
+    license: CC BY-SA
+    css: ../bausteine/bcd-bausteine-statistik/bcd-style.css
+  pdf: default
