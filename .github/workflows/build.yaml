@@ -38,7 +38,7 @@ jobs:
           path: '_output'
 
   deploy:
-    needs: rende
+    needs: render
     environment:
       name: github-pages
     runs-on: ubuntu-latest
