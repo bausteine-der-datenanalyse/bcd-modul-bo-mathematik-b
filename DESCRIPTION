@@ -8,6 +8,7 @@ Depends:
     R
 Imports:
     here,
+    purrr,
     readr,
     hexbin,
     stringr,

@@ -1,0 +1,5 @@
+project:
+  output-dir: ../_output/folien
+
+format:
+    revealjs: default
