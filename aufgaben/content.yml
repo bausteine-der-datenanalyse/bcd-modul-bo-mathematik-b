@@ -7,12 +7,12 @@ assignments:
 
   - root: bausteine/bcd-bausteine-statistik/m-statistische-daten
     subtitle: "Statistische Daten"
-    sol: -6ou3wer
+    sol: 6ou3wer
     include:
     - ".*.qmd"
 
   - root: bausteine/bcd-bausteine-statistik/m-einzelne-merkmale
     subtitle: "Untersuchung einzelner Merkmale"
-    sol: -834hja1
+    sol: 834hja1
     include:
     - ".*.qmd"
