@@ -32,6 +32,8 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
       - name: Quarto render assignments
         run: quarto render aufgaben
+      - name: Quarto render slides R
+        run: quarto render folien-r
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
