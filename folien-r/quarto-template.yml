@@ -1,0 +1,12 @@
+execute: 
+  echo: true
+
+format: 
+  revealjs:
+    overview: true
+    transition: fade
+    width: 1600
+    height: 900
+    slide-number: c/t
+    theme: 
+    - style.scss

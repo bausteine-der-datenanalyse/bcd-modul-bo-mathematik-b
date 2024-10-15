@@ -1,0 +1,10 @@
+slides:
+
+  root: "folien-r"
+
+  content:
+
+  - root: bausteine/bcd-bausteine-r/w-erste-schritte
+
+  - root: bausteine/bcd-bausteine-r/w-ggplot2
+
