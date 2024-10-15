@@ -1,5 +1,5 @@
-/_output/
-/.quarto/
+_output
+.quarto
 
 aufgaben/c
 aufgaben/.quarto
