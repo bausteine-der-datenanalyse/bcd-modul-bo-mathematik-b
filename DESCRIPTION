@@ -12,6 +12,7 @@ Imports:
     here,
     purrr,
     readr,
+    giscoR,
     hexbin,
     stringr,
     cowplot,
