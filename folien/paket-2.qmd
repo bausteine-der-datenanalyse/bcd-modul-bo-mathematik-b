@@ -1,0 +1,17 @@
+---
+title: Paket 2
+subtitle: Untersuchung einzelner Merkmale
+---
+
+## Agenda
+
+-  8:15h - 8:30h Rückblick und Fragen
+
+-  8:30h - 9:45h Aufgaben 1 bis 4 bearbeiten und besprechen
+
+-  9:45h - 10:00h Pause
+
+- 10:00h - 11:30h Aufgabe 5 bearbeiten und besprechen
+
+  - Quarto statt R-Markdown
+

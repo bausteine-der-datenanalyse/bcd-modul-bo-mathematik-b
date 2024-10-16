@@ -1,12 +1,13 @@
 ---
 title: Paket 1
+subtitle: Statistische Daten
 ---
 
-# Agenda
+## Agenda
 
 - 8:15h - 8:30h Rückblick und Fragen
 
-- 8:30h - 9:45h Aufgaben 1 bis 3 bearbeiten und besprechen(Aufgabenblatt 1)
+- 8:30h - 9:45h Aufgaben 1 bis 3 bearbeiten und besprechen
 
 - 9:55h - 10:10h Pause
 
