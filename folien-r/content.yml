@@ -20,42 +20,42 @@ jobs-on-parts:
 # Copy into target folder (web access)
 - copy:
   from: ${part-folder}/folien.qmd
-  to: ${idx}-${name}.qmd
+  to: ${target-folder}/${idx}-${name}.qmd
 - copy:
   from: ${part-folder}/bilder
-  to: bilder
+  to: ${target-folder}/bilder
   exclude-patterns: [".afdesign$"]
 - copy:
   from: ${part-folder}/daten
-  to: daten
+  to: ${target-folder}/daten
 - copy:
   from: ${part-folder}/skripte
-  to: skripte
+  to: ${target-folder}/skripte
 
 # Into subfolders of target folder to be zipped and deleted. Zipfile
 # for download from Moodle
 - copy:
   from: ${part-folder}/folien.qmd
-  to: ${idx}-${name}/${name}.qmd
+  to: ${target-folder}/${idx}-${name}/${name}.qmd
 - copy:
   from: ${part-folder}/folien.Rproj
-  to: ${idx}-${name}/${name}.Rproj
+  to: ${target-folder}/${idx}-${name}/${name}.Rproj
 - copy:
   from: ${part-folder}/bilder
-  to: ${idx}-${name}/bilder
+  to: ${target-folder}/${idx}-${name}/bilder
   exclude-patterns: [".afdesign$"]
 - copy:
   from: ${part-folder}/daten
-  to: ${idx}-${name}/daten
+  to: ${target-folder}/${idx}-${name}/daten
 - copy:
   from: ${part-folder}/skripte
-  to: ${idx}-${name}/skripte
+  to: ${target-folder}/${idx}-${name}/skripte
 - copy:
   from: quarto-template.yml
-  to: ${idx}-${name}/_quarto.yml
+  to: ${target-folder}/${idx}-${name}/_quarto.yml
 - copy:
   from: style.scss
-  to: ${idx}-${name}/style.scss
+  to: ${target-folder}/${idx}-${name}/style.scss
 - zip:
   zipfile: ${idx}-${name}.zip
   folder: ${idx}-${name}
@@ -71,6 +71,6 @@ part-name-pattern: "w\\-(.*)/"
 
 # Parts, folders relative to project root
 parts:
-- folder: w-erste-schritte/folien
-- folder: w-ggplot2/folien
-- folder: w-einzelne-merkmale/folien
+- folder: bausteine/bcd-bausteine-r/w-erste-schritte/folien
+- folder: bausteine/bcd-bausteine-r/w-ggplot2/folien
+- folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/folien
