@@ -1,14 +1,76 @@
-slides:
+# Output goes here, this folder is cleared on each run
+# Absolute path or relative to the folder containing this file
+target-folder: "c"
 
-  root: "folien-r"
+# Folder where things go for deployment, relative to project folder
+deploy-folder: _output/folien-r/c
 
-  content:
+# Jobs
+jobs:
+- copy:
+  from: style.scss
+  to: ${target-folder}/style.scss
+- copy:
+  from: quarto-template.yml
+  to: ${target-folder}/_metadata.yml
 
-  - root: bausteine/bcd-bausteine-r/w-erste-schritte
+# Jobs running on all parts
+jobs-on-parts:
 
-  - root: bausteine/bcd-bausteine-r/w-ggplot2
+# Copy into target folder (web access)
+- copy:
+  from: ${part-folder}/folien.qmd
+  to: ${idx}-${name}.qmd
+- copy:
+  from: ${part-folder}/bilder
+  to: bilder
+  exclude-patterns: [".afdesign$"]
+- copy:
+  from: ${part-folder}/daten
+  to: daten
+- copy:
+  from: ${part-folder}/skripte
+  to: skripte
 
-  - root: bausteine/bcd-bausteine-r/w-einzelne-merkmale
+# Into subfolders of target folder to be zipped and deleted. Zipfile
+# for download from Moodle
+- copy:
+  from: ${part-folder}/folien.qmd
+  to: ${idx}-${name}/${name}.qmd
+- copy:
+  from: ${part-folder}/folien.Rproj
+  to: ${idx}-${name}/${name}.Rproj
+- copy:
+  from: ${part-folder}/bilder
+  to: ${idx}-${name}/bilder
+  exclude-patterns: [".afdesign$"]
+- copy:
+  from: ${part-folder}/daten
+  to: ${idx}-${name}/daten
+- copy:
+  from: ${part-folder}/skripte
+  to: ${idx}-${name}/skripte
+- copy:
+  from: quarto-template.yml
+  to: ${idx}-${name}/_quarto.yml
+- copy:
+  from: style.scss
+  to: ${idx}-${name}/style.scss
+- zip:
+  zipfile: ${idx}-${name}.zip
+  folder: ${idx}-${name}
+  root: ${target-folder}
+- copy:
+  from: ${target-folder}/${idx}-${name}.zip
+  to: ${deploy-folder}/${idx}-${name}.zip
+- delete:
+  folder: ${target-folder}/${idx}-${name}
 
-  - root: bausteine/bcd-bausteine-r/w-einzelne-merkmale-aufgaben
+# Pattern to extract name from part folder
+part-name-pattern: "w\\-(.*)/"
 
+# Parts, folders relative to project root
+parts:
+- folder: w-erste-schritte/folien
+- folder: w-ggplot2/folien
+- folder: w-einzelne-merkmale/folien
