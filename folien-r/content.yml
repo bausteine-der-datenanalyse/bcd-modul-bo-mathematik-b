@@ -63,6 +63,7 @@ jobs-on-parts:
 - copy:
   from: ${target-folder}/${idx}-${name}.zip
   to: ${deploy-folder}/${idx}-${name}.zip
+  overwrite: yes
 - delete:
   folder: ${target-folder}/${idx}-${name}
 
