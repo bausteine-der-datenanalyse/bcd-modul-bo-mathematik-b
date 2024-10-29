@@ -1,5 +1,5 @@
 target-folder: c
-
+deploy-folder: _output/aufgaben/c
 
 definitions:
 
@@ -18,6 +18,7 @@ definitions:
 
 jobs:
 
+#
 # 1. Statistische Daten
 - assignment-paper:
   subtitle: "Statistische Daten"
@@ -32,11 +33,38 @@ jobs:
   to: ${target-folder}/01-daten
 - increment-index:
 
+#
 # 1. Einzelne Merkmale
 - assignment-paper:
   subtitle: "Untersuchung einzelner Merkmale"
   sol: 834hja1
   files: 
   - ${project-folder}/bausteine/bcd-bausteine-statistik/m-einzelne-merkmale/aufgaben/*.qmd    
+  - ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/10.*.qmd
+# Projekt für Studierende TODO make it a job
+- copy: 
+  from: ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/aufgaben.qmd
+  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/einzelne-merkmale-aufgaben.qmd
+- copy: 
+  from: ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/aufgaben.Rproj
+  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/einzelne-merkmale-aufgaben.Rproj
+- copy: 
+  from: ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/daten
+  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/daten
+- copy: 
+  from: ${project-folder}/folien-r/style.scss
+  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/style.scss
+- copy: 
+  from: ${project-folder}/folien-r/quarto-template.yml
+  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/_quarto.yml
+- zip:
+  zipfile: ${idx}-einzelne-merkmale-aufgaben.zip
+  folder: ${idx}-einzelne-merkmale-aufgaben
+  root: ${target-folder}
+- copy:
+  from: ${target-folder}/${idx}-einzelne-merkmale-aufgaben.zip
+  to: ${deploy-folder}/${idx}-einzelne-merkmale-aufgaben.zip
+  overwrite: yes
+# Fertig
 - increment-index:
 
