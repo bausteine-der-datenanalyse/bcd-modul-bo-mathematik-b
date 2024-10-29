@@ -34,6 +34,7 @@ $selection-bg: #26351c !default;
 }
 
 #title-slide {
+
   text-align: left;
 
   .title {
@@ -72,6 +73,15 @@ $selection-bg: #26351c !default;
   }
 }
 
+#title-slide .title {
+  font-size: 2em;
+  font-weight: normal;
+}
+
+.reveal[data-navigation-mode="linear"] .title-slide h1 {
+  font-size: 2em;
+}
+
 .reveal h2 {
   font-weight: lighter;
   font-size: 1.4em;
@@ -79,15 +89,18 @@ $selection-bg: #26351c !default;
 
 .reveal h3 {
   color: $accent;
-  font-style: italic;
-  font-weight: lighter;
-  font-size: 0.95em;
+  font-weight: normal;
+  font-size: 1em;
 }
 
 .reveal h4 {
   color: $accent2;
   font-weight: normal;
-  margin-top: 1.25em;
+  font-size: 1em;
+}
+
+.reveal p {
+  margin-top: 1em;
 }
 
 .alert {
@@ -124,7 +137,7 @@ $selection-bg: #26351c !default;
     color: mix($accent, white, 60%);
     display: inline-block;
     width: 1em;
-    margin-left: -1em;
+    margin-left: -1.5em;
     margin-right: 0.5em;
   }
 }
