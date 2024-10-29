@@ -1,434 +1,357 @@
 /*-- scss:defaults --*/
 
+// Based on
+// https://github.com/grantmcdermott/quarto-revealjs-clean
 
-/*-- based on styles.scss from https://github.com/jeremy-allen/posit-webinar-series --*/
+// Custom colours and variables
+$jet: #131516;
+$accent: #107895;
+$accent2: #9a2515;
+$right-arrow: "\2192";
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,350,350i,400,400i&display=swap');
 
+$font-family-sans-serif: "Roboto", sans-serif !default;
+$presentation-heading-font: "Roboto", sans-serif !default;
 
-#title-slide > h1 {
-  text-align: left;
-  font-weight: 300;
-  color: #404041;
+$presentation-heading-color: $jet !default;
+$presentation-heading-font-weight: lighter;
+$presentation-font-size-root: 32px;
+
+$body-color: $jet !default;
+$link-color: $accent !default;
+$selection-bg: #26351c !default;
+
+/*-- scss:rules --*/
+.reveal a {
+  line-height: 1.5em;
 }
 
-#title-slide > p {/*-- scss:defaults --*/
+.reveal p {
+  font-weight: lighter;
+  margin-top: 1.25em;
+}
 
-  // Based on
-  // https://github.com/grantmcdermott/quarto-revealjs-clean
-  
-  // Custom colours and variables
-  $jet: #131516;
-  $accent: #107895;
-  $accent2: #9a2515;
-  $right-arrow: "\2192";
-  
-  // fonts
-  @import url('https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,350,350i,400,400i&display=swap');
-  
-  $font-family-sans-serif: "Roboto", sans-serif !default;
-  $presentation-heading-font: "Roboto", sans-serif !default;
-  
-  $presentation-heading-color: $jet !default;
-  $presentation-heading-font-weight: lighter;
-  $presentation-font-size-root: 32px;
-  
-  $body-color: $jet !default;
-  $link-color: $accent !default;
-  $selection-bg: #26351c !default;
-  
-  /*-- scss:rules --*/
-  .reveal a {
-    line-height: 1.5em;
-  }
-  
-  .reveal p {
-    font-weight: lighter;
-    margin-top: 1.25em;
-  }
-  
-  #title-slide {
-    text-align: left;
-  
-    .title {
-      color: $body-color;
-      font-size: 1.4em;
-      font-weight: lighter;
-    }
-  
-    .subtitle {
-      color: $accent;
-      font-style: italic;
-      margin-top: 0em;
-      font-weight: lighter;
-    }
-  
-    .institute,
-    .quarto-title-affiliation,
-    .quarto-title-author-email {
-      font-style: italic;
-    }
-  
-    .author,
-    .quarto-title-author-name {
-      color: $body-color;
-    }
-  
-    .quarto-title-authors {
-      display: flex;
-      justify-content: left;
-  
-      .quarto-title-author {
-        padding-left: 0em;
-        padding-right: 0em;
-        width: 100%;
-      }
-    }
-  }
-  
-  .reveal h2 {
-    font-weight: lighter;
+#title-slide {
+  text-align: left;
+
+  .title {
+    color: $body-color;
     font-size: 1.4em;
+    font-weight: lighter;
   }
-  
-  .reveal h3 {
+
+  .subtitle {
     color: $accent;
     font-style: italic;
+    margin-top: 0em;
     font-weight: lighter;
-    font-size: 0.95em;
   }
-  
-  .reveal h4 {
-    color: $accent2;
-    font-weight: normal;
-    margin-top: 1.25em;
+
+  .institute,
+  .quarto-title-affiliation,
+  .quarto-title-author-email {
+    font-style: italic;
   }
-  
-  .alert {
-    color: $accent2;
+
+  .author,
+  .quarto-title-author-name {
+    color: $body-color;
   }
-  
-  .fg {
-    color: var(--col, $jet);
-  }
-  
-  .bg {
-    background-color: var(--col, #fff);
-    padding: 0.1em;
-    border-radius: 5px;
-    display: inline-block;
-  }
-  
-  // lists
-  
-  .reveal ul {
-    font-weight: lighter;
-    padding-left: 16px;
-  
-    li::marker {
-      color: mix($accent, white, 70%);
+
+  .quarto-title-authors {
+    display: flex;
+    justify-content: left;
+
+    .quarto-title-author {
+      padding-left: 0em;
+      padding-right: 0em;
+      width: 100%;
     }
   }
-  
-  .reveal ul ul {
-    list-style: none;
-  
-    li:before {
-      content: $right-arrow;
-      color: mix($accent, white, 60%);
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-      margin-right: 0.5em;
-    }
-  }
-  
-  // Ordered lists
-  
-  .reveal ol {
-    font-weight: lighter;
-    padding-left: 16px;
-  
-    li::marker {
-      color: $accent;
-    }
-  }
-  
-  .reveal .slide-menu-button {
-    position: fixed;
-    top: 6px;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    pointer-events: none;
-  }
-  
-  .reveal .slide-menu-button > * {
-    pointer-events: auto;
-  }
-  
-  
-  .reveal .slide-chalkboard-buttons {
-    position: fixed;
-    top: 12px;
-    right: 24px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    pointer-events: none;
-  }
-  
-  .reveal .slide-chalkboard-buttons > * {
-    pointer-events: auto;
-  }
-  
-  .button {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: $accent;
-    border: 1px solid $accent;
-    color: #fff !important;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  
-  .button::before {
-    content: "▶";
-    margin-right: 5px;
-  }
-  
-  .reveal table {
-    width: 100%;
-    margin: auto;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 0.8em;
-  }
-  
-  .reveal table th,
-  .reveal table td {
-    border: none;
-    text-align: left;
-    font-weight: lighter;
-  }
-  
-  .reveal table thead th,
-  .reveal .slides table tr:last-child td,
-  .reveal .slides table {
-    border-bottom: 2px solid #D3D3D3;
-  }
-  
-  .reveal table thead th {
-    font-weight: normal;
-  }
-  
-  .reveal table caption {
-    color: #666666;
-    font-variant: small-caps;
-  }
-  
-  .etable {
-    width: 100%;
-    height: calc(100% - 3em);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .etable img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-  }
-  
-  
-  /* code - maba */
-  
-  .reveal div.sourceCode pre code {
-    margin-left: 0.75em !important;
-  }
-  
-  .reveal pre {
-    font-weight: lighter !important;
-    font-size: 0.65em !important;
-  }
-  
-  .reveal code {
-    font-weight: lighter !important;
-    font-size: 0.9em !important;
-  }
-  
-  .reveal div.sourceCode  {
-    margin-top: 0.75em !important;
-    margin-bottom: 0.75em !important;
-  }
-  
-  .reveal table {
-    margin-bottom: 1em !important;
-  }
-  
-  
-  .up10 {
-    display: block;
-    margin-top: -10px;
-  }
-  
-  .up20 {
-    display: block;
-    margin-top: -20px;
-  }
-  
-  .up30 {
-    display: block;
-    margin-top: -30px;
-  }
-  
-  .up40 {
-    display: block;
-    margin-top: -40px;
-  }
-  
-  .up50 {
-    display: block;
-    margin-top: -50px;
-  }
-  
-  .up60 {
-    display: block;
-    margin-top: -60px;
-  }
-  
-  .up80 {
-    display: block;
-    margin-top: -80px;
-  }
-  
-  .down10 {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  .down20 {
-    display: block;
-    margin-top: 20px;
-  }
-  
-  .down30 {
-    display: block;
-    margin-top: 30px;
-  }
-  
-  .down40 {
-    display: block;
-    margin-top: 40px;
-  }
-  
-  .down50 {
-    display: block;
-    margin-top: 50px;
-  }
-  
-  .down60 {
-    display: block;
-    margin-top: 60px;
-  }
-  
-  .down80 {
-    display: block;
-    margin-top: 80px;
-  }
-  
-  .down100 {
-    display: block;
-    margin-top: 100px;
-  }
-  
-  .down120 {
-    display: block;
-    margin-top: 120px;
-  }
-  
-  .down140 {
-    display: block;
-    margin-top: 140px;
-  }
-  
-  color: #818184;
-  font-size: 65px;
-  text-align: left;
-  font-weight: 300;
 }
 
-section.has-dark-background > h2 {
-  font-weight: 300 !important;
+.reveal h2 {
+  font-weight: lighter;
+  font-size: 1.4em;
+}
+
+.reveal h3 {
+  color: $accent;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 0.95em;
+}
+
+.reveal h4 {
+  color: $accent2;
+  font-weight: normal;
+  margin-top: 1.25em;
+}
+
+.alert {
+  color: $accent2;
+}
+
+.fg {
+  color: var(--col, $jet);
+}
+
+.bg {
+  background-color: var(--col, #fff);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+// lists
+
+.reveal ul {
+  font-weight: lighter;
+  padding-left: 16px;
+
+  li::marker {
+    color: mix($accent, white, 70%);
+  }
+}
+
+.reveal ul ul {
+  list-style: none;
+
+  li:before {
+    content: $right-arrow;
+    color: mix($accent, white, 60%);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    margin-right: 0.5em;
+  }
+}
+
+// Ordered lists
+
+.reveal ol {
+  font-weight: lighter;
+  padding-left: 16px;
+
+  li::marker {
+    color: $accent;
+  }
+}
+
+.reveal .slide-menu-button {
+  position: fixed;
+  top: 6px;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.reveal .slide-menu-button > * {
+  pointer-events: auto;
+}
+
+
+.reveal .slide-chalkboard-buttons {
+  position: fixed;
+  top: 12px;
+  right: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.reveal .slide-chalkboard-buttons > * {
+  pointer-events: auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $accent;
+  border: 1px solid $accent;
   color: #fff !important;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
 }
 
-.reveal .slides h1 {
-  font-weight: 600 !important;
-  color: #404041 !important;
+.button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
-.reveal .slides h2 {
-  font-weight: 500 !important;
-  color: #404041 !important;
-  margin-bottom: 0.5em !important;
+.button::before {
+  content: "▶";
+  margin-right: 5px;
 }
 
-.reveal .slides h3 {
-  font-weight: 400 !important;
-  color: #404041 !important;
+.reveal table {
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.8em;
 }
 
-.reveal .slides body {
-  font-weight: 200 !important;
-  color: #404041 !important;
+.reveal table th,
+.reveal table td {
+  border: none;
+  text-align: left;
+  font-weight: lighter;
 }
 
-$font-family-sans-serif: 'Open Sans', sans-serif !default;
-$font-family-monospace: 'Source Code Pro', monospace !default;
+.reveal table thead th,
+.reveal .slides table tr:last-child td,
+.reveal .slides table {
+  border-bottom: 2px solid #D3D3D3;
+}
 
-$body-bg: #FFF !default;
-$body-color: #404041 !default;
-$link-color: #447099 !default;
-$code-color: #72994E !default;
-$selection-bg: #EE6331;
+.reveal table thead th {
+  font-weight: normal;
+}
 
-$dark-bg-text-color:	#fff !default;
-$dark-bg-link-color:	#A2B8CB !default;
-$dark-bg-code-color:	#72994E !default;
+.reveal table caption {
+  color: #666666;
+  font-variant: small-caps;
+}
 
-$presentation-heading-font: "Open Sans", sans-serif !default;
+.etable {
+  width: 100%;
+  height: calc(100% - 3em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.etable img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
 
 
-/*-- See https://github.com/quarto-dev/quarto-cli/discussions/8005 */
+/* code - maba */
+
+.reveal div.sourceCode pre code {
+  margin-left: 0.75em !important;
+}
 
 .reveal pre {
-  font-size: 0.75em !important;
+  font-weight: lighter !important;
+  font-size: 0.65em !important;
 }
 
 .reveal code {
-  font-size: 1.1em !important;
+  font-weight: lighter !important;
+  font-size: 0.9em !important;
 }
 
 .reveal div.sourceCode  {
-  margin-bottom: 0.5em !important;
+  margin-top: 0.75em !important;
+  margin-bottom: 0.75em !important;
+}
+
+.reveal table {
+  margin-bottom: 1em !important;
+}
+
+
+.up10 {
+  display: block;
+  margin-top: -10px;
+}
+
+.up20 {
+  display: block;
+  margin-top: -20px;
+}
+
+.up30 {
+  display: block;
+  margin-top: -30px;
+}
+
+.up40 {
+  display: block;
+  margin-top: -40px;
+}
+
+.up50 {
+  display: block;
+  margin-top: -50px;
+}
+
+.up60 {
+  display: block;
+  margin-top: -60px;
+}
+
+.up80 {
+  display: block;
+  margin-top: -80px;
+}
+
+.down10 {
+  display: block;
+  margin-top: 10px;
+}
+
+.down20 {
+  display: block;
+  margin-top: 20px;
+}
+
+.down30 {
+  display: block;
+  margin-top: 30px;
+}
+
+.down40 {
+  display: block;
+  margin-top: 40px;
+}
+
+.down50 {
+  display: block;
+  margin-top: 50px;
+}
+
+.down60 {
+  display: block;
+  margin-top: 60px;
+}
+
+.down80 {
+  display: block;
+  margin-top: 80px;
+}
+
+.down100 {
+  display: block;
+  margin-top: 100px;
+}
+
+.down120 {
+  display: block;
+  margin-top: 120px;
+}
+
+.down140 {
+  display: block;
+  margin-top: 140px;
 }
