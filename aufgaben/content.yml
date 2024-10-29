@@ -34,7 +34,7 @@ jobs:
 - increment-index:
 
 #
-# 1. Einzelne Merkmale
+# 2. Einzelne Merkmale
 - assignment-paper:
   subtitle: "Untersuchung einzelner Merkmale"
   sol: 834hja1
@@ -64,6 +64,44 @@ jobs:
 - copy:
   from: ${target-folder}/${idx}-einzelne-merkmale-aufgaben.zip
   to: ${deploy-folder}/${idx}-einzelne-merkmale-aufgaben.zip
+  overwrite: yes
+# Fertig
+- increment-index:
+
+#
+# 3. Kenngrößen
+- assignment-paper:
+  subtitle: "Kenngrößen und Beschreibung von Verteilungen"
+  sol: kjdf784
+  files: 
+  - ${project-folder}/bausteine/bcd-bausteine-statistik/m-kenngroessen/aufgaben/*.qmd    
+  - ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/10.*.qmd
+- copy:
+  from: ${project-folder}/bausteine/bcd-bausteine-statistik/m-kenngroessen/aufgaben/00-bilder
+  to: ${target-folder}/00-bilder
+# Projekt für Studierende TODO make it a job
+- copy: 
+  from: ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/aufgaben.qmd
+  to: ${target-folder}/${idx}-kenngroessen-aufgaben/kenngroessen-aufgaben.qmd
+- copy: 
+  from: ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/aufgaben.Rproj
+  to: ${target-folder}/${idx}-kenngroessen-aufgaben/kenngroessen-aufgaben.Rproj
+- copy: 
+  from: ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/daten
+  to: ${target-folder}/${idx}-kenngroessen-aufgaben/daten
+- copy: 
+  from: ${project-folder}/folien-r/style.scss
+  to: ${target-folder}/${idx}-kenngroessen-aufgaben/style.scss
+- copy: 
+  from: ${project-folder}/folien-r/quarto-template.yml
+  to: ${target-folder}/${idx}-kenngroessen-aufgaben/_quarto.yml
+- zip:
+  zipfile: ${idx}-kenngroessen-aufgaben.zip
+  folder: ${idx}-kenngroessen-aufgaben
+  root: ${target-folder}
+- copy:
+  from: ${target-folder}/${idx}-kenngroessen-aufgaben.zip
+  to: ${deploy-folder}/${idx}-kenngroessen-aufgaben.zip
   overwrite: yes
 # Fertig
 - increment-index:
