@@ -76,3 +76,4 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-ggplot2/folien
 - folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/folien
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/folien
+- folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/folien

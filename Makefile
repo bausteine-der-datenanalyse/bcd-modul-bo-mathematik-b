@@ -5,6 +5,10 @@ update:
 	git submodule update --recursive --remote
 	cp bausteine/bcd-bausteine-r/demo/folien/style.scss folien-r
 
+render:
+	quarto render aufgaben
+	quarto render folien-r
+
 commit:
 	git add .
 	git commit -m "WIP"
