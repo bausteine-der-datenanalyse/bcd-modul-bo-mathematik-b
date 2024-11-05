@@ -1,7 +1,12 @@
 target-folder: c
 deploy-folder: _output/aufgaben/c
 
+
+# Global variable definitions
 definitions:
+
+- bcd-bausteine-r: ${project-folder}/bausteine/bcd-bausteine-r
+- bcd-bausteine-statistik: ${project-folder}/bausteine/bcd-bausteine-statistik
 
 - assignment-header: |
     ---
@@ -16,93 +21,72 @@ definitions:
     ---
 
 
+# Individual jobs
 jobs:
 
-#
-# 1. Statistische Daten
 - assignment-paper:
   subtitle: "Statistische Daten"
   sol: 6ou3wer
   files: 
-  - ${project-folder}/bausteine/bcd-bausteine-statistik/m-statistische-daten/aufgaben/*.qmd
-- copy:
-  from: ${project-folder}/bausteine/bcd-bausteine-statistik/m-statistische-daten/aufgaben/00-bilder
-  to: ${target-folder}/00-bilder
-- copy:
-  from: ${project-folder}/bausteine/bcd-bausteine-statistik/m-statistische-daten/aufgaben/01-daten
-  to: ${target-folder}/01-daten
+  - ${bcd-bausteine-statistik}/m-statistische-daten/aufgaben/*.qmd
+  folders:
+  - ${bcd-bausteine-statistik}/m-statistische-daten/aufgaben/*
 - increment-index:
 
-#
-# 2. Einzelne Merkmale
 - assignment-paper:
   subtitle: "Untersuchung einzelner Merkmale"
   sol: 834hja1
   files: 
-  - ${project-folder}/bausteine/bcd-bausteine-statistik/m-einzelne-merkmale/aufgaben/*.qmd    
-  - ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/10.*.qmd
-# Projekt für Studierende TODO make it a job
-- copy: 
-  from: ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/aufgaben.qmd
-  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/einzelne-merkmale-aufgaben.qmd
-- copy: 
-  from: ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/aufgaben.Rproj
-  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/einzelne-merkmale-aufgaben.Rproj
-- copy: 
-  from: ${project-folder}/bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben/daten
-  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/daten
-- copy: 
-  from: ${project-folder}/folien-r/style.scss
-  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/style.scss
-- copy: 
-  from: ${project-folder}/folien-r/quarto-template.yml
-  to: ${target-folder}/${idx}-einzelne-merkmale-aufgaben/_quarto.yml
-- zip:
-  zipfile: ${idx}-einzelne-merkmale-aufgaben.zip
-  folder: ${idx}-einzelne-merkmale-aufgaben
-  root: ${target-folder}
-- copy:
-  from: ${target-folder}/${idx}-einzelne-merkmale-aufgaben.zip
-  to: ${deploy-folder}/${idx}-einzelne-merkmale-aufgaben.zip
-  overwrite: yes
-# Fertig
+  - ${bcd-bausteine-statistik}/m-einzelne-merkmale/aufgaben/*.qmd    
+  - ${bcd-bausteine-r}/w-einzelne-merkmale/aufgaben/10.*.qmd
+  folders:
+  - ${bcd-bausteine-statistik}/m-einzelne-merkmale/aufgaben/*
 - increment-index:
 
-#
-# 3. Kenngrößen
 - assignment-paper:
   subtitle: "Kenngrößen und Beschreibung von Verteilungen"
   sol: kjdf784
   files: 
-  - ${project-folder}/bausteine/bcd-bausteine-statistik/m-kenngroessen/aufgaben/*.qmd    
-  - ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/10.*.qmd
-- copy:
-  from: ${project-folder}/bausteine/bcd-bausteine-statistik/m-kenngroessen/aufgaben/00-bilder
-  to: ${target-folder}/00-bilder
-# Projekt für Studierende TODO make it a job
-- copy: 
-  from: ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/aufgaben.qmd
-  to: ${target-folder}/${idx}-kenngroessen-aufgaben/kenngroessen-aufgaben.qmd
-- copy: 
-  from: ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/aufgaben.Rproj
-  to: ${target-folder}/${idx}-kenngroessen-aufgaben/kenngroessen-aufgaben.Rproj
-- copy: 
-  from: ${project-folder}/bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben/daten
-  to: ${target-folder}/${idx}-kenngroessen-aufgaben/daten
-- copy: 
-  from: ${project-folder}/folien-r/style.scss
-  to: ${target-folder}/${idx}-kenngroessen-aufgaben/style.scss
-- copy: 
-  from: ${project-folder}/folien-r/quarto-template.yml
-  to: ${target-folder}/${idx}-kenngroessen-aufgaben/_quarto.yml
-- zip:
-  zipfile: ${idx}-kenngroessen-aufgaben.zip
-  folder: ${idx}-kenngroessen-aufgaben
-  root: ${target-folder}
-- copy:
-  from: ${target-folder}/${idx}-kenngroessen-aufgaben.zip
-  to: ${deploy-folder}/${idx}-kenngroessen-aufgaben.zip
-  overwrite: yes
-# Fertig
+  - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/*.qmd    
+  - ${bcd-bausteine-r}/w-kenngroessen/aufgaben/10.*.qmd
+  folders:
+  - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/00-bilder
 - increment-index:
 
+
+# Jobs to run on the parts
+jobs-on-parts:
+- copy: 
+  from: ${part-folder}/aufgaben.qmd
+  to: ${target-folder}/${idx}-${name}-aufgaben/${name}-aufgaben.qmd
+- copy: 
+  from: ${part-folder}/aufgaben.Rproj
+  to: ${target-folder}/${idx}-${name}-aufgaben/${name}-aufgaben.Rproj
+- copy: 
+  from: ${part-folder}/daten
+  to: ${target-folder}/${idx}-${name}-aufgaben/daten
+- copy: 
+  from: ${project-folder}/folien-r/style.scss
+  to: ${target-folder}/${idx}-${name}-aufgaben/style.scss
+- copy: 
+  from: ${project-folder}/folien-r/quarto-template.yml
+  to: ${target-folder}/${idx}-${name}-aufgaben/_quarto.yml
+- zip:
+  zipfile: ${idx}-${name}-aufgaben.zip
+  folder: ${idx}-${name}-aufgaben
+  root: ${target-folder}
+- copy:
+  from: ${target-folder}/${idx}-${name}-aufgaben.zip
+  to: ${deploy-folder}/${idx}-${name}-aufgaben.zip
+  overwrite: yes
+
+
+# Pattern to extract name from part folder
+part-name-pattern: "w\\-(.*)/"
+
+
+# Parts, folders relative to project root
+parts:
+- folder: skip
+- folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben
