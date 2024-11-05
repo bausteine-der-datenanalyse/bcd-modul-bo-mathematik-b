@@ -50,7 +50,15 @@ jobs:
   - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/*.qmd    
   - ${bcd-bausteine-r}/w-kenngroessen/aufgaben/10.*.qmd
   folders:
-  - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/00-bilder
+  - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/*
+- increment-index:
+
+- assignment-paper:
+  subtitle: "Dichtekurven und Normalverteilung"
+  sol: oa34alf
+  files: 
+  - ${bcd-bausteine-statistik}/m-dichtekurven-und-normalverteilung/aufgaben/*.qmd    
+  - ${bcd-bausteine-r}/w-dichtekurven-und-normalverteilung/aufgaben/10.*.qmd
 - increment-index:
 
 
@@ -90,3 +98,4 @@ parts:
 - folder: skip
 - folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/aufgaben
