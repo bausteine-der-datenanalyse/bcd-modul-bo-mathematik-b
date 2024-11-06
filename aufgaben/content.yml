@@ -24,6 +24,7 @@ definitions:
 # Individual jobs
 jobs:
 
+# 01
 - assignment-paper:
   subtitle: "Statistische Daten"
   sol: 6ou3wer
@@ -33,6 +34,7 @@ jobs:
   - ${bcd-bausteine-statistik}/m-statistische-daten/aufgaben/*
 - increment-index:
 
+# 02
 - assignment-paper:
   subtitle: "Untersuchung einzelner Merkmale"
   sol: 834hja1
@@ -43,6 +45,7 @@ jobs:
   - ${bcd-bausteine-statistik}/m-einzelne-merkmale/aufgaben/*
 - increment-index:
 
+# 03
 - assignment-paper:
   subtitle: "Kenngrößen und Beschreibung von Verteilungen"
   sol: kjdf784
@@ -53,6 +56,7 @@ jobs:
   - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/*
 - increment-index:
 
+# 04
 - assignment-paper:
   subtitle: "Dichtekurven und Normalverteilung"
   sol: oa34alf
