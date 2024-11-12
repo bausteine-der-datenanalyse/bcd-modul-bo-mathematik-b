@@ -24,6 +24,7 @@ jobs-on-parts:
 - copy:
   from: ${part-folder}/bilder
   to: ${target-folder}/bilder
+  optional: yes
   exclude-patterns: [".afdesign$"]
 - copy:
   from: ${part-folder}/daten
@@ -31,6 +32,7 @@ jobs-on-parts:
 - copy:
   from: ${part-folder}/skripte
   to: ${target-folder}/skripte
+  optional: yes
 
 # Into subfolders of target folder to be zipped and deleted. Zipfile
 # for download from Moodle
@@ -43,6 +45,7 @@ jobs-on-parts:
 - copy:
   from: ${part-folder}/bilder
   to: ${target-folder}/${idx}-${name}/bilder
+  optional: yes
   exclude-patterns: [".afdesign$"]
 - copy:
   from: ${part-folder}/daten
@@ -50,6 +53,7 @@ jobs-on-parts:
 - copy:
   from: ${part-folder}/skripte
   to: ${target-folder}/${idx}-${name}/skripte
+  optional: yes
 - copy:
   from: quarto-template.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml
@@ -77,3 +81,4 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/folien
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/folien
 - folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/folien
+- folder: bausteine/bcd-bausteine-r/w-zwei-merkmale/folien

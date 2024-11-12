@@ -3,7 +3,7 @@ clean:
 
 update:
 	git submodule update --recursive --remote
-	cp bausteine/bcd-bausteine-r/demo/folien/style.scss folien-r
+	cp bausteine/bcd-bausteine-r/demo/folien-r/style.scss folien-r
 
 render:
 	quarto render aufgaben

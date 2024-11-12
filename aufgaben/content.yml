@@ -65,6 +65,20 @@ jobs:
   - ${bcd-bausteine-r}/w-dichtekurven-und-normalverteilung/aufgaben/10.*.qmd
 - increment-index:
 
+# 05
+- assignment-paper:
+  subtitle: "Untersuchung von zwei Merkmalen"
+  sol: iuzert4
+  files: 
+  - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/01.*.qmd    
+  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/10.*.qmd
+  - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/0[2-4].*.qmd    
+  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/20.*.qmd
+  folders:
+  - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/*
+  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/bilder
+- increment-index:
+
 
 # Jobs to run on the parts
 jobs-on-parts:
@@ -103,3 +117,4 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-zwei-merkmale/aufgaben
