@@ -1,0 +1,41 @@
+# Output goes here, this folder is cleared on each run
+# Absolute path or relative to the folder containing this file
+target-folder: "c"
+
+# Folder where things go for deployment, relative to project folder
+deploy-folder: _output/folien-r-alle/c
+
+# Jobs - TODO run without that
+jobs:
+
+# Jobs running on all parts
+jobs-on-parts:
+
+# Copy into target folder
+- copy:
+  from: ${part-folder}/folien.qmd
+  to: ${target-folder}/${idx}-${name}.qmd
+- copy:
+  from: ${part-folder}/bilder
+  to: ${target-folder}/bilder
+  optional: yes
+  exclude-patterns: [".afdesign$"]
+- copy:
+  from: ${part-folder}/daten
+  to: ${target-folder}/daten
+- copy:
+  from: ${part-folder}/skripte
+  to: ${target-folder}/skripte
+  optional: yes
+
+# Pattern to extract name from part folder
+part-name-pattern: "w\\-(.*)/"
+
+# Parts, folders relative to project root
+parts:
+- folder: bausteine/bcd-bausteine-r/w-erste-schritte/folien
+- folder: bausteine/bcd-bausteine-r/w-ggplot2/folien
+- folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/folien
+- folder: bausteine/bcd-bausteine-r/w-kenngroessen/folien
+- folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/folien
+- folder: bausteine/bcd-bausteine-r/w-zwei-merkmale/folien

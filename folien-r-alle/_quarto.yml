@@ -1,0 +1,21 @@
+project: 
+  type: book
+  output-dir: ../_output/folien-r-alle
+  pre-render: ../bausteine/bcd-bausteine-montieren/collect-content.R
+
+book:
+  title: "Mathematik B - R"
+  author: "Matthias Baitsch"
+  chapters:
+    - index.qmd
+    - c/01-erste-schritte.qmd
+    - c/02-ggplot2.qmd
+    - c/03-einzelne-merkmale.qmd
+    - c/04-kenngroessen.qmd
+    - c/05-dichtekurven-und-normalverteilung.qmd
+    - c/06-zwei-merkmale.qmd
+
+format:
+  html:
+    number-depth: 2
+
