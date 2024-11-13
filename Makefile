@@ -1,5 +1,9 @@
 clean:
-	rm -rf _output aufgaben/c aufgaben/.quarto  folien/.quarto folien-r/c folien-r/.quarto
+	rm -rf _output
+	rm -rf aufgaben/c aufgaben/.quarto
+	rm -rf folien-r/c folien-r/.quarto
+	rm -rf folien-r-alle/c folien-r-alle/.quarto
+	rm -rf folien/.quarto
 
 update:
 	git submodule update --recursive --remote
