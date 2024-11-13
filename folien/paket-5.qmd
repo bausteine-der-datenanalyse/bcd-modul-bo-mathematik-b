@@ -1,0 +1,15 @@
+---
+title: Paket 5
+subtitle: Untersuchung von zwei Merkmalen
+---
+
+## Agenda
+
+-  8:15h - 8:30h Rückblick und Fragen
+-  8:30h - 8:45h Aufgabe 1 bearbeiten/besprechen
+-  8:45h - 9:00h Streuplots und 2D Histogramme in R
+-  9:00h - 9:45h Aufgabe 2 bearbeiten
+-  9:45h - 10:00h Pause
+-  10:00h - 10:30h Aufgaben 3 und 5 bearbeiten/besprechen
+-  10:30h - 10:45h Korrelationskoeffizient und Regression in R
+-  10:45h - 11:30h Aufgabe 6 bearbeiten
