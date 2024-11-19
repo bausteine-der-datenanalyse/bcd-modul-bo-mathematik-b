@@ -81,6 +81,17 @@ jobs:
   - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/bilder
 - increment-index:
 
+# 06
+- assignment-paper:
+  subtitle: "Plots aufbereiten und Grundlagen R"
+  sol: 7aesh3y
+  files: 
+  - ${bcd-bausteine-r}/w-weitere-geoms-und-plots-aufbereiten/aufgaben/10.*.qmd
+  - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/10.*.qmd
+  folders:
+  - ${bcd-bausteine-r}/w-weitere-geoms-und-plots-aufbereiten/aufgaben/*
+  - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/*
+- increment-index:
 
 # Jobs to run on the parts
 jobs-on-parts:
@@ -93,6 +104,7 @@ jobs-on-parts:
 - copy: 
   from: ${part-folder}/daten
   to: ${target-folder}/${idx}-${name}-aufgaben/daten
+  optional: yes
 - copy: 
   from: ${project-folder}/folien-r/style.scss
   to: ${target-folder}/${idx}-${name}-aufgaben/style.scss
@@ -120,3 +132,5 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-zwei-merkmale/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-weitere-geoms-und-plots-aufbereiten/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-grundlagen-r/aufgaben
