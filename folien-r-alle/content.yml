@@ -39,3 +39,5 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/folien
 - folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/folien
 - folder: bausteine/bcd-bausteine-r/w-zwei-merkmale/folien
+- folder: bausteine/bcd-bausteine-r/w-weitere-geoms-und-plots-aufbereiten/folien
+- folder: bausteine/bcd-bausteine-r/w-grundlagen-r/folien
