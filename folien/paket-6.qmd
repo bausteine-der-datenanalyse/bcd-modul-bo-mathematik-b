@@ -1,0 +1,12 @@
+---
+title: Paket 6
+subtitle: Aufbereiten von Plots und Grundlagen R
+---
+
+## Agenda
+
+-  8:15h - 8:30h Rückblick Aufbereiten von Plots
+-  8:30h - 9:30h Aufgabe 1
+-  9:30h - 9:45h Pause
+-  9:45h - 10:00h Rückblick Grundlagen R
+-  10:00h - 11:00h Aufgabe 2

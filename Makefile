@@ -10,8 +10,9 @@ update:
 	cp bausteine/bcd-bausteine-r/demo/folien-r/style.scss folien-r
 
 render:
-	quarto render aufgaben -t html
+	quarto render folien -t revealjs
 	quarto render folien-r -t revealjs
+	quarto render aufgaben -t html
 
 commit:
 	git add .

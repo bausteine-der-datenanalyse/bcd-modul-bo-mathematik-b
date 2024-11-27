@@ -92,6 +92,17 @@ jobs:
   - ${bcd-bausteine-r}/w-weitere-geoms-und-plots-aufbereiten/aufgaben/*
   - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/*
 - increment-index:
+- increment-index:
+
+# 08
+- assignment-paper:
+  subtitle: "Datein einlesen und aufbereiten"
+  sol: waeu374
+  files: 
+  - ${bcd-bausteine-r}/w-daten-aufbereiten/aufgaben/00.*.qmd
+  - ${bcd-bausteine-r}/w-daten-aufbereiten/aufgaben/10.*.qmd
+  - ${bcd-bausteine-r}/w-daten-aufbereiten/aufgaben/20.*.qmd
+- increment-index:
 
 # Jobs to run on the parts
 jobs-on-parts:
@@ -134,3 +145,4 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-zwei-merkmale/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-weitere-geoms-und-plots-aufbereiten/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-grundlagen-r/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-daten-aufbereiten/aufgaben
