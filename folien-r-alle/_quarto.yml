@@ -14,6 +14,10 @@ book:
     - c/04-kenngroessen.qmd
     - c/05-dichtekurven-und-normalverteilung.qmd
     - c/06-zwei-merkmale.qmd
+    - c/07-weitere-geoms-und-plots-aufbereiten.qmd
+    - c/08-grundlagen-r.qmd
+    - c/09-daten-einlesen.qmd
+    - c/10-daten-aufbereiten.qmd
 
 format:
   html:
