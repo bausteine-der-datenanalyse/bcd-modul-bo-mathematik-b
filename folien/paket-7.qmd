@@ -8,4 +8,4 @@ subtitle: Einlesen und Aufbereiten von Daten
 -  8:15h - 8:30h Rückblick und Fragen
 -  8:30h - 9:45h Pegel Hofkirchen
 -  9:45h - 10:00h Pause
--  10:00h - 11:00h Pegel Hofkirchen
+-  10:00h - 11:30h Pegel Hofkirchen
