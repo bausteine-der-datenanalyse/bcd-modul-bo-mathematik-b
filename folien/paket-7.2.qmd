@@ -1,0 +1,11 @@
+---
+title: Paket 7.2
+subtitle: Einlesen und Aufbereiten von Daten
+---
+
+## Agenda
+
+-  8:18h - 8:30h Fragen
+-  8:30h - 9:45h Pegel Hofkirchen/Mobilitätsbefragung BO
+-  9:45h - 10:00h Pause
+-  10:00h - 11:30h Mobilitätsbefragung BO
