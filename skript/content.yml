@@ -1,0 +1,49 @@
+# Output goes here, this folder is cleared on each run
+# Absolute path or relative to the folder containing this file
+target-folder: "c"
+
+# Folder where things go for deployment, relative to project folder
+deploy-folder: _output/skript/c
+
+# Global variable definitions
+definitions:
+- bcd-bausteine-statistik: ${project-folder}/bausteine/bcd-bausteine-statistik
+
+# Jobs
+jobs:
+- copy:
+  from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
+  to: ${target-folder}/bcd-bausteine-statistik.bib
+- copy:
+  from: ${bcd-bausteine-statistik}/bcd-macros.tex
+  to: ${target-folder}/bcd-macros.tex
+
+# Jobs running on all parts
+jobs-on-parts:
+
+# Copy into target folder (web access)
+- copy:
+  from: ${part-folder}/skript.qmd
+  to: ${target-folder}/${idx}-${name}.qmd
+- copy:
+  from: ${part-folder}/00-bilder
+  to: ${target-folder}/00-bilder
+  optional: yes
+  exclude-patterns: [".afdesign$"]
+- copy:
+  from: ${part-folder}/01-daten
+  to: ${target-folder}/01-daten
+  optional: yes
+- copy:
+  from: ${part-folder}/03-code
+  to: ${target-folder}/03-code
+  optional: yes
+
+# Pattern to extract name from part folder
+part-name-pattern: "m\\-(.*)/"
+
+# Parts, folders relative to project root
+parts:
+- folder: bausteine/bcd-bausteine-statistik/m-statistische-daten/skript
+- folder: bausteine/bcd-bausteine-statistik/m-einzelne-merkmale/skript
+- folder: bausteine/bcd-bausteine-statistik/m-kenngroessen/skript

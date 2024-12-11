@@ -11,13 +11,32 @@ book:
   author: "Matthias Baitsch"
   chapters:
     - index.qmd
-    - ../bausteine/bcd-bausteine-statistik/m-statistische-daten/skript/skript.qmd
+    - c/01-statistische-daten.qmd
+    - c/02-einzelne-merkmale.qmd
+    - c/03-kenngroessen.qmd
     - literatur.qmd
+
+filters: 
+  - latex-environment
+commands: [neuerbegriff]
+environments: [definition, beispiel, center, multicols]
 
 format: 
   html: 
     css: bcd-style.css
     license: CC BY-SA
-  pdf: default
+    default-image-extension: svg
+  pdf:
+    include-in-header:
+      - c/bcd-macros.tex
+      - text: |
+          \usepackage{makeidx}
+          \usepackage{multicol}
+          \makeindex
+    include-after-body:
+      text: |
+        \printindex
+    default-image-extension: pdf
 
-bibliography: ../bausteine/bcd-bausteine-statistik/bcd-bausteine-statistik.bib
+bibliography: c/bcd-bausteine-statistik.bib
+

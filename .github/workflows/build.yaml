@@ -41,6 +41,11 @@ jobs:
         working-directory: folien-r-alle
       - name: Quarto render all slides R
         run: quarto render folien-r-alle
+      - name: Prepare Skript
+        run: ../bausteine/bcd-bausteine-montieren/collect-content.R
+        working-directory: skript
+      - name: Quarto render Skript
+        run: quarto render skript
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
