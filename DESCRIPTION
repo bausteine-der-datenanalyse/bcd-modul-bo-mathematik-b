@@ -15,13 +15,18 @@ Imports:
     readr,
     giscoR,
     hexbin,
+    lwgeom,
     plotly,
+    osmdata,
     stringr,
     cowplot,
+    wbstats,
     ggridges,
     patchwork,
     tidyverse,
     this.path,
-    kableExtra
+    kableExtra,
+    rnaturalearth
 Encoding: UTF-8
 License: CC NC ND 3.0
+
