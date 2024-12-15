@@ -18,6 +18,7 @@ book:
     - c/08-grundlagen-r.qmd
     - c/09-daten-einlesen.qmd
     - c/10-daten-aufbereiten.qmd
+    - c/11-raeumliche-daten.qmd
 
 format:
   html:

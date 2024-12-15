@@ -44,4 +44,5 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-grundlagen-r/folien
 - folder: bausteine/bcd-bausteine-r/w-daten-einlesen/folien
 - folder: bausteine/bcd-bausteine-r/w-daten-aufbereiten/folien
+- folder: bausteine/bcd-bausteine-r/w-raeumliche-daten/folien
 
