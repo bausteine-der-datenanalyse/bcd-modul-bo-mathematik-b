@@ -104,6 +104,14 @@ jobs:
   - ${bcd-bausteine-r}/w-daten-aufbereiten/aufgaben/20.*.qmd
 - increment-index:
 
+# 09
+- assignment-paper:
+  subtitle: "Räumliche Daten"
+  sol: wiue2g3
+  files: 
+  - ${bcd-bausteine-r}/w-raeumliche-daten/aufgaben/10.*.qmd
+- increment-index:
+
 # Jobs to run on the parts
 jobs-on-parts:
 - copy: 
@@ -115,6 +123,10 @@ jobs-on-parts:
 - copy: 
   from: ${part-folder}/daten
   to: ${target-folder}/${idx}-${name}-aufgaben/daten
+  optional: yes
+- copy: 
+  from: ${part-folder}/skripte
+  to: ${target-folder}/${idx}-${name}-aufgaben/skripte
   optional: yes
 - copy: 
   from: ${project-folder}/folien-r/style.scss
@@ -146,3 +158,4 @@ parts:
 - folder: bausteine/bcd-bausteine-r/w-weitere-geoms-und-plots-aufbereiten/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-grundlagen-r/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-daten-aufbereiten/aufgaben
+- folder: bausteine/bcd-bausteine-r/w-raeumliche-daten/aufgaben
