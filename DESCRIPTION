@@ -13,6 +13,7 @@ Imports:
     ineq,
     rdwd,
     purrr,
+    RCurl,
     readr,
     giscoR,
     hexbin,
