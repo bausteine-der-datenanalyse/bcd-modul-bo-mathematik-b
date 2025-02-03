@@ -19,13 +19,34 @@ jobs:
   from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/bibliographie.bib
   to: ${target-folder}/schreiben-mit-quarto/bibliographie.bib
 - copy:
-  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/w-schreiben-mit-quarto.Rproj
-  to: ${target-folder}/schreiben-mit-quarto/w-schreiben-mit-quarto.Rproj
+  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/schreiben-mit-quarto.Rproj
+  to: ${target-folder}/schreiben-mit-quarto/schreiben-mit-quarto.Rproj
 - copy:
   from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/bilder
   to: ${target-folder}/schreiben-mit-quarto/bilder
 - zip:
   zipfile: ${deploy-folder}/schreiben-mit-quarto.zip
   folder: schreiben-mit-quarto
+  root: ${target-folder}
+
+# Präsentationen mit Quarto
+- copy:
+  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.qmd
+  to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.qmd
+- copy:
+  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/style.scss
+  to: ${target-folder}/praesentationen-mit-quarto/style.scss
+- copy:
+  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.Rproj
+  to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.Rproj
+- copy:
+  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/bilder
+  to: ${target-folder}/praesentationen-mit-quarto/bilder
+- copy:
+  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/daten
+  to: ${target-folder}/praesentationen-mit-quarto/daten
+- zip:
+  zipfile: ${deploy-folder}/praesentationen-mit-quarto.zip
+  folder: praesentationen-mit-quarto
   root: ${target-folder}
 
