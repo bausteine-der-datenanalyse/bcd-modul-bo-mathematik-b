@@ -19,8 +19,11 @@ book:
     - c/09-daten-einlesen.qmd
     - c/10-daten-aufbereiten.qmd
     - c/11-raeumliche-daten.qmd
-    - c/12-viele-modelle.qmd
-    - c/13-zeitreihen.qmd
+    - c/12-mehrere-datensaetze.qmd 
+    - c/13-tipps-und-tricks.qmd
+    - c/14-rdwd-verwenden.qmd
+    - c/15-viele-modelle.qmd
+    - c/16-zeitreihen.qmd
 
 format:
   html:
