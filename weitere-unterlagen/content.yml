@@ -1,0 +1,31 @@
+# Output goes here, this folder is cleared on each run
+# Absolute path or relative to the folder containing this file
+target-folder: "c"
+
+# Folder where things go for deployment, relative to project folder
+deploy-folder: _output/weitere-unterlagen/c
+
+definitions:
+- bcd-bausteine-r: ${project-folder}/bausteine/bcd-bausteine-r
+
+# Jobs
+jobs:
+
+# Schreiben mit Quarto
+- copy:
+  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/schreiben-mit-quarto.qmd
+  to: ${target-folder}/schreiben-mit-quarto/schreiben-mit-quarto.qmd
+- copy:
+  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/bibliographie.bib
+  to: ${target-folder}/schreiben-mit-quarto/bibliographie.bib
+- copy:
+  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/w-schreiben-mit-quarto.Rproj
+  to: ${target-folder}/schreiben-mit-quarto/w-schreiben-mit-quarto.Rproj
+- copy:
+  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/bilder
+  to: ${target-folder}/schreiben-mit-quarto/bilder
+- zip:
+  zipfile: ${deploy-folder}/schreiben-mit-quarto.zip
+  folder: schreiben-mit-quarto
+  root: ${target-folder}
+
