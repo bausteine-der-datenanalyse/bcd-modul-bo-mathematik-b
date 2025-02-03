@@ -19,6 +19,8 @@ book:
     - c/09-daten-einlesen.qmd
     - c/10-daten-aufbereiten.qmd
     - c/11-raeumliche-daten.qmd
+    - c/12-viele-modelle.qmd
+    - c/13-zeitreihen.qmd
 
 format:
   html:
