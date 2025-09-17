@@ -9,7 +9,6 @@ Depends:
 Imports:
     sf,
     zip,
-    here,
     ineq,
     rdwd,
     purrr,
@@ -29,6 +28,7 @@ Imports:
     RcppRoll,
     ggridges,
     patchwork,
+    rprojroot,
     tidyverse,
     this.path,
     kableExtra,
