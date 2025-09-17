@@ -1,3 +1,5 @@
 /.quarto/
 paket-1_files
 paket-2_files
+
+**/*.quarto_ipynb
