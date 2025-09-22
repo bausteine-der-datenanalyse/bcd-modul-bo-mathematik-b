@@ -1,9 +1,12 @@
 [submodule "bausteine/bcd-bausteine-statistik"]
 	path = bausteine/bcd-bausteine-statistik
 	url = git@github.com:bausteine-der-datenanalyse/bcd-bausteine-statistik.git
+	branch = main
 [submodule "bausteine/bcd-bausteine-montieren"]
 	path = bausteine/bcd-bausteine-montieren
 	url = git@github.com:bausteine-der-datenanalyse/bcd-bausteine-montieren.git
+	branch = main
 [submodule "bausteine/bcd-bausteine-r"]
 	path = bausteine/bcd-bausteine-r
 	url = git@github.com:bausteine-der-datenanalyse/bcd-bausteine-r.git
+	branch = main
