@@ -27,5 +27,6 @@ book:
 
 format:
   html:
+    number-sections: false
     number-depth: 2
 
