@@ -17,7 +17,6 @@ In der Mathematik ist Statistik ein Teilgebiet der Stochastik, eine Disziplin, d
     #fig-stochastik
 }
 
-
 In der Statistik werden im Rahmen empirischer Untersuchungen Daten erhoben, dargestellt und analysiert. Es werden drei Teilbereiche unterschieden.
 
 Deskriptive Statistik:
@@ -35,7 +34,7 @@ Im Rahmen des Moduls "Mathematik B" werden Sie grundlegende Methoden der Statist
 
 ## Computerprogramme
 
-Zur Bearbeitung von Aufgaben aus dem Bereich der Stochastik und Statistik eignen sich eine Vielzahl verschiedener Programme. 
+Zur Bearbeitung von Aufgaben aus dem Bereich der Stochastik und Statistik eignen sich eine Vielzahl verschiedener Programme.
 
 Tabellenkalkulation:
 : Bis zu einem gewissen Grad lässt sich Statistik auch mit gängigen Tabellenkalkulationsprogrammen wie Excel oder Numbers betreiben (siehe zum Beispiel @matthaus_statistik_2016). Allerdings sind viele konkrete Aufgaben aus der Statistik mit Tabellenkalkulationsprogrammen nur sehr umständlich und zeitraubend zu lösen, insbesondere wenn es sich um umfangreiche Datensätze handelt.
@@ -46,8 +45,8 @@ SPSS:
 Programmiersprache Python:
 : Python ist eine allgemein einsetzbare Programmiersprache, die sich in den letzten Jahren auch im Bereich der Datenanalyse und Statistik etabliert hat. Mit Bibliotheken wie NumPy, pandas, matplotlib und scikit-learn lassen sich statistische Auswertungen, Datenvisualisierungen und maschinelles Lernen umsetzen. Python ist Open Source, plattformunabhängig und wird in vielen wissenschaftlichen und technischen Disziplinen eingesetzt.
 
-Programmiersprache R: 
-: In der Datenanalyse hat sich die Programmiersprache R, die häufig zusammen mit der Entwicklungsumgebung RStudio eingesetzt wird, fest etabliert. R ist speziell auf die Anforderungen der Statistik zugeschnitten und mit dem tidyverse existiert eine umfassende Sammlung von Bibliotheken. RStudio ist eine komfortable grafische Oberfläche, in der statistische Auswertungen in R durchgeführt werden können. Sowohl R als auch RStudio sind plattformunabhängig und Open Source. 
+Programmiersprache R:
+: In der Datenanalyse hat sich die Programmiersprache R, die häufig zusammen mit der Entwicklungsumgebung RStudio eingesetzt wird, fest etabliert. R ist speziell auf die Anforderungen der Statistik zugeschnitten und mit dem tidyverse existiert eine umfassende Sammlung von Bibliotheken. RStudio ist eine komfortable grafische Oberfläche, in der statistische Auswertungen in R durchgeführt werden können. Sowohl R als auch RStudio sind plattformunabhängig und Open Source.
 
 Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gründen nicht infrage. Demgegenüber sind sowohl Python als auch R prinzipiell gleichermaßen geeignet. Hier ein kleiner Vergleich, der zeigt, wie eine Aufgabe in beiden Umgebungen umgesetzt werden kann.
 
@@ -100,7 +99,7 @@ ggplot(data = df, mapping = aes(x = Monat)) +
 
 :::
 
-Einen umfassenden Vergleich finden Sie auf diesem [Blogpost](https://blog.tidy-intelligence.com/posts/dplyr-vs-pandas). 
+Einen umfassenden Vergleich finden Sie auf diesem [Blogpost](https://blog.tidy-intelligence.com/posts/dplyr-vs-pandas).
 
 Wir werden im Modul Mathematik B die Programmiersprache R einsetzen, da
 
