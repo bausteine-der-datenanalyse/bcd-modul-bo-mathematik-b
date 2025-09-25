@@ -1,5 +1,111 @@
-# Einführung
+```{r}
+#| include: false
+library(reticulate)
+Sys.setlocale("LC_ALL", "de_DE")
+py_require("matplotlib", "pandas")
+```
 
-TODO
+# Einführung und Überblick
+
+Das vorliegende Skript zum Modul "Mathematik B -- Statistik und Datenanalyse" fasst die wichtigsten Inhalte der Veranstaltung zusammen. Es erhebt keinen Anspruch auf Vollständigkeit und ersetzt auf keinen Fall den Besuch der Lehrveranstaltungen, in denen die Zusammenhänge an Beispielen erläutert und diskutiert werden. Das Skript basiert in weiten Teilen auf dem Buch 'Statistik, Wege zur Datenanalyse' @fahrmeir_statistik_2016.
+
+## Statistik und Datenanalyse
+
+In der Mathematik ist Statistik ein Teilgebiet der Stochastik, eine Disziplin, die sich im weitesten Sinne mit zufälligen Vorgängen befasst und dabei die Gebiete Statistik und Wahrscheinlichkeitstheorie (siehe @fig-stochastik) umfasst. 
+
+![Statistik als Teilgebiet der Stochastik](00-bilder/stochastik.svg){
+    #fig-stochastik
+}
 
 
+In der Statistik werden im Rahmen empirischer Untersuchungen Daten erhoben, dargestellt und analysiert. Es werden drei Teilbereiche unterschieden.
+
+Deskriptive Statistik:
+: Darstellen und Aufbereiten von realen Datensätzen, die empirisch, das heißt auf Grundlage von Umfragen, Versuchen oder Beobachtungen, gewonnen wurden. Ein typisches Anwendungsbeispiel ist die Aufbereitung und Bereitstellung von Daten über gesellschaftliche Entwicklungen durch das Statistische Bundesamt.
+
+Explorative Statistik:
+: Ziel der explorativen Statistik ist es, aus vorliegenden Daten Annahmen und Hypothesen zu generieren, mit denen die Eigenschaften der Daten erklärt werden können. Dieser Bereich wird in der Vorlesung nicht vertieft behandelt.
+
+Schließende Statistik:
+: Hier geht es darum, aus vorliegenden Daten Aussagen über die Grundgesamtheit abzuleiten. Zentrales Hilfsmittel dabei ist die Wahrscheinlichkeitstheorie. Eine Aufgabe der schließenden Statistik ist es zum Beispiel zu beurteilen, inwieweit eine Umfrage unter 100 Studierenden der BO repräsentativ für alle Studierenden ist.
+
+Datenanalyse (*Data Analysis*) beschreibt die Aufgabe, konkrete, digital vorliegende Datensätze mithilfe von Software so aufzubereiten und darzustellen, dass Sie verstanden und interpretiert werden können. Als Querschnittsdisziplin wendet sie dabei Methoden aus der Statistik mit Mitteln der Informatik an.
+
+Im Rahmen des Moduls "Mathematik B" werden Sie grundlegende Methoden der Statistik auf konkrete Datensätze aus verschiedenen Bereichen des Bau- und Umweltingenieurwesens anwenden. Dies ist ohne die Anwendung von Computern nicht sinnvoll möglich.
+
+## Computerprogramme
+
+Zur Bearbeitung von Aufgaben aus dem Bereich der Stochastik und Statistik eignen sich eine Vielzahl verschiedener Programme. 
+
+Tabellenkalkulation:
+: Bis zu einem gewissen Grad lässt sich Statistik auch mit gängigen Tabellenkalkulationsprogrammen wie Excel oder Numbers betreiben (siehe zum Beispiel @matthaus_statistik_2016). Allerdings sind viele konkrete Aufgaben aus der Statistik mit Tabellenkalkulationsprogrammen nur sehr umständlich und zeitraubend zu lösen, insbesondere wenn es sich um umfangreiche Datensätze handelt.
+
+SPSS:
+: Das Programm SPSS (Statistical Package for the Social Sciences) ist insbesondere in den Sozialwissenschaften und der Medizin verbreitet. Es erlaubt die Analyse von Daten in einer komfortablen grafischen Oberfläche. Allerdings ist es in den Ingenieurwissenschaften nicht weit verbreitet, in der Anwendung eher unflexibel und, nicht zuletzt, sehr teuer.
+
+Programmiersprache Python:
+: Python ist eine allgemein einsetzbare Programmiersprache, die sich in den letzten Jahren auch im Bereich der Datenanalyse und Statistik etabliert hat. Mit Bibliotheken wie NumPy, pandas, matplotlib und scikit-learn lassen sich statistische Auswertungen, Datenvisualisierungen und maschinelles Lernen umsetzen. Python ist Open Source, plattformunabhängig und wird in vielen wissenschaftlichen und technischen Disziplinen eingesetzt.
+
+Programmiersprache R: 
+: In der Datenanalyse hat sich die Programmiersprache R, die häufig zusammen mit der Entwicklungsumgebung RStudio eingesetzt wird, fest etabliert. R ist speziell auf die Anforderungen der Statistik zugeschnitten und mit dem tidyverse existiert eine umfassende Sammlung von Bibliotheken. RStudio ist eine komfortable grafische Oberfläche, in der statistische Auswertungen in R durchgeführt werden können. Sowohl R als auch RStudio sind plattformunabhängig und Open Source. 
+
+Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gründen nicht infrage. Demgegenüber sind sowohl Python als auch R prinzipiell gleichermaßen geeignet. Hier ein kleiner Vergleich, der zeigt, wie eine Aufgabe in beiden Umgebungen umgesetzt werden kann.
+
+::: {.panel-tabset}
+
+## Programmiersprache Python
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("01-daten/6342800.day", sep=";", comment="#", encoding="latin1")
+df["date"] = pd.to_datetime(df["YYYY-MM-DD"], errors="coerce")
+df["runoff"] = pd.to_numeric(df[" Calculated"], errors="coerce")
+df = df.dropna(subset=["date", "runoff"])
+yearly_mean = df.groupby(df["date"].dt.year)["runoff"].mean()
+
+# plt.figure(figsize=(12, 6))
+plt.plot(yearly_mean.index, yearly_mean.values, marker="o")
+plt.title("Yearly Mean Runoff")
+plt.xlabel("Year")
+plt.ylabel("Runoff (m³/s)")
+plt.grid(True)
+plt.show()
+```
+
+## Programmiersprache R
+
+```{r}
+#| warning: false
+library(tidyverse)
+
+df <- read_delim(
+    "01-daten/6342800.day",
+    delim = ";", locale = locale(decimal_mark = "."), skip = 40, trim_ws = TRUE
+) |>
+    mutate(Monat = month(ymd(`YYYY-MM-DD`), label = TRUE)) |>
+    group_by(Monat) |>
+    summarise(Mittelwert = mean(Original), Minimum = min(Original), Maximum = max(Original))
+
+ggplot(data = df, mapping = aes(x = Monat)) +
+    geom_col(mapping = aes(y = Mittelwert)) +
+    geom_errorbar(mapping = aes(ymin = Minimum, ymax = Maximum)) +
+    labs(
+        title = "Abfluss der Donau am Pegel Hofkirchen",
+        subtitle = "Monatliche Mittel- und Extremwerte",
+        x = NULL, y = NULL
+    )
+```
+
+:::
+
+Einen umfassenden Vergleich finden Sie auf diesem [Blogpost](https://blog.tidy-intelligence.com/posts/dplyr-vs-pandas). 
+
+Wir werden im Modul Mathematik B die Programmiersprache R einsetzen, da
+
+- die Aufbereitung von Daten einem einheitlichen Schema folgt und
+
+- es einfacher ist, qualitativ hochwertige Grafiken zu erstellen.
+
+Wichtig ist dabei, dass es sich bei Mathematik B ausdrücklich nicht um ein Informatikmodul handelt. Sie werden nicht im klassischen Sinne programmieren (Schleifen, Verzweigungen), im Vordergrund stehen vielmehr die Aufbereitung und Auswertung realer Datensätze.
