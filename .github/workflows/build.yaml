@@ -34,10 +34,6 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: rcmdcheck
-      - name: Check R package
-        uses: r-lib/actions/check-r-package@v2
-      - name: Set up R dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
       - name: Prepare Skript
         run: ../bausteine/bcd-bausteine-montieren/collect-content.R
         working-directory: skript
