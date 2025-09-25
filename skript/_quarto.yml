@@ -10,6 +10,8 @@ book:
   title: "Mathematik B"
   subtitle: Statistik und Datenanalyse
   author: "Matthias Baitsch"
+  output-file: skript-mathematik-b
+  date: "2025"
   chapters:
     - index.qmd
     - c/01-statistische-daten.qmd
@@ -38,6 +40,6 @@ format:
       text: |
         \printindex
     default-image-extension: pdf
-
+    
 bibliography: c/bcd-bausteine-statistik.bib
 
