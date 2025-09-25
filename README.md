@@ -2,7 +2,9 @@
 
 Dokumente auf GitHub-Pages:
 
-- [Skript](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/skript/index.html)
+- [Skript (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/skript/index.html)
+
+- [Skript (pdf)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/skript/skript-mathematik-b.pdf)
 
 - [Alle Folien](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/folien-r-alle/index.html)
 
