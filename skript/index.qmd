@@ -81,22 +81,29 @@ Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gr
 ## Programmiersprache Python
 
 ```{python}
-#| message: false
+# | message: false
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("01-daten/6342800.day", sep=";", comment="#", skipinitialspace=True, na_values=["-999", -999], encoding="latin-1")
+df = pd.read_csv(
+    "01-daten/6342800.day",
+    sep=";",
+    comment="#",
+    skipinitialspace=True,
+    na_values=["-999", -999],
+    encoding="latin-1",
+)
 df.columns = df.columns.str.strip()
 df["Datum"] = pd.to_datetime(df["YYYY-MM-DD"], errors="coerce")
 df = df.rename(columns={"Calculated": "Abfluss"})
 df["Abfluss"] = pd.to_numeric(df["Abfluss"], errors="coerce")
 df = df.dropna(subset=["Datum", "Abfluss"])
 df["Monat"] = df["Datum"].dt.month
-monatswerte = df.groupby("Monat")["Abfluss"].agg(
-    Mittelwert="mean",
-    Minimum="min",
-    Maximum="max"
-).reset_index()
+monatswerte = (
+    df.groupby("Monat")["Abfluss"]
+    .agg(Mittelwert="mean", Minimum="min", Maximum="max")
+    .reset_index()
+);
 
 plt.figure(figsize=(10, 6))
 ax = plt.gca()
@@ -106,16 +113,16 @@ bars = ax.bar(
     monatswerte["Mittelwert"],
     color="0.4",
     width=bar_width,
-    zorder=2
-)
+    zorder=2,
+);
 ax.vlines(
     x=monatswerte["Monat"],
     ymin=monatswerte["Minimum"],
     ymax=monatswerte["Maximum"],
     color="black",
     linewidth=1.5,
-    zorder=3
-)
+    zorder=3,
+);
 cap_width = bar_width / 2
 for _, row in monatswerte.iterrows():
     x = row["Monat"]
@@ -125,7 +132,7 @@ for _, row in monatswerte.iterrows():
         xmax=x + cap_width,
         color="black",
         linewidth=1.5,
-        zorder=3
+        zorder=3,
     );
     ax.hlines(
         y=row["Maximum"],
@@ -133,15 +140,22 @@ for _, row in monatswerte.iterrows():
         xmax=x + cap_width,
         color="black",
         linewidth=1.5,
-        zorder=3
+        zorder=3,
     );
-ax.set_title("Abfluss der Donau am Pegel Hofkirchen\nMonatliche Mittel- und Extremwerte");
+ax.set_title(
+    """
+    Abfluss der Donau am Pegel Hofkirchen
+    Monatliche Mittel- und Extremwerte
+    """
+);
 ax.set_xlabel("Monat");
 ax.set_ylabel("Abfluss in m³/s");
 ax.set_ylim(0, 3500);
 ax.set_xticks(range(1, 13));
-ax.set_xticklabels(["Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
-                    "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]);
+ax.set_xticklabels(
+    ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", 
+     "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+);
 plt.show()
 ```
 
@@ -151,21 +165,35 @@ plt.show()
 #| warning: false
 library(tidyverse)
 
-df <- read_delim(
-    "01-daten/6342800.day",
-    delim = ";", locale = locale(decimal_mark = "."), skip = 40, trim_ws = TRUE
-) |>
-    mutate(Monat = month(ymd(`YYYY-MM-DD`), label = TRUE)) |>
-    group_by(Monat) |>
-    summarise(Mittelwert = mean(Original), Minimum = min(Original), Maximum = max(Original))
+df <- 
+    read_delim(
+        "01-daten/6342800.day", delim = ";", skip = 41,
+        col_names = c("Datum", "", "Abfluss", "", "", ""),
+        col_types = c("Dcnccc")
+    ) |>
+    mutate(
+        Monat = month(Datum, label = TRUE)
+    ) |>
+    group_by(
+        Monat
+    ) |>
+    summarise(
+        Mittelwert = mean(Abfluss),
+        Minimum = min(Abfluss),
+        Maximum = max(Abfluss)
+    )    
 
 ggplot(data = df) +
-    geom_col(mapping = aes(x = Monat, y = Mittelwert)) +
-    geom_errorbar(mapping = aes(x = Monat, ymin = Minimum, ymax = Maximum)) +
+    geom_col(
+        mapping = aes(x = Monat, y = Mittelwert)
+    ) +
+    geom_errorbar(
+        mapping = aes(x = Monat, ymin = Minimum, ymax = Maximum)
+    ) +
     labs(
+        x = "Monat", y = "Abfluss in m³/s",
         title = "Abfluss der Donau am Pegel Hofkirchen",
-        subtitle = "Monatliche Mittel- und Extremwerte",
-        x = "Monat", y = "Abfluss in m³/s"
+        subtitle = "Monatliche Mittel- und Extremwerte"
     )
 ```
 
