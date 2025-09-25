@@ -3,7 +3,7 @@
 target-folder: "c"
 
 # Folder where things go for deployment, relative to project folder
-deploy-folder: _output/skript/c
+deploy-folder: _output/skript
 
 # Global variable definitions
 definitions:
