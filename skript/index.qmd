@@ -1,8 +1,9 @@
 ```{r}
 #| include: false
 library(reticulate)
+py_require(python_version = ">=3.12")
+py_require(c("matplotlib", "polars")) 
 Sys.setlocale("LC_ALL", "de_DE")
-py_require("matplotlib", "pandas")
 ```
 
 # Einführung und Überblick
