@@ -8,6 +8,7 @@ number-sections: true
 
 book:
   title: "Mathematik B"
+  subtitle: Statistik und Datenanalyse
   author: "Matthias Baitsch"
   chapters:
     - index.qmd
