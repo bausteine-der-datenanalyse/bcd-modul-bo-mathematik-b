@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: ../_output/skript
+  pre-render: ../bausteine/bcd-bausteine-montieren/collect-content.R
 
 lang: de
 number-depth: 3
