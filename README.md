@@ -36,7 +36,7 @@ remotes::install_deps(upgrade = "always")
 
     ausführen
 
-1. Im Ordner `folien-r-alle` den Befehl 
+1. Im Ordner `folien-r-alle` den Befehl
 
     ```bash
     ../bausteine/bcd-bausteine-montieren/collect-content.R
@@ -52,5 +52,3 @@ remotes::install_deps(upgrade = "always")
     quarto render folien-r
     quarto render folien-r-alle
     ```
-
-

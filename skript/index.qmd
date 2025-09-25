@@ -31,11 +31,36 @@ Schließende Statistik:
 
 Datenanalyse (*Data Analysis*) beschreibt die Aufgabe, konkrete, digital vorliegende Datensätze mithilfe von Software so aufzubereiten und darzustellen, dass Sie verstanden und interpretiert werden können. Als Querschnittsdisziplin wendet sie dabei Methoden aus der Statistik mit Mitteln der Informatik an.
 
-Im Rahmen des Moduls "Mathematik B" werden Sie grundlegende Methoden der Statistik auf konkrete Datensätze aus verschiedenen Bereichen des Bau- und Umweltingenieurwesens anwenden. Dies ist ohne die Anwendung von Computern nicht sinnvoll möglich.
+## Anwendungen im Bau- und Umweltingenieurwesen
+
+::: {#fig-anwendungen layout-ncol=2}
+
+![Individualverkehr](00-bilder/a_verkehr.jpg){#fig-anwendungen-verkehrsplanung}
+
+![Hochwasserereignis](00-bilder/a_ueberflutung.jpeg){#fig-anwendungen-hochwasser}
+
+![Versagen von Konstruktionen](00-bilder/a_strommast.jpeg){#fig-anwendungen-strommasten}
+
+![Auswertung von Versuchsreihen](00-bilder/a_beton.svg){#fig-anwendungen-versuche}
+
+Anwendungsfelder statistischer Methoden
+:::
+
+In @fig-anwendungen sind verschiedene Anwendungsfelder statistischer Methoden im Bau- und Umweltingenieurwesen zusammengestellt:
+
+a) Ermittlung und Aufbereitung von Daten als Grundlage für die Planung der Verkehrsinfrastruktur.
+
+a) Prognose über Häufigkeit und Ausmaß zukünftiger Starkregenereignisse auf Basis von Aufzeichnungen. Entwicklung stochastischer Modelle für fließende Gewässer.
+
+a) Entwicklung und Anwendung probabilistischer Sicherheitskonzepte, die streuenden Materialparametern und unsicheren Einwirkungen Rechnung tragen.
+
+a) Messwerte einer Versuchsreihe zu Stahlbetondecken (@kueres_einheitliches_2016). Offensichtlich streuen die Messwerte stark.
 
 ## Computerprogramme
 
-Zur Bearbeitung von Aufgaben aus dem Bereich der Stochastik und Statistik eignen sich eine Vielzahl verschiedener Programme.
+Im Rahmen des Moduls "Mathematik B" werden Sie grundlegende Methoden der Statistik auf konkrete Datensätze aus verschiedenen Bereichen des Bau- und Umweltingenieurwesens anwenden. Dies ist ohne die Anwendung von Computern nicht sinnvoll möglich. 
+
+Zur Bearbeitung von Aufgaben aus dem Bereich der Stochastik und Statistik eignen sich prinzipiell eine Vielzahl verschiedener Programme.
 
 Tabellenkalkulation:
 : Bis zu einem gewissen Grad lässt sich Statistik auch mit gängigen Tabellenkalkulationsprogrammen wie Excel oder Numbers betreiben (siehe zum Beispiel @matthaus_statistik_2016). Allerdings sind viele konkrete Aufgaben aus der Statistik mit Tabellenkalkulationsprogrammen nur sehr umständlich und zeitraubend zu lösen, insbesondere wenn es sich um umfangreiche Datensätze handelt.
@@ -49,7 +74,7 @@ Programmiersprache Python:
 Programmiersprache R:
 : In der Datenanalyse hat sich die Programmiersprache R, die häufig zusammen mit der Entwicklungsumgebung RStudio eingesetzt wird, fest etabliert. R ist speziell auf die Anforderungen der Statistik zugeschnitten und mit dem tidyverse existiert eine umfassende Sammlung von Bibliotheken. RStudio ist eine komfortable grafische Oberfläche, in der statistische Auswertungen in R durchgeführt werden können. Sowohl R als auch RStudio sind plattformunabhängig und Open Source.
 
-Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gründen nicht infrage. Demgegenüber sind sowohl Python als auch R prinzipiell gleichermaßen geeignet. Hier ein kleiner Vergleich, der zeigt, wie eine Aufgabe in beiden Umgebungen umgesetzt werden kann.
+Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gründen nicht infrage. Demgegenüber sind sowohl Python als auch R grundsätzlich geeignet, wobei beide Programmiersprachen ihre spezifischen Vor- und Nachteile haben. Hier ein kleiner Vergleich, der zeigt, wie eine Aufgabe in beiden Umgebungen umgesetzt werden kann.
 
 ::: {.panel-tabset}
 
@@ -152,6 +177,6 @@ Wir werden im Modul Mathematik B die Programmiersprache R einsetzen, da
 
 - die Aufbereitung von Daten einem einheitlichen Schema folgt und
 
-- es einfacher ist, qualitativ hochwertige Grafiken zu erstellen.
+- es vergleichsweise einfache ist, qualitativ hochwertige Grafiken zu erstellen.
 
 Wichtig ist dabei, dass es sich bei Mathematik B ausdrücklich nicht um ein Informatikmodul handelt. Sie werden nicht im klassischen Sinne programmieren (Schleifen, Verzweigungen), im Vordergrund stehen vielmehr die Aufbereitung und Auswertung realer Datensätze.
