@@ -86,7 +86,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(
-    "skript/01-daten/6342800.day",
+    "01-daten/6342800.day",
     sep=";",
     comment="#",
     encoding="windows-1252",
