@@ -33,15 +33,15 @@ Datenanalyse (*Data Analysis*) beschreibt die Aufgabe, konkrete, digital vorlieg
 
 ## Anwendungen im Bau- und Umweltingenieurwesen
 
-::: {#fig-anwendungen layout-ncol=2}
+::: {#fig-anwendungen layout-ncol=4}
 
-![Individualverkehr](00-bilder/a_verkehr.jpg){#fig-anwendungen-verkehrsplanung}
+![Straßenverkehr in Vietnam](00-bilder/a_verkehr.jpg){#fig-anwendungen-verkehrsplanung}
 
-![Hochwasserereignis](00-bilder/a_ueberflutung.jpeg){#fig-anwendungen-hochwasser}
+![Überflutete Straße bei Starkregen](00-bilder/a_ueberflutung.jpeg){#fig-anwendungen-hochwasser}
 
-![Versagen von Konstruktionen](00-bilder/a_strommast.jpeg){#fig-anwendungen-strommasten}
+![Versagen einer Konstruktion](00-bilder/a_strommast.jpeg){#fig-anwendungen-strommasten}
 
-![Auswertung von Versuchsreihen](00-bilder/a_beton.svg){#fig-anwendungen-versuche}
+![Auswertung einer Versuchsreihe](00-bilder/a_beton.svg){#fig-anwendungen-versuche}
 
 Anwendungsfelder statistischer Methoden
 :::

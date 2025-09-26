@@ -12,7 +12,7 @@ book:
   subtitle: Statistik und Datenanalyse
   author: "Matthias Baitsch"
   output-file: skript-mathematik-b
-  date: "2025"
+  date: "1. September 2025"
   chapters:
     - index.qmd
     - c/01-statistische-daten.qmd
