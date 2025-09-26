@@ -86,76 +86,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(
-    "01-daten/6342800.day",
+    "skript/01-daten/6342800.day",
     sep=";",
     comment="#",
+    encoding="windows-1252",
     skipinitialspace=True,
-    na_values=["-999", -999],
-    encoding="latin-1",
+    parse_dates=["YYYY-MM-DD"]
 )
-df.columns = df.columns.str.strip()
-df["Datum"] = pd.to_datetime(df["YYYY-MM-DD"], errors="coerce")
-df = df.rename(columns={"Calculated": "Abfluss"})
-df["Abfluss"] = pd.to_numeric(df["Abfluss"], errors="coerce")
-df = df.dropna(subset=["Datum", "Abfluss"])
-df["Monat"] = df["Datum"].dt.month
-monatswerte = (
-    df.groupby("Monat")["Abfluss"]
-    .agg(Mittelwert="mean", Minimum="min", Maximum="max")
-    .reset_index()
-);
+df["Monat"] = df["YYYY-MM-DD"].dt.month
+df_summary = df.groupby("Monat")["Original"].agg(
+    Mittelwert="mean",
+    Minimum="min",
+    Maximum="max"
+)
 
-plt.figure(figsize=(10, 6))
-ax = plt.gca()
-bar_width = 0.9
-bars = ax.bar(
-    monatswerte["Monat"],
-    monatswerte["Mittelwert"],
-    color="0.4",
-    width=bar_width,
-    zorder=2,
-);
-ax.vlines(
-    x=monatswerte["Monat"],
-    ymin=monatswerte["Minimum"],
-    ymax=monatswerte["Maximum"],
-    color="black",
-    linewidth=1.5,
-    zorder=3,
-);
-cap_width = bar_width / 2
-for _, row in monatswerte.iterrows():
-    x = row["Monat"]
-    ax.hlines(
-        y=row["Minimum"],
-        xmin=x - cap_width,
-        xmax=x + cap_width,
-        color="black",
-        linewidth=1.5,
-        zorder=3,
-    );
-    ax.hlines(
-        y=row["Maximum"],
-        xmin=x - cap_width,
-        xmax=x + cap_width,
-        color="black",
-        linewidth=1.5,
-        zorder=3,
-    );
-ax.set_title(
-    """
-    Abfluss der Donau am Pegel Hofkirchen
-    Monatliche Mittel- und Extremwerte
-    """
-);
-ax.set_xlabel("Monat");
-ax.set_ylabel("Abfluss in m³/s");
-ax.set_ylim(0, 3500);
-ax.set_xticks(range(1, 13));
-ax.set_xticklabels(
-    ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", 
-     "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
-);
+x = df_summary.index
+y = df_summary["Mittelwert"]
+yerr = [y - df_summary["Minimum"], df_summary["Maximum"] - y]
+monate = ("Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
+               "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
+
+plt.grid()
+plt.bar(x, y)
+plt.errorbar(x, y, yerr=yerr, fmt='none', ecolor='black', capsize=10)
+plt.title("Abfluss der Donau am Pegel Hofkirchen\n"
+          "Monatliche Mittel- und Extremwerte")
+plt.xlabel("Monat")
+plt.ylabel("Abfluss in m³/s")
+plt.xticks(ticks=x, labels=monate)
 plt.show()
 ```
 
