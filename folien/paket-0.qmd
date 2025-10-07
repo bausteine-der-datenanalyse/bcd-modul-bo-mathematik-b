@@ -80,7 +80,7 @@ a) Messwerte einer Versuchsreihe zu Stahlbetondecken. Offensichtlich streuen die
 - BAST veröffentlicht https://www.bast.de/BASt_2017/DE/Statistik/Bruecken/Zustandsnoten-excel.html über den Zustand von Straßenbrücken
 - Schöner Artikel (leider nicht mehr) auf Welt Online
   http://www.welt.de/politik/interaktiv/bruecken/deutschlands-bruecken-wettlauf-gegen-den-verfall.html
-- Box-Plot (nächste Folie) vermittelt kompakt einen ersten Eindruck über den Zustand
+- Box-Plot (übernächste Folie) vermittelt kompakt einen ersten Eindruck über den Zustand
 - Grundlage für Entscheidungen über Maßnahmen
 
 ## Beispiel: Zustand von Straßenbrücken in Deutschland
