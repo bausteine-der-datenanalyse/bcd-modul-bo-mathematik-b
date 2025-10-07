@@ -1,7 +1,6 @@
 project: 
   type: book
   output-dir: ../_output/folien-r-alle
-  pre-render: ../bausteine/bcd-bausteine-montieren/collect-content.R
 
 book:
   title: "Mathematik B - R"
