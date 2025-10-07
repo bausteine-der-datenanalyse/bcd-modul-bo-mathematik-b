@@ -9,7 +9,8 @@ bootstrap:
 	pip 
 	R -e "install.packages(\"remotes\", repos = \"https://cran.uni-muenster.de\"); remotes::install_deps(upgrade = \"always\")" 
 
-update:
+update-from-github:
+	git pull
 	git submodule update --recursive --remote
 	cp bausteine/bcd-bausteine-r/demo/folien-r/style.scss folien-r
 
