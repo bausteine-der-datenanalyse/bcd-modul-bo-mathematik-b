@@ -4,9 +4,9 @@
 	branch = main
 [submodule "bausteine/bcd-bausteine-montieren"]
 	path = bausteine/bcd-bausteine-montieren
-	url = https://github.com:bausteine-der-datenanalyse/bcd-bausteine-montieren.git
+	url = https://github.com/bausteine-der-datenanalyse/bcd-bausteine-montieren.git
 	branch = main
 [submodule "bausteine/bcd-bausteine-r"]
 	path = bausteine/bcd-bausteine-r
-	url = https://github.com:bausteine-der-datenanalyse/bcd-bausteine-r.git
+	url = https://github.com/bausteine-der-datenanalyse/bcd-bausteine-r.git
 	branch = main
