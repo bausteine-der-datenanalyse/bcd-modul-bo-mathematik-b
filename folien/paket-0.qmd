@@ -3,6 +3,14 @@ title: Mathematik B
 subtitle: Statistik und Datenanalyse
 ---
 
+```{r}
+#| include: false
+library(reticulate)
+py_require(python_version = ">=3.11")
+py_require(c("matplotlib", "pandas"))
+Sys.setlocale("LC_ALL", "de_DE")
+```
+
 ## 
 
 []{.down100}
@@ -188,7 +196,7 @@ df <-
 
 ggplot(data = df) +
     geom_col(
-        mapping = aes(x = Monat, y = Mittelwert), fill = 'hotpink'
+        mapping = aes(x = Monat, y = Mittelwert)
     ) +
     geom_errorbar(
         mapping = aes(x = Monat, ymin = Minimum, ymax = Maximum)

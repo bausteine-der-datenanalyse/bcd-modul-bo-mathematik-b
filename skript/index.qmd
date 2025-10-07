@@ -1,7 +1,7 @@
 ```{r}
 #| include: false
 library(reticulate)
-py_require(python_version = ">=3.12")
+py_require(python_version = ">=3.11")
 py_require(c("matplotlib", "pandas"))
 Sys.setlocale("LC_ALL", "de_DE")
 ```
@@ -113,7 +113,7 @@ plt.title("Abfluss der Donau am Pegel Hofkirchen\n"
           "Monatliche Mittel- und Extremwerte")
 plt.xlabel("Monat")
 plt.ylabel("Abfluss in m³/s")
-plt.xticks(ticks=x, labels=monate)
+plt.xticks(ticks=x, labels=monate);
 plt.show()
 ```
 
