@@ -163,6 +163,6 @@ Wir werden im Modul Mathematik B die Programmiersprache R einsetzen, da
 
 - die Aufbereitung von Daten einem einheitlichen Schema folgt und
 
-- es vergleichsweise einfach ist, qualitativ hochwertige Grafiken zu erstellen.
+- es eine sehr strukturiert aufgebaute Bibliothek zur Visualisierung von Daten gibt.
 
 Wichtig ist dabei, dass es sich bei Mathematik B ausdrücklich nicht um ein Informatikmodul handelt. Sie werden nicht im klassischen Sinne programmieren (Schleifen, Verzweigungen), im Vordergrund stehen vielmehr die Aufbereitung und Auswertung realer Datensätze.
