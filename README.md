@@ -13,10 +13,8 @@ Dokumente auf GitHub-Pages:
 Kommandozeile:
 
 ```bash
-git clone --recurse-submodules git@github.com:bausteine-der-datenanalyse/bcd-modul-bo-mathematik-b.git
+git clone --recurse-submodules https://github.com/bausteine-der-datenanalyse/bcd-modul-bo-mathematik-b.git
 ```
-
-Die Submodule sind via `git@github.com` eingebunden, auf Github muss daher ein SSH-Schlüssel hinterlegt sein. Falls ein GUI-Client verwendet wird, muss man einmal von der Kommandozeile aus auf Github zugreifen, damit der Host als vertrauenswürdig gespeichert wird.
 
 ## Pakete installieren
 
