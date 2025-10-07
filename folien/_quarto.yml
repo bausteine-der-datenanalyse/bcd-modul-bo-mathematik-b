@@ -1,5 +1,13 @@
 project:
+  type: default
   output-dir: ../_output/folien
 
-format:
-    revealjs: default
+lang: de
+
+format: 
+  revealjs:
+    overview: true
+    slide-number: "c/t"
+    code-line-numbers: false
+    theme: 
+    - style.scss

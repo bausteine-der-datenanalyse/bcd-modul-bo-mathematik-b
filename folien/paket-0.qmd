@@ -1,0 +1,248 @@
+---
+title: Mathematik B
+subtitle: Statistik und Datenanalyse
+---
+
+## 
+
+[]{.down100}
+[]{.down100}
+[]{.down100}
+
+Herzlich willkommen, Welcome, Hoş geldiniz, أهلاً وسهلاً, Bi xêr hatin, Добро пожаловать, Witamy serdecznie, Benvenuti, Καλώς ήρθατε, Bienvenidos, Bienvenue, خوش آمدید, ښه راغلاست, Dobro došli, Bine ați venit, Chào mừng, 欢迎, स्वागत है, خوش آمدید, እንቋዕ ብደሓን መፁ
+
+## Agenda heute
+
+- Über das Modul Mathematik B
+    - Statistik und Datenanalyse
+    - Software
+    - Aufbau der Vorlesung und Prüfungsleistung
+
+- Installation der Software und erste Schritte
+
+# Über das Modul Mathematik B
+
+## Statistik {.smaller}
+
+![](00-bilder/stochastik.svg){}
+
+- Deskriptive Statistik: Darstellen und Aufbereiten von empirischen Datensätzen als Entscheidungsgrundlage (zum Beispiel in der Politik)
+
+- Explorative Statistik: Aus Daten Annahmen und Hypothesen zu generieren, mit denen die Eigenschaften der Daten erklärt werden können
+
+- Schließende Statistik: Aus Daten Aussagen über die Grundgesamtheit abzuleiten, zentrales Hilfsmittel dabei ist die Wahrscheinlichkeitstheorie
+
+## Datenalyse
+
+![](00-bilder/data-science.png){}
+
+In der Datenanalyse wird mit statistischen Methoden gearbeitet, mit welchen aus vorliegenden numerischen Einzeldaten zusammenfassende Informationen (Kenngrößen) gewonnen und tabellarisch oder grafisch aufbereitet und dokumentiert werden. (Wikipedia)
+
+- Daten einlesen, aufbereiten, analysieren, darstellen und kommunizieren
+
+- Querschnittsdisziplin von Statistik und Informatik
+
+- Vereinfacht gesagt: Statistik auf dem Computer
+
+## Im Bau- und Umweltingenieurwesen {.smaller}
+
+::: {layout-ncol=4}
+
+![](00-bilder/a_verkehr.jpg){}
+
+![](00-bilder/a_ueberflutung.jpeg){}
+
+![](00-bilder/a_strommast.jpeg){}
+
+![](00-bilder/a_beton.svg){}
+
+:::
+
+a) Ermittlung und Aufbereitung von Daten als Grundlage für die Planung der Verkehrsinfrastruktur.
+
+a) Prognose über Häufigkeit und Ausmaß zukünftiger Starkregenereignisse auf Basis von Aufzeichnungen. Entwicklung stochastischer Modelle für fließende Gewässer.
+
+a) Entwicklung und Anwendung probabilistischer Sicherheitskonzepte, die streuenden Materialparametern und unsicheren Einwirkungen Rechnung tragen.
+
+a) Messwerte einer Versuchsreihe zu Stahlbetondecken. Offensichtlich streuen die Messwerte stark.
+
+## Beispiel: Zustand von Straßenbrücken in Deutschland
+
+- Straßenbrücken in Deutschland teils in sehr schlechtem Zustand
+- BAST veröffentlicht https://www.bast.de/BASt_2017/DE/Statistik/Bruecken/Zustandsnoten-excel.html über den Zustand von Straßenbrücken
+- Schöner Artikel (leider nicht mehr) auf Welt Online
+  http://www.welt.de/politik/interaktiv/bruecken/deutschlands-bruecken-wettlauf-gegen-den-verfall.html
+- Box-Plot (nächste Folie) vermittelt kompakt einen ersten Eindruck über den Zustand
+- Grundlage für Entscheidungen über Maßnahmen
+
+## Beispiel: Zustand von Straßenbrücken in Deutschland
+
+![](00-bilder/Screenshot 2025-10-01 at 06.56.23.png){}
+
+## Boxplot Zustand Straßenbrücken
+
+![](00-bilder/bruecken.svg){}
+
+Wie kann man solche Grafiken erstellen?
+
+## Tabellenkalkulation
+
+  ![](00-bilder/excel.png){}
+
+  - Geeignet für einfache Fragestellungen 
+  - Man muss nichts grundsätzlich Neues lernen
+  - Häufig unhandlich und umständlich in der Anwendung
+
+## Exkurs Excel 1/2
+
+![](00-bilder/schaueble.jpg){}
+
+Wolfgang Schäuble zum "Wall Street Journal" auf die Frage, ob der Europäische Fiskalpakt, Konjunkturpakete gegen die Rezession verbieten will: "Wir haben sehr sorgfältig die Untersuchung von Rogoff und Reinhart gelesen. Sie haben empirisch belegt, dass ab einem bestimmten Grad eine zu hohe Staatsverschuldung das Wachstum beeinträchtigt"
+
+## Exkurs Excel 2/2
+
+![](00-bilder/Screenshot 2021-10-05 at 11.51.01.png){}
+
+- Google-Suche: The Excel error that changed history 
+- https://de.wikipedia.org/wiki/Kenneth\_S.\_Rogoff  
+
+## SPSS - Statistical Package for the Social Sciences
+
+![](00-bilder/SPSS-Statistics-Desktop_6.png){}
+
+- Umfangreiches Statistikpaket
+- Weit verbreitet in Wirtschafts- und Sozialwissenschaften, Medizin
+- Komfortabel in der Anwendung aber eher unflexibel
+- Teuer
+
+##
+
+::: {.panel-tabset}
+
+## Programmiersprache Python
+
+```{python}
+#| message: false
+#| echo: true
+#| code-fold: true
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(
+    "01-daten/6342800.day",
+    sep=";",
+    comment="#",
+    encoding="windows-1252",
+    skipinitialspace=True,
+    parse_dates=["YYYY-MM-DD"]
+)
+df["Monat"] = df["YYYY-MM-DD"].dt.month
+df_summary = df.groupby("Monat")["Original"].agg(
+    Mittelwert="mean",
+    Minimum="min",
+    Maximum="max"
+)
+
+x = df_summary.index
+y = df_summary["Mittelwert"]
+yerr = [y - df_summary["Minimum"], df_summary["Maximum"] - y]
+monate = ("Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
+               "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
+
+plt.grid()
+plt.bar(x, y)
+plt.errorbar(x, y, yerr=yerr, fmt='none', ecolor='black', capsize=10)
+plt.title("Abfluss der Donau am Pegel Hofkirchen\n"
+          "Monatliche Mittel- und Extremwerte")
+plt.xlabel("Monat")
+plt.ylabel("Abfluss in m³/s")
+plt.xticks(ticks=x, labels=monate);
+plt.show()
+```
+
+##  Programmiersprache R
+
+```{r}
+#| warning: false
+#| echo: true
+#| code-fold: true
+library(tidyverse)
+
+df <- 
+    read_delim(
+        "01-daten/6342800.day", delim = ";", skip = 41,
+        col_names = c("Datum", "", "Abfluss", "", "", ""),
+        col_types = c("Dcnccc")
+    ) |>
+    mutate(
+        Monat = month(Datum, label = TRUE)
+    ) |>
+    group_by(
+        Monat
+    ) |>
+    summarise(
+        Mittelwert = mean(Abfluss),
+        Minimum = min(Abfluss),
+        Maximum = max(Abfluss)
+    )    
+
+ggplot(data = df) +
+    geom_col(
+        mapping = aes(x = Monat, y = Mittelwert), fill = 'hotpink'
+    ) +
+    geom_errorbar(
+        mapping = aes(x = Monat, ymin = Minimum, ymax = Maximum)
+    ) +
+    labs(
+        x = "Monat", y = "Abfluss in m³/s",
+        title = "Abfluss der Donau am Pegel Hofkirchen",
+        subtitle = "Monatliche Mittel- und Extremwerte"
+    )
+```
+
+:::
+
+## Mathematik B: Quarto, R und RStudio {.smaller}
+
+![](00-bilder/RStudio.png){}
+
+- Quarto: System zur Erstellung von Dokumenten mit Text und Programmcode
+- R: Aufbereitung von Daten und Plotten besser als in Python
+- RStudio: Grafische Umgebung für Quarto und R
+- Sehr mächtig, aber erfordert Einarbeitung
+- Frei verfügbar
+
+$\rightarrow$ So wenig Informatik wie möglich!
+
+## Aufbau der Veranstaltung
+
+![](00-bilder/Screenshot 2021-10-05 at 11.01.19.png){}
+
+### Inverted Clasroom
+
+- Erklärvideos zu den Inhalten zu Hause anschauen
+- Neue Videos werden Mittwoch Abend freigeschaltet
+- Fragen diskutieren, Aufgaben lösen und 'echte' Daten analysieren in Präsenz
+
+## Prüfungsleistung
+
+- Hausarbeit mit Kolloquium
+- Themen aus den Bereichen Konstruktiv, Wasser und Verkehr 
+    - Ausgabe Ende des Jahres
+- Eigene Themen sind möglich
+- Betreuung durch mich und die Fachkollegen
+- Schriftliche Ausarbeitung oder Präsentation
+- Kolloquium mit Fragen zu theoretischen Zusammenhängen
+
+# Installation der Software und erste Schritte
+
+## Aufgaben
+
+- R und RStudio installieren (Anleitung auf Moodle)
+
+- Folien herunterladen und in RStudio öffnen
+    - Zip-Datei herunterladen
+    - In Ordner 'studium/mathematik-b/folien-r/' entpacken
+    - Datei erste-schritte.Rproj doppelklicken
+    - Datei `erste-schritte.qmd` in RStudio anschauen
+    - Gemeinsam durchgehen
