@@ -2,6 +2,9 @@ _output
 .quarto
 site_libs
 
+*.html
+*_files
+
 aufgaben/c
 folien-r/c
 folien-r-alle/c
