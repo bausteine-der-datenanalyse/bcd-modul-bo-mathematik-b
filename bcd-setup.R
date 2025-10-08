@@ -1,6 +1,7 @@
 library(readxl)
 library(cowplot)
 library(ggplot2)
+library(patchwork)
 library(tidyverse)
 library(lubridate)
 library(kableExtra)
