@@ -38,7 +38,7 @@ jobs:
         run: ../bausteine/bcd-bausteine-montieren/collect-content.R
         working-directory: skript
       - name: Quarto render Skript
-        run: quarto render skript
+        run: quarto render skript -t html
       - name: Quarto render assignments
         run: quarto render aufgaben
       - name: Quarto render slides
