@@ -2,6 +2,9 @@ project:
   type: book
   output-dir: ../_output/folien-r-alle
 
+execute:
+  warning: false
+
 book:
   title: "Mathematik B - R"
   author: "Matthias Baitsch"
