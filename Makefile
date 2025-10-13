@@ -32,4 +32,4 @@ commit:
 	git commit -m "WIP"
 	git push
 
-update-commit: update commit
+update-commit: update-from-github commit
