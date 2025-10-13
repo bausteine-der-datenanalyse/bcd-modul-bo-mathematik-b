@@ -15,6 +15,10 @@ jobs-on-parts:
 - copy:
   from: ${part-folder}/folien.qmd
   to: ${target-folder}/${idx}-${name}.qmd
+  transform:
+    type: replace
+    pattern: "^#"
+    replacement: "##"
 - copy:
   from: ${part-folder}/bilder
   to: ${target-folder}/bilder
