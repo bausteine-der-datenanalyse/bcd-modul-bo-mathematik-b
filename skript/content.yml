@@ -47,4 +47,5 @@ parts:
 - folder: bausteine/bcd-bausteine-statistik/m-statistische-daten/skript
 - folder: bausteine/bcd-bausteine-statistik/m-einzelne-merkmale/skript
 - folder: bausteine/bcd-bausteine-statistik/m-kenngroessen/skript
+- folder: bausteine/bcd-bausteine-statistik/m-dichtekurven-und-normalverteilung/skript
 
