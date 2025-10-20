@@ -18,6 +18,7 @@ book:
     - c/02-einzelne-merkmale.qmd
     - c/03-kenngroessen.qmd
     - c/04-dichtekurven-und-normalverteilung.qmd
+    - c/05-zwei-merkmale.qmd
     - literatur.qmd
 
 filters: 
