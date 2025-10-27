@@ -22,19 +22,23 @@ Imports:
     modelr,
     plotly,
     osmdata,
+    wbstats,
     stringr,
     cowplot,
     tsibble,
     wbstats,
     RcppRoll,
     ggridges,
+    latex2exp,
     patchwork,
     rprojroot,
     tidyverse,
     this.path,
     kableExtra,
     reticulate,
-    rnaturalearth
+    rnaturalearth,
+    rnaturalearthdata
+
 Encoding: UTF-8
 License: CC NC ND 3.0
 
