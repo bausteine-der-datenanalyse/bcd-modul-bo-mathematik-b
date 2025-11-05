@@ -28,6 +28,7 @@ jobs-on-parts:
   from: ${part-folder}/daten
   to: ${target-folder}/daten
   optional: yes
+  overwrite: yes
 - copy:
   from: ${part-folder}/skripte
   to: ${target-folder}/skripte
