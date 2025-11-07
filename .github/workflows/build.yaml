@@ -26,8 +26,6 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
-      - name: ngerman
-        run: sudo tlmgr install texlive-lang-german
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
@@ -42,7 +40,7 @@ jobs:
       - name: Quarto render Skript
         run: quarto render skript -t html
       - name: Quarto render assignments
-        run: quarto render aufgaben
+        run: quarto render aufgaben -t html
       - name: Quarto render slides
         run: quarto render folien
       - name: Quarto render slides R
