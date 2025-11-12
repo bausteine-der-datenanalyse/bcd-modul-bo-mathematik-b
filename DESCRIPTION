@@ -27,6 +27,7 @@ Imports:
     cowplot,
     tsibble,
     wbstats,
+    webshot2,
     RcppRoll,
     ggridges,
     latex2exp,
