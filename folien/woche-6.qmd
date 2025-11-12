@@ -6,7 +6,7 @@ subtitle: Dichtekurven und Normalverteilung
 ## Agenda
 
 -  8:15h - 8:30h Rückblick und Fragen
--  8:30h - 8:45h Aufgabe 1 bearbeiten und besprechen
--  8:45h - 9:45h Aufgabe 2 bearbeiten
+-  8:30h - 9:00h Aufgabe 1 bearbeiten und besprechen
+-  9:00h - 9:45h Aufgabe 2 bearbeiten
 -  9:45h - 10:00h Pause
 -  10:00h - 11:00h Aufgabe 2 weiter bearbeiten

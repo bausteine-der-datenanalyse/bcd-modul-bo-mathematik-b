@@ -1,0 +1,13 @@
+---
+title: Paket 3
+subtitle: Kenngrößen und Beschreibung von Verteilungen in R
+---
+
+## Agenda
+
+- 8:15h - 8:30h Rückblick und Fragen
+- 8:30h - 9:45h Paket 3: Aufgabe 9
+- 9:45h - 10:00h Pause
+- 10:00h - 11:30h weiter
+
+Fertig mit Aufgabe 9? Alle Aufgaben 1 - 8 fertigstellen und pikobello aufschreiben
