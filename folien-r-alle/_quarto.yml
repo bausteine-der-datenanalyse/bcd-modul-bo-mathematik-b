@@ -33,4 +33,6 @@ format:
   html:
     number-depth: 2
     toc-depth: 2
+  pdf: default
+
 
