@@ -2,7 +2,7 @@ name: Render and publish
 
 on:
   push:
-    branches: main
+    branches: [main]
 
 permissions:
   contents: read
@@ -26,6 +26,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
+          version: 1.9.10          
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
@@ -40,7 +41,7 @@ jobs:
       - name: Quarto render Skript
         run: quarto render skript -t html
       - name: Quarto render assignments
-        run: quarto render aufgaben -t html
+        run: quarto render aufgaben
       - name: Quarto render slides
         run: quarto render folien
       - name: Quarto render slides R
