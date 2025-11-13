@@ -45,7 +45,7 @@ jobs:
       - name: Quarto render slides
         run: quarto render folien
       - name: Quarto render slides R
-        run: quarto render folien-r
+        run: quarto render folien-r -t html
       - name: Prepare all slides R
         run: ../bausteine/bcd-bausteine-montieren/collect-content.R
         working-directory: folien-r-alle
