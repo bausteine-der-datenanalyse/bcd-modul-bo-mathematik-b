@@ -30,6 +30,7 @@ format:
   html: 
     css: bcd-style.css
     license: CC BY-SA
+    html-table-processing: none
     default-image-extension: svg
   pdf:
     include-in-header:
