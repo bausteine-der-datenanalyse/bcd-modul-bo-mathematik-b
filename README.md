@@ -6,7 +6,7 @@ Dokumente auf GitHub-Pages:
 
 - [Skript Grundlagen der Statistik (pdf)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/skript/skript-mathematik-b.pdf)
 
-- [Folien zu R](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/folien-r-alle/index.html)
+- [Folien zu R (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/folien-r-alle/index.html)
 
 ## Von Github auschecken
 
