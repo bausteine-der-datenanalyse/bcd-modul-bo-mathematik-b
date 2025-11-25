@@ -5,13 +5,13 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
   pages: write
+  contents: read
   id-token: write
 
 jobs:
 
-  render:
+  setup:
     runs-on: ubuntu-latest
     permissions:
       contents: write      
@@ -35,6 +35,23 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: rcmdcheck
+
+  render-notes-and-assignments:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare notes and assignments
+        run: ../bausteine/bcd-bausteine-montieren/collect-content.R
+        working-directory: skript
+      - name: Quarto render notes
+        run: quarto render skript -t html
+      - name: Quarto render assignments
+        run: quarto render aufgaben
+
+  render:
+    needs: [setup, render-notes-and-assignments]
+    runs-on: ubuntu-latest
+    steps:
       - name: Prepare Skript
         run: ../bausteine/bcd-bausteine-montieren/collect-content.R
         working-directory: skript
@@ -44,6 +61,9 @@ jobs:
         run: quarto render aufgaben
       - name: Quarto render slides
         run: quarto render folien
+      - name: Prepare slides R
+        run: ../bausteine/bcd-bausteine-montieren/collect-content.R
+        working-directory: folien-r
       - name: Quarto render slides R
         run: quarto render folien-r
       - name: Prepare all slides R
