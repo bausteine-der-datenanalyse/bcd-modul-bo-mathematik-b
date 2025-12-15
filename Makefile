@@ -12,13 +12,15 @@ bootstrap:
 update-from-github:
 	git pull
 	git submodule update --recursive --remote
-	cp bausteine/bcd-bausteine-r/demo/folien-r/style.scss folien-r
+	cp bausteine/bcd-bausteine-r/bcd-style-slides.scss folien-r
 	cp bausteine/bcd-bausteine-statistik/bcd-setup.R .
 	cp bausteine/bcd-bausteine-statistik/bcd-macros.tex .
 
 prepare-render:
 	cd folien-r-alle && ../bausteine/bcd-bausteine-montieren/collect-content.R
 	cd skript && ../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd folien-r && ../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd aufgaben && ../bausteine/bcd-bausteine-montieren/collect-content.R
 
 render: prepare-render
 	quarto render folien

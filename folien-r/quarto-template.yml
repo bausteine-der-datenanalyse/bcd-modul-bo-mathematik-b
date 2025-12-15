@@ -7,4 +7,4 @@ format:
     slide-number: "c/t"
     code-line-numbers: false
     theme: 
-    - style.scss
+    - bcd-style-slides.scss
