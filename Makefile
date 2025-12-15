@@ -1,9 +1,8 @@
 clean:
 	rm -rf _output
-	rm -rf aufgaben/c aufgaben/.quarto
-	rm -rf folien-r/c folien-r/.quarto
-	rm -rf folien-r-alle/c folien-r-alle/.quarto
-	rm -rf folien/.quarto
+	for f in skript aufgaben folien-r folien-r-alle weitere-unterlagen; do \
+		rm -rf $$f/c $$f/.quarto; \
+	done
 
 bootstrap:
 	pip 

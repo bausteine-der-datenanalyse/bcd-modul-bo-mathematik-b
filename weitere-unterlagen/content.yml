@@ -34,9 +34,6 @@ jobs:
   from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.qmd
   to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.qmd
 - copy:
-  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/style.scss
-  to: ${target-folder}/praesentationen-mit-quarto/style.scss
-- copy:
   from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.Rproj
   to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.Rproj
 - copy:
