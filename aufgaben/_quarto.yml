@@ -9,5 +9,5 @@ number-sections: true
 format: 
   html: 
     license: CC BY-SA
-    css: ../bausteine/bcd-bausteine-statistik/bcd-style.css
+    css: ../bausteine/bcd-bausteine-statistik/bcd-style-notes.css
   pdf: default

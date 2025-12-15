@@ -129,9 +129,6 @@ jobs-on-parts:
   to: ${target-folder}/${idx}-${name}-aufgaben/skripte
   optional: yes
 - copy: 
-  from: ${project-folder}/folien-r/style.scss
-  to: ${target-folder}/${idx}-${name}-aufgaben/style.scss
-- copy: 
   from: ${project-folder}/folien-r/quarto-template.yml
   to: ${target-folder}/${idx}-${name}-aufgaben/_quarto.yml
 - zip:
