@@ -8,8 +8,8 @@ deploy-folder: _output/folien-r/c
 # Jobs
 jobs:
 - copy:
-  from: style.scss
-  to: ${target-folder}/style.scss
+  from: bcd-style-slides.scss
+  to: ${target-folder}/bcd-style-slides.scss
 - copy:
   from: quarto-template.yml
   to: ${target-folder}/_metadata.yml
@@ -61,8 +61,8 @@ jobs-on-parts:
   from: quarto-template.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml
 - copy:
-  from: style.scss
-  to: ${target-folder}/${idx}-${name}/style.scss
+  from: bcd-style-slides.scss
+  to: ${target-folder}/${idx}-${name}/bcd-style-slides.scss
 - zip:
   zipfile: ${idx}-${name}.zip
   folder: ${idx}-${name}
