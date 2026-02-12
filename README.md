@@ -22,6 +22,7 @@ R-Shell im Projektverzeichnis starten und folgendes eingeben:
 
 ```r
 options(install.packages.compile.from.source = "never")
+options(pkgType = "binary")
 install.packages("remotes")
 remotes::install_deps(upgrade = "always")
 ```
