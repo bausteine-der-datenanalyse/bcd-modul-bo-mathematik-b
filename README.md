@@ -21,6 +21,7 @@ git clone --recurse-submodules https://github.com/bausteine-der-datenanalyse/bcd
 R-Shell im Projektverzeichnis starten und folgendes eingeben:
 
 ```r
+options(install.packages.compile.from.source = "never")
 install.packages("remotes")
 remotes::install_deps(upgrade = "always")
 ```
