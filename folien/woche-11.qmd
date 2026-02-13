@@ -1,12 +1,11 @@
 ---
-title: Pakete 7 und 8
-subtitle: Einlesen und Aufbereiten von Daten / Räumliche Daten
+title: Paket 8
+subtitle: Räumliche Daten
 ---
 
 ## Agenda
 
-- 8:15h - 8:20h Aufgabenblatt 'Räumliche Daten'
+- 8:15h - 8:30h Rückblick und Fragen
 - 8:30h - 9:45h Selbständiges Arbeiten
-- 9:30h - 9:45h Pause
-- 9:45h - 11:15h Selbständiges Arbeiten
-- 11:15h - 11:30h Studienarbeit
+- 9:45h - 10:00h Pause
+- 10:00h - 11:30h Selbständiges Arbeiten
