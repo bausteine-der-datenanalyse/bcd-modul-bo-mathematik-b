@@ -11,7 +11,7 @@ book:
   subtitle: Statistik und Datenanalyse
   author: "Matthias Baitsch"
   output-file: skript-mathematik-b
-  date: "1. September 2025"
+  date: today
   chapters:
     - index.qmd
     - c/01-statistische-daten.qmd
@@ -24,7 +24,7 @@ book:
 filters: 
   - latex-environment
 commands: [neuerbegriff]
-environments: [definition, beispiel, center, multicols]
+environments: [definition]
 
 format: 
   html: 
@@ -34,11 +34,7 @@ format:
     default-image-extension: svg
   pdf:
     include-in-header:
-      - c/bcd-macros.tex
-      - text: |
-          \usepackage{makeidx}
-          \usepackage{multicol}
-          \makeindex
+      - c/_bcd-setup.tex
     include-after-body:
       text: |
         \printindex

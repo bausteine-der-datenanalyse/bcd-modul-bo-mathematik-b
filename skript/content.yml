@@ -15,8 +15,12 @@ jobs:
   from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
   to: ${target-folder}/bcd-bausteine-statistik.bib
 - copy:
-  from: ${bcd-bausteine-statistik}/bcd-macros.tex
-  to: ${target-folder}/bcd-macros.tex
+  from: ${bcd-bausteine-statistik}/_bcd-setup.tex
+  to: ${target-folder}/_bcd-setup.tex
+- copy:
+  from: ${bcd-bausteine-statistik}/_bcd-setup.qmd
+  to: _bcd-setup.qmd
+  overwrite: true
 
 # Jobs running on all parts
 jobs-on-parts:
