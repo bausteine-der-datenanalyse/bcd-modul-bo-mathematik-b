@@ -3,8 +3,7 @@ project:
   output-dir: ../_output/skript
 
 lang: de
-number-depth: 3
-number-sections: true
+number-depth: 2
 
 book:
   title: "Mathematik B"
@@ -24,21 +23,24 @@ book:
 filters: 
   - latex-environment
 commands: [neuerbegriff]
-environments: [definition]
+environments: [beispiel]
 
 format: 
   html: 
-    css: bcd-style.css
+    toc: true
+    toc-depth: 4
     license: CC BY-SA
-    html-table-processing: none
+    css: bcd-style-notes.css
     default-image-extension: svg
   pdf:
     include-in-header:
-      - c/_bcd-setup.tex
+      - _bcd-setup.tex
+      - text: |
+          \AddToHook{cmd/section/before}{\clearpage}
     include-after-body:
       text: |
         \printindex
     default-image-extension: pdf
     
-bibliography: c/bcd-bausteine-statistik.bib
+bibliography: bcd-bausteine-statistik.bib
 

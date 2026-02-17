@@ -13,13 +13,21 @@ definitions:
 jobs:
 - copy:
   from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
-  to: ${target-folder}/bcd-bausteine-statistik.bib
+  to: bcd-bausteine-statistik.bib
 - copy:
   from: ${bcd-bausteine-statistik}/_bcd-setup.tex
-  to: ${target-folder}/_bcd-setup.tex
+  to: _bcd-setup.tex
 - copy:
   from: ${bcd-bausteine-statistik}/_bcd-setup.qmd
   to: _bcd-setup.qmd
+  overwrite: true
+- copy:
+  from: ${bcd-bausteine-statistik}/_bcd-setup.R
+  to: _bcd-setup.R
+  overwrite: true
+- copy:
+  from: ${bcd-bausteine-statistik}/bcd-style-notes.css
+  to: bcd-style-notes.css
   overwrite: true
 
 # Jobs running on all parts

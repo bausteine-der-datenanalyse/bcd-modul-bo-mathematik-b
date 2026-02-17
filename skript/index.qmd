@@ -33,7 +33,7 @@ Datenanalyse (*Data Analysis*) beschreibt die Aufgabe, konkrete, digital vorlieg
 
 ## Anwendungen im Bau- und Umweltingenieurwesen
 
-::: {#fig-anwendungen layout-ncol=4}
+::: {#fig-anwendungen layout-ncol=2}
 
 ![Straßenverkehr in Vietnam](00-bilder/a_verkehr.jpg){#fig-anwendungen-verkehrsplanung}
 
@@ -63,21 +63,26 @@ Im Rahmen des Moduls "Mathematik B" werden Sie grundlegende Methoden der Statist
 Zur Bearbeitung von Aufgaben aus dem Bereich der Stochastik und Statistik eignen sich prinzipiell eine Vielzahl verschiedener Programme.
 
 Tabellenkalkulation:
+
 : Bis zu einem gewissen Grad lässt sich Statistik auch mit gängigen Tabellenkalkulationsprogrammen wie Excel oder Numbers betreiben (siehe zum Beispiel @matthaus_statistik_2016). Allerdings sind viele konkrete Aufgaben aus der Statistik mit Tabellenkalkulationsprogrammen nur sehr umständlich und zeitraubend zu lösen, insbesondere wenn es sich um umfangreiche Datensätze handelt.
 
 SPSS:
+
 : Das Programm SPSS (Statistical Package for the Social Sciences) ist insbesondere in den Sozialwissenschaften und der Medizin verbreitet. Es erlaubt die Analyse von Daten in einer komfortablen grafischen Oberfläche. Allerdings ist es in den Ingenieurwissenschaften nicht weit verbreitet, in der Anwendung eher unflexibel und, nicht zuletzt, sehr teuer.
 
 Programmiersprache Python:
+
 : Python ist eine allgemein einsetzbare Programmiersprache, die sich in den letzten Jahren auch im Bereich der Datenanalyse und Statistik etabliert hat. Mit Bibliotheken wie NumPy, pandas, matplotlib und scikit-learn lassen sich statistische Auswertungen, Datenvisualisierungen und maschinelles Lernen umsetzen. Python ist Open Source, plattformunabhängig und wird in vielen wissenschaftlichen und technischen Disziplinen eingesetzt.
 
 Programmiersprache R:
+
 : In der Datenanalyse hat sich die Programmiersprache R, die häufig zusammen mit der Entwicklungsumgebung RStudio eingesetzt wird, fest etabliert. R ist speziell auf die Anforderungen der Statistik zugeschnitten und mit dem tidyverse existiert eine umfassende Sammlung von Bibliotheken. RStudio ist eine komfortable grafische Oberfläche, in der statistische Auswertungen in R durchgeführt werden können. Sowohl R als auch RStudio sind plattformunabhängig und Open Source.
 
 Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gründen nicht infrage. Demgegenüber sind sowohl Python als auch R grundsätzlich geeignet, wobei beide Programmiersprachen ihre spezifischen Vor- und Nachteile haben. Hier ein kleiner Vergleich, der zeigt, wie eine Aufgabe in beiden Umgebungen umgesetzt werden kann.
 
-::: {.panel-tabset}
+\clearpage
 
+::: {.panel-tabset}
 ## Programmiersprache Python
 
 ```{python}
@@ -117,6 +122,7 @@ plt.xticks(ticks=x, labels=monate);
 plt.show()
 ```
 
+\clearpage
 ## Programmiersprache R
 
 ```{r}
