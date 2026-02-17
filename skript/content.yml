@@ -14,9 +14,11 @@ jobs:
 - copy:
   from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
   to: bcd-bausteine-statistik.bib
+  overwrite: true
 - copy:
   from: ${bcd-bausteine-statistik}/_bcd-setup.tex
   to: _bcd-setup.tex
+  overwrite: true
 - copy:
   from: ${bcd-bausteine-statistik}/_bcd-setup.qmd
   to: _bcd-setup.qmd

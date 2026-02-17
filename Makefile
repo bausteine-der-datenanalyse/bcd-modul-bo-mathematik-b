@@ -17,6 +17,7 @@ prepare-render:
 	cd skript && ../bausteine/bcd-bausteine-montieren/collect-content.R
 	cd folien-r && ../bausteine/bcd-bausteine-montieren/collect-content.R
 	cd aufgaben && ../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd weitere-unterlagen && ../bausteine/bcd-bausteine-montieren/collect-content.R
 
 render: prepare-render
 	quarto render folien
