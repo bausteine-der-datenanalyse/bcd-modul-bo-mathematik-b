@@ -1,7 +1,7 @@
 clean:
 	rm -rf _output
 	for f in skript aufgaben folien-r folien-r-alle weitere-unterlagen; do \
-		rm -rf $$f/c $$f/.quarto; \
+		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/*_files $$f/index.html; \
 	done
 
 bootstrap:
