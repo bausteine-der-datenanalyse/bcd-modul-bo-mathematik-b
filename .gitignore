@@ -9,4 +9,5 @@ site_libs
 */c
 *.bib
 _bcd-setup.*
+bcd-style-notes.css
 
