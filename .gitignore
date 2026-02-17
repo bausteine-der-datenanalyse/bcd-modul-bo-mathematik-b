@@ -1,15 +1,12 @@
 _output
 .quarto
+.Rproj.user
 site_libs
 
 *.html
 *_files
 
-aufgaben/c
-folien-r/c
-folien-r-alle/c
-weitere-unterlagen/c
-skript/c
+*/c
+*.bib
+_bcd-setup.*
 
-.Rproj.user
-skript/_bcd-setup.qmd
