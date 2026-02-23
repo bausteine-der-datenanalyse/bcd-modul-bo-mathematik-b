@@ -249,7 +249,7 @@ $\rightarrow$ So wenig Informatik wie möglich!
 - R und RStudio installieren (Anleitung auf Moodle)
 
 - Folien herunterladen und in RStudio öffnen
-    - Zip-Datei herunterladen
+    - Zip-Datei [01-erste-schritte.zip](../folien-r/c/01-erste-schritte.zip) herunterladen
     - In Ordner 'studium/mathematik-b/folien-r/' entpacken
     - Datei erste-schritte.Rproj doppelklicken
     - Datei `erste-schritte.qmd` in RStudio anschauen

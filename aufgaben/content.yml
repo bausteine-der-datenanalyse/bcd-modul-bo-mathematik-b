@@ -147,7 +147,7 @@ part-name-pattern: "w\\-(.*)/"
 
 # Parts, folders relative to project root
 parts:
-- folder: bausteine/bcd-bausteine-r/w-erste-schritte/aufgaben
+- folder: skip
 - folder: bausteine/bcd-bausteine-r/w-einzelne-merkmale/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-kenngroessen/aufgaben
 - folder: bausteine/bcd-bausteine-r/w-dichtekurven-und-normalverteilung/aufgaben
