@@ -22,8 +22,10 @@ book:
 
 filters: 
   - latex-environment
-commands: [neuerbegriff]
-environments: [beispiel]
+commands:
+  - neuerbegriff
+environments:
+  - beispiel
 
 format: 
   html: 
@@ -32,6 +34,8 @@ format:
     license: CC BY-SA
     css: bcd-style-notes.css
     default-image-extension: svg
+    format-links:
+      - pdf
   pdf:
     include-in-header:
       - _bcd-setup.tex

@@ -21,12 +21,15 @@ In der Mathematik ist Statistik ein Teilgebiet der Stochastik, eine Disziplin, d
 In der Statistik werden im Rahmen empirischer Untersuchungen Daten erhoben, dargestellt und analysiert. Es werden drei Teilbereiche unterschieden.
 
 Deskriptive Statistik:
+
 : Darstellen und Aufbereiten von realen Datensätzen, die empirisch, das heißt auf Grundlage von Umfragen, Versuchen oder Beobachtungen, gewonnen wurden. Ein typisches Anwendungsbeispiel ist die Aufbereitung und Bereitstellung von Daten über gesellschaftliche Entwicklungen durch das Statistische Bundesamt.
 
 Explorative Statistik:
+
 : Ziel der explorativen Statistik ist es, aus vorliegenden Daten Annahmen und Hypothesen zu generieren, mit denen die Eigenschaften der Daten erklärt werden können. Dieser Bereich wird in der Vorlesung nicht vertieft behandelt.
 
 Schließende Statistik:
+
 : Hier geht es darum, aus vorliegenden Daten Aussagen über die Grundgesamtheit abzuleiten. Zentrales Hilfsmittel dabei ist die Wahrscheinlichkeitstheorie. Eine Aufgabe der schließenden Statistik ist es zum Beispiel zu beurteilen, inwieweit eine Umfrage unter 100 Studierenden der BO repräsentativ für alle Studierenden ist.
 
 Datenanalyse (*Data Analysis*) beschreibt die Aufgabe, konkrete, digital vorliegende Datensätze mithilfe von Software so aufzubereiten und darzustellen, dass sie verstanden und interpretiert werden können. Als Querschnittsdisziplin wendet sie dabei Methoden aus der Statistik mit Mitteln der Informatik an.
