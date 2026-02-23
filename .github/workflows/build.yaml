@@ -62,7 +62,7 @@ jobs:
         run: ../bausteine/bcd-bausteine-montieren/collect-content.R
         working-directory: folien-r-alle
       - name: Quarto render all slides R
-        run: quarto render folien-r-alle
+        run: quarto render folien-r-alle -t html
 
       - name: Quarto render more material
         run: quarto render weitere-unterlagen
