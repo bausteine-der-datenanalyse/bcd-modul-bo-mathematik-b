@@ -126,7 +126,7 @@ plt.title(
 )
 plt.xlabel("Monat")
 plt.ylabel("Abfluss in m³/s")
-plt.xticks(ticks=x, labels=monate)
+plt.xticks(ticks=x, labels=monate);
 plt.show()
 ```
 
