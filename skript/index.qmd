@@ -89,7 +89,8 @@ Für unsere Zwecke kommen Tabellenkalkulationsprogramme und SPSS aus mehreren Gr
 ## Programmiersprache Python
 
 ```{python}
-# | message: false
+#| message: false
+#| code-line-numbers: true
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -111,17 +112,21 @@ df_summary = df.groupby("Monat")["Original"].agg(
 x = df_summary.index
 y = df_summary["Mittelwert"]
 yerr = [y - df_summary["Minimum"], df_summary["Maximum"] - y]
-monate = ("Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
-               "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
+monate = (
+    "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
+    "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"
+)
 
 plt.grid()
 plt.bar(x, y)
 plt.errorbar(x, y, yerr=yerr, fmt='none', ecolor='black', capsize=10)
-plt.title("Abfluss der Donau am Pegel Hofkirchen\n"
-          "Monatliche Mittel- und Extremwerte")
+plt.title(
+    "Abfluss der Donau am Pegel Hofkirchen\n"
+    "Monatliche Mittel- und Extremwerte"
+)
 plt.xlabel("Monat")
 plt.ylabel("Abfluss in m³/s")
-plt.xticks(ticks=x, labels=monate);
+plt.xticks(ticks=x, labels=monate)
 plt.show()
 ```
 
@@ -130,33 +135,23 @@ plt.show()
 
 ```{r}
 #| warning: false
+#| code-line-numbers: true
 library(tidyverse)
 
-df <- 
-    read_delim(
-        "01-daten/6342800.day", delim = ";", skip = 41,
-        col_names = c("Datum", "", "Abfluss", "", "", ""),
-        col_types = c("Dcnccc")
+d <- read_delim(
+        "01-daten/6342800.day", delim = ";", skip = 40, trim_ws = TRUE
     ) |>
-    mutate(
-        Monat = month(Datum, label = TRUE)
-    ) |>
-    group_by(
-        Monat
-    ) |>
+    mutate(monat = month(`YYYY-MM-DD`, label = TRUE)) |>
+    group_by(monat) |>
     summarise(
-        Mittelwert = mean(Abfluss),
-        Minimum = min(Abfluss),
-        Maximum = max(Abfluss)
-    )    
+        mittelwert = mean(Original), 
+        min = min(Original), 
+        max = max(Original)
+    )
 
-ggplot(data = df) +
-    geom_col(
-        mapping = aes(x = Monat, y = Mittelwert)
-    ) +
-    geom_errorbar(
-        mapping = aes(x = Monat, ymin = Minimum, ymax = Maximum)
-    ) +
+ggplot(data = d) +
+    geom_col(mapping = aes(x = monat, y = mittelwert)) +
+    geom_errorbar(mapping = aes(x = monat, ymin = min, ymax = max)) +
     labs(
         x = "Monat", y = "Abfluss in m³/s",
         title = "Abfluss der Donau am Pegel Hofkirchen",

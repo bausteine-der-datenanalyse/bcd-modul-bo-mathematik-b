@@ -130,9 +130,10 @@ Wolfgang Schäuble zum "Wall Street Journal" auf die Frage, ob der Europäische 
 ## Programmiersprache Python
 
 ```{python}
-#| message: false
 #| echo: true
+#| message: false
 #| code-fold: true
+#| code-line-numbers: true
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -144,24 +145,23 @@ df = pd.read_csv(
     skipinitialspace=True,
     parse_dates=["YYYY-MM-DD"]
 )
-df["Monat"] = df["YYYY-MM-DD"].dt.month
-df_summary = df.groupby("Monat")["Original"].agg(
-    Mittelwert="mean",
-    Minimum="min",
-    Maximum="max"
-)
 
+df["monat"] = df["YYYY-MM-DD"].dt.month
+df_summary = df.groupby("monat")["Original"].agg(
+    mittelwert="mean", min="min", max="max"
+)
 x = df_summary.index
-y = df_summary["Mittelwert"]
-yerr = [y - df_summary["Minimum"], df_summary["Maximum"] - y]
-monate = ("Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
-               "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
+y = df_summary["mittelwert"]
+yerr = [y - df_summary["min"], df_summary["max"] - y]
+monate = ("Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
 
 plt.grid()
 plt.bar(x, y)
 plt.errorbar(x, y, yerr=yerr, fmt='none', ecolor='black', capsize=10)
-plt.title("Abfluss der Donau am Pegel Hofkirchen\n"
-          "Monatliche Mittel- und Extremwerte")
+plt.title(
+    "Abfluss der Donau am Pegel Hofkirchen\n"
+    "Monatliche Mittel- und Extremwerte"
+)
 plt.xlabel("Monat")
 plt.ylabel("Abfluss in m³/s")
 plt.xticks(ticks=x, labels=monate);
@@ -171,36 +171,20 @@ plt.show()
 ##  Programmiersprache R
 
 ```{r}
-#| warning: false
 #| echo: true
+#| warning: false
 #| code-fold: true
+#| code-line-numbers: true
 library(tidyverse)
 
-df <- 
-    read_delim(
-        "01-daten/6342800.day", delim = ";", skip = 41,
-        col_names = c("Datum", "", "Abfluss", "", "", ""),
-        col_types = c("Dcnccc")
-    ) |>
-    mutate(
-        Monat = month(Datum, label = TRUE)
-    ) |>
-    group_by(
-        Monat
-    ) |>
-    summarise(
-        Mittelwert = mean(Abfluss),
-        Minimum = min(Abfluss),
-        Maximum = max(Abfluss)
-    )    
+d <- read_delim("01-daten/6342800.day", delim = ";", skip = 40, trim_ws = TRUE) |>
+    mutate(monat = month(`YYYY-MM-DD`, label = TRUE)) |>
+    group_by(monat) |>
+    summarise(mittelwert = mean(Original), min = min(Original), max = max(Original))
 
-ggplot(data = df) +
-    geom_col(
-        mapping = aes(x = Monat, y = Mittelwert)
-    ) +
-    geom_errorbar(
-        mapping = aes(x = Monat, ymin = Minimum, ymax = Maximum)
-    ) +
+ggplot(data = d) +
+    geom_col(mapping = aes(x = monat, y = mittelwert)) +
+    geom_errorbar(mapping = aes(x = monat, ymin = min, ymax = max)) +
     labs(
         x = "Monat", y = "Abfluss in m³/s",
         title = "Abfluss der Donau am Pegel Hofkirchen",
