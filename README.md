@@ -19,10 +19,14 @@ Folgende Software muss installiert sein:
 
 ### rsvg-convert installieren
 
-| Betriebssystem       | Befehl                              |
-|----------------------|-------------------------------------|
-| macOS (Homebrew)     | `brew install librsvg`              |
-| Windows (MSYS2)      | `pacman -S mingw-w64-x86_64-librsvg`|
+#### Windows
+
+`rsvg-convert` kann über [MSYS2](https://www.msys2.org/) installiert werden.
+In der **MSYS2 MinGW 64-bit**-Shell:
+
+```bash
+pacman -S mingw-w64-x86_64-librsvg
+```
 
 Nach der Installation prüfen, ob `rsvg-convert` im Systempfad verfügbar ist:
 
