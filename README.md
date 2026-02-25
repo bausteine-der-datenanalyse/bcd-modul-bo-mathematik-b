@@ -17,16 +17,42 @@ Folgende Software muss installiert sein:
 - [Quarto](https://quarto.org/)
 - **rsvg-convert** – wird von Quarto benötigt, um SVG-Bilder in PDF zu konvertieren.
 
+
 ### rsvg-convert installieren
 
-| Betriebssystem   | Befehl                                  |
-|------------------|-----------------------------------------|
-| macOS (Homebrew) | `brew install librsvg`                  |
-| Windows          | `choco install rsvg-convert`            |
+#### macOS (Homebrew)
 
-> **Hinweis Windows:** [Chocolatey](https://chocolatey.org/install) muss
-> zuerst installiert werden. Den `choco`-Befehl in einer
-> **PowerShell als Administrator** ausführen.
+```bash
+brew install librsvg
+```
+#### Windows
+
+Unter Windows wird rsvg-convert über [Chocolatey](https://chocolatey.org/) installiert,
+einen Paketmanager für Windows.
+
+**Schritt 1: Chocolatey installieren (einmalig)**
+
+ PowerShell **als Administrator** öffnen:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(&#x27;https://community.chocolatey.org/install.ps1&#x27;))
+```
+
+**Schritt 2: rsvg-convert installieren**
+
+```powershell
+choco install rsvg-convert
+```
+
+**Schritt 3: Prüfen**
+
+Eine **neue** PowerShell öffnen und testen:
+
+```powershell
+rsvg-convert --version
+```
+
+Wenn eine Versionsnummer erscheint, hat alles geklappt.
 
 ## Repository auschecken
 
