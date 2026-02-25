@@ -22,8 +22,6 @@ Folgende Software muss installiert sein:
 | Betriebssystem       | Befehl                              |
 |----------------------|-------------------------------------|
 | macOS (Homebrew)     | `brew install librsvg`              |
-| Debian / Ubuntu      | `sudo apt install librsvg2-bin`     |
-| Fedora               | `sudo dnf install librsvg2-tools`   |
 | Windows (MSYS2)      | `pacman -S mingw-w64-x86_64-librsvg`|
 
 Nach der Installation prüfen, ob `rsvg-convert` im Systempfad verfügbar ist:
