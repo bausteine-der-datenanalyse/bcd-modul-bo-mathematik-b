@@ -19,20 +19,14 @@ Folgende Software muss installiert sein:
 
 ### rsvg-convert installieren
 
-#### Windows
+| Betriebssystem   | Befehl                                  |
+|------------------|-----------------------------------------|
+| macOS (Homebrew) | `brew install librsvg`                  |
+| Windows          | `choco install rsvg-convert`            |
 
-`rsvg-convert` kann über [MSYS2](https://www.msys2.org/) installiert werden.
-In der **MSYS2 MinGW 64-bit**-Shell:
-
-```bash
-pacman -S mingw-w64-x86_64-librsvg
-```
-
-Nach der Installation prüfen, ob `rsvg-convert` im Systempfad verfügbar ist:
-
-```bash
-rsvg-convert --version
-```
+> **Hinweis Windows:** [Chocolatey](https://chocolatey.org/install) muss
+> zuerst installiert werden. Den `choco`-Befehl in einer
+> **PowerShell als Administrator** ausführen.
 
 ## Repository auschecken
 
