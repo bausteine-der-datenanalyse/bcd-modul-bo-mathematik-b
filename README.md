@@ -8,49 +8,89 @@ Dokumente auf GitHub-Pages:
 
 - [Folien zu R (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/folien-r-alle/index.html)
 
-## Von Github auschecken
+## Voraussetzungen
 
-Kommandozeile:
+Folgende Software muss installiert sein:
+
+- [Git](https://git-scm.com/)
+- [R](https://cran.r-project.org/)
+- [Quarto](https://quarto.org/)
+- **rsvg-convert** – wird von Quarto benötigt, um SVG-Bilder in PDF zu konvertieren.
+
+
+### rsvg-convert installieren
+
+#### macOS (Homebrew)
+
+```bash
+brew install librsvg
+```
+#### Windows
+
+Unter Windows wird rsvg-convert über [Chocolatey](https://chocolatey.org/) installiert,
+einen Paketmanager für Windows.
+
+**Schritt 1: Chocolatey installieren (einmalig)**
+
+ PowerShell **als Administrator** öffnen:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(&#x27;https://community.chocolatey.org/install.ps1&#x27;))
+```
+
+**Schritt 2: rsvg-convert installieren**
+
+```powershell
+choco install rsvg-convert
+```
+
+**Schritt 3: Prüfen**
+
+Eine **neue** PowerShell öffnen und testen:
+
+```powershell
+rsvg-convert --version
+```
+
+Wenn eine Versionsnummer erscheint, hat alles geklappt.
+
+## Repository auschecken
 
 ```bash
 git clone --recurse-submodules https://github.com/bausteine-der-datenanalyse/bcd-modul-bo-mathematik-b.git
 ```
 
-## Pakete installieren
+## R-Pakete installieren
 
-R-Shell im Projektverzeichnis starten und folgendes eingeben:
+Eine R-Shell im Projektverzeichnis starten und Folgendes eingeben:
 
 ```r
-options(install.packages.compile.from.source = "never")
-options(pkgType = "binary")
-install.packages("remotes")
-remotes::install_deps(upgrade = "always")
+options(install.packages.compile.from.source = &quot;never&quot;)
+options(pkgType = &quot;binary&quot;)
+install.packages(&quot;remotes&quot;)
+remotes::install_deps(upgrade = &quot;always&quot;)
 ```
 
 ## Unterlagen erstellen
 
-1. Im Projektverzeichnis die Befehle
+1. Im Projektverzeichnis die neuesten Änderungen holen:
 
-    ```bash
-    git pull
-    git submodule update --remote 
-    ```
+```bash
+git pull
+git submodule update --remote
+```
 
-    ausführen
+2. Im Ordner `folien-r-alle` das Sammelskript ausführen:
 
-1. Im Ordner `folien-r-alle` den Befehl
+```bash
+../bausteine/bcd-bausteine-montieren/collect-content.R
+```
 
-    ```bash
-    ../bausteine/bcd-bausteine-montieren/collect-content.R
-    ```
+3. Quarto ausführen – je nach Bedarf einen oder mehrere der folgenden Befehle:
 
-    ausführen.
-
-1. Quarto ausführen: Je nach Bedarf einen oder alle der folgenden Befehle:
-
-    ```bash
-    quarto render folien
-    quarto render aufgaben
-    quarto render folien-r
-    quarto render folien-r-alle
-    ```
+```bash
+quarto render folien
+quarto render aufgaben
+quarto render folien-r
+quarto render folien-r-alle
+```
