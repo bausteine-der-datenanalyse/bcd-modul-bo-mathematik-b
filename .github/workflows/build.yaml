@@ -28,7 +28,6 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
-          version: 1.9.10
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
