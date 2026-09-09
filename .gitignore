@@ -11,6 +11,4 @@ site_libs
 _bcd-setup.*
 bcd-style-notes.css
 
-
-/.quarto/
 **/*.quarto_ipynb
