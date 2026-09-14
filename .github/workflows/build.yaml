@@ -39,32 +39,8 @@ jobs:
         with:
           extra-packages: rcmdcheck
 
-      - name: Prepare Skript
-        run: ../bausteine/bcd-bausteine-montieren/collect-content.R
-        working-directory: skript
-      - name: Quarto render Skript
-        run: quarto render skript
-
-      - name: Quarto render assignments
-        run: quarto render aufgaben
-
-      - name: Quarto render slides
-        run: quarto render folien
-
-      - name: Prepare Slides R
-        run: ../bausteine/bcd-bausteine-montieren/collect-content.R
-        working-directory: folien-r
-      - name: Quarto render slides R
-        run: quarto render folien-r
-
-      - name: Prepare all slides R
-        run: ../bausteine/bcd-bausteine-montieren/collect-content.R
-        working-directory: folien-r-alle
-      - name: Quarto render all slides R
-        run: quarto render folien-r-alle -t html
-
-      - name: Quarto render more material
-        run: quarto render weitere-unterlagen
+      - name: Render
+        run: make render
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

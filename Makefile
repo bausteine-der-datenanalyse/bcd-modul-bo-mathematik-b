@@ -22,9 +22,10 @@ prepare-render:
 render: prepare-render
 	quarto render folien
 	quarto render folien-r
-	quarto render folien-r-alle
+	quarto render folien-r-alle -t html
 	quarto render skript
 	quarto render aufgaben
+	quarto render weitere-unterlagen
 
 commit:
 	git add .
