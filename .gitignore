@@ -4,6 +4,7 @@ _output
 site_libs
 
 *.html
+!moodle/*.html
 *_files
 *.quarto_ipynb
 

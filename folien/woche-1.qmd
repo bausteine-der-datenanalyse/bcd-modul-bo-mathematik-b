@@ -6,8 +6,8 @@ execute:
 ---
 
 ```{r}
-#| include: false
 #| cache: false
+#| include: false
 library(gt)
 library(sf)
 library(glue)

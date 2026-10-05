@@ -73,6 +73,29 @@ Workflow.
   `{.raw}` (Klasse) statt `{raw}` (Engine) verwenden – sonst meldet `knitr` "Unknown language
   engine 'raw'".
 
+## Verwandtes Projekt
+
+Die Vorlesung **Informatik Master Bauingenieurwesen** (OOP mit C#) unter
+`~/sciebo/lehrveranstaltungen/informatik-master_2.0/unterlagen` ist ebenfalls auf Quarto umgestellt. Gleiches
+Grundmuster (Bausteine → Skript setzt zusammen → Quarto rendert → GitHub Pages), aber andere Umsetzung: Bausteine
+direkt im Repo statt als Submodule, Zusammensetzen per Julia statt R, eine zentrale `_quarto.yml`, CI ruft die
+Render-Schritte selbst auf statt des Makefiles. Bei Fragen zu Vergleich oder Angleichung dort nachsehen.
+
+## Hinweise zur Zusammenarbeit
+
+- Notizen und Erinnerungen gehören in diese Datei (`CLAUDE.md`)
+- Kein Memory-Verzeichnis anlegen – weder im Projekt noch anderswo. Das eingebaute auto-memory-System nicht verwenden.
+
+## Arbeitshinweise für Claude
+
+- Auf Fragen („wie geht das besser?", „wie soll ich X nennen?") nur erklären – Code erst ändern, wenn der Nutzer
+  ausdrücklich darum bittet oder eine konkret vorgeschlagene Änderung bestätigt. Das gilt auch, wenn die Frage
+  Unzufriedenheit ausdrückt („das ist doch Fummelei").
+- Als Dezimaltrennzeichen wird bewusst der Punkt verwendet (in Folien, Grafiken und Inline-Ausgaben). Fehlende
+  Dezimalkommas nicht als Fehler melden, keine `decimal.mark = ","`-Umstellung vorschlagen.
+- Beim Gegenlesen von Folien nur Inhalt, Text und sichtbares Ergebnis prüfen. Keine ungefragten Nebenprüfungen wie
+  das Nachschlagen von CSS-Klassen in `style.scss` – selbst gesetzte Klassen/Styles als gewollt annehmen.
+
 ## CLAUDE.md
 
 Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
