@@ -21,4 +21,4 @@ py_require(c("matplotlib", "pandas"))
 Sys.setlocale("LC_ALL", "de_DE")
 ```
 
-{{< include beispiel-essen.qmd >}}
+{{< include _beispiel-essen.qmd >}}

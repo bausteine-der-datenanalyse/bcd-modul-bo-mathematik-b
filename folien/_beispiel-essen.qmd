@@ -1,4 +1,4 @@
-## Temperaturdaten Essen Bredeney
+## Temperaturdaten Essen-Bredeney
 
 ```{r}
 d_temperatur_essen <- selectDWD(
@@ -18,8 +18,11 @@ d <- d_temperatur_essen |>
   filter(jahr_komplett) |>
   summarise(tmittel = mean(tmittel), .by = jahr)
 
+jrefstart <- 1961
+jrefend <- 1990
+
 tref <- d |>
-  filter(jahr >= 1961, jahr <= 2010) |>
+  filter(jahr >= jrefstart, jahr <= jrefend) |>
   summarise(tmittel = mean(tmittel)) |>
   pull(tmittel)
 
@@ -41,8 +44,8 @@ gg_essen_farbskala <- scale_fill_gradient2(
 gg_essen_beschriftung <- labs(
   x = NULL,
   y = NULL,
-  title = "Änderung der Temperatur in Essen",
-  subtitle = "Bezogen auf die Jahre 1961 bis 2010"
+  title = "Änderung der Temperatur in Essen in °C",
+  subtitle = glue("Bezogen auf die Jahre {jrefstart} bis {jrefend}")
 )
 ```
 
@@ -81,7 +84,7 @@ p <- ggplot(data = d_abweichung_essen) +
     mapping = aes(x = jahr, y = 1, fill = tabweichung),
     show.legend = FALSE
   ) +
-  scale_x_continuous(expand = expansion(0)) +
+  scale_x_continuous(breaks = c(1940, 2020), expand = c(0, 0)) +
   scale_y_continuous(expand = expansion(0)) +
   gg_essen_farbskala +
   theme_void()
@@ -100,7 +103,6 @@ ggsave("bilder/hg-temperatur.png", p, width = 16, height = 9, dpi = 150)
 
 p +
   gg_essen_beschriftung +
-  scale_x_continuous(breaks = c(1940, 2020), expand = c(0, 0)) +
   theme(axis.text.x = element_text())
 ```
 
@@ -109,7 +111,7 @@ p +
 ```{r}
 #| fig-asp: 0.61
 
-# Monatliche Abweichungen über das Jahr mit Trend und Konfidenzintervall
+# Abweichungen mit Trend und Konfidenzintervall
 
 ggplot(data = d_abweichung_essen, mapping = aes(x = jahr, y = tabweichung)) +
   geom_hline(yintercept = 0, alpha = 0.1) +
@@ -121,6 +123,7 @@ ggplot(data = d_abweichung_essen, mapping = aes(x = jahr, y = tabweichung)) +
     alpha = 0.15
   ) +
   geom_line(alpha = 0.2) +
+  geom_segment(x = jrefstart, xend = jrefend, y = 0) +
   geom_point(
     mapping = aes(fill = tabweichung),
     shape = 21,
@@ -129,6 +132,13 @@ ggplot(data = d_abweichung_essen, mapping = aes(x = jahr, y = tabweichung)) +
   ) +
   gg_essen_farbskala +
   gg_essen_beschriftung +
+  annotate(
+    "text",
+    (jrefstart + jrefend) / 2,
+    y = 1.5,
+    label = "Bezugszeitraum",
+    size = 3
+  ) +
   scale_x_continuous(breaks = c(1940, 2020)) +
   scale_y_continuous(breaks = c(-1.5, 0, 1.5)) +
   theme(panel.grid = element_blank())
@@ -143,6 +153,8 @@ ggplot(data = d_abweichung_essen, mapping = aes(x = jahr, y = tabweichung)) +
 
 library(trend)
 mk <- d_abweichung_essen |> pull(tabweichung) |> mk.test()
+tau <- mk$estimates["tau"]
+anteil_waermer <- (1 + tau) / 2
 
 format_p_sci <- function(p) {
   e <- floor(log10(p))
@@ -160,11 +172,11 @@ $p = `r format_p_sci(mk$p.value)`$
 
 []{.down80}
 
-Kendall's τ = `r round(unname(mk$estimates["tau"]), 2)`
+Vergleicht man je zwei beliebige Jahre, ist in [`r round(100 * anteil_waermer)`&nbsp;%]{style="font-size: 1.5em; color: darkslateblue"} der Fälle das spätere Jahr wärmer
 
 []{.down120}
 
-Trend statistisch hoch signifikant – Zufall praktisch auszuschließen
+Statistisch hoch signifikant: Ohne Trend wäre ein so deutlicher Anstieg extrem unwahrscheinlich
 :::
 
 ##
@@ -223,7 +235,7 @@ d4 <- dm |>
     o = if_else(mtyp == 'max', 1, -1)
   )
 
-# Wärmstes und kältests Jahr
+# Wärmstes und kältestes Jahr
 jmax <- dj |> slice_max(tmittel)
 jmin <- dj |> slice_min(tmittel)
 
@@ -249,11 +261,10 @@ ggplot(mapping = aes(x = monat, y = tmittel, group = jahr)) +
   labs(
     x = NULL,
     y = NULL,
-    title = "Temperatur in Essen",
+    title = "Monatliche Mittelwerte der Temperatur in Essen-Bredeney in C° ",
     subtitle = glue::glue(
       "Wärmstes Jahr: {jmax$jahr} ({round(jmax$tmittel, 1)}\u202F°C)               Kältestes Jahr: {jmin$jahr} ({round(jmin$tmittel, 1)}\u202F°C)"
     )
-    # subtitle = "Monatliche Mittelwerte in C°"
   )
 ```
 
@@ -267,11 +278,11 @@ ggplot(mapping = aes(x = monat, y = tmittel, group = jahr)) +
 # Ridges wie Joy Division, Unknown Pleasures
 
 d <- d_temperatur_essen |>
-  mutate(jahr = factor(year(datum)))
+  filter(jahr_komplett)
 
 p <- ggplot(data = d) +
   geom_density_ridges(
-    mapping = aes(x = tmittel, y = jahr),
+    mapping = aes(x = tmittel, y = factor(jahr)),
     scale = 8,
     color = 'white',
     linewidth = 0.75,
@@ -281,10 +292,10 @@ p <- ggplot(data = d) +
     to = 44
   ) +
   scale_x_continuous(expand = c(0.02, 0), breaks = c(0, 20), labels = \(x) {
-    paste0(x, '°C')
+    paste0(x, 'xxx°C')
   }) +
   scale_y_discrete(
-    breaks = c(min(d_temperatur_essen$jahr), max(d_temperatur_essen$jahr))
+    breaks = c(min(d$jahr), max(d$jahr))
   ) +
   theme_void() +
   theme(

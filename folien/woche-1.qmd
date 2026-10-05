@@ -7,8 +7,10 @@ execute:
 
 ```{r}
 #| include: false
+#| cache: false
 library(gt)
 library(sf)
+library(glue)
 library(rdwd)
 library(giscoR)
 library(ggridges)
@@ -24,7 +26,7 @@ Sys.setlocale("LC_ALL", "de_DE.UTF-8")
 ## 
 
 ::: {style="font-size: 1.75em"}
-Herzlich willkommen, Welcome, Hoş geldiniz, أهلاً وسهلاً, Bi xêr hatin, Добро пожаловать, Witamy serdecznie, Benvenuti, Καλώς ήρθατε, Bienvenidos, Bienvenue, خوش آمدید, ښه راغلاست, Dobro došli, Bine ați venit, Chào mừng, 欢迎, स्वागत है, خوش آمدید, እንቋዕ ብደሓን መፁ
+Herzlich willkommen, Welcome, Hoş geldiniz, أهلاً وسهلاً, Bi xêr hatin, Добро пожаловать, Witamy serdecznie, Benvenuti, Καλώς ήρθατε, Bienvenidos, Bienvenue, خوش آمدید, ښه راغلاست, Dobro došli, Bine ați venit, Chào mừng, 欢迎, स्वागत है, እንቋዕ ብደሓን መፁ
 :::
 
 ## Agenda heute
@@ -38,7 +40,7 @@ Herzlich willkommen, Welcome, Hoş geldiniz, أهلاً وسهلاً, Bi xêr ha
 
 # Statistik und Datenanalyse...
 
-{{< include beispiel-essen.qmd >}}
+{{< include _beispiel-essen.qmd >}}
 
 ## Statistik {.smaller}
 
@@ -52,7 +54,7 @@ Herzlich willkommen, Welcome, Hoş geldiniz, أهلاً وسهلاً, Bi xêr ha
 
 ## Datenanalyse
 
-![](bilder/data-science.png){}
+![](bilder/data-science.png){fig-align="center"}
 
 In der Datenanalyse wird mit statistischen Methoden gearbeitet, mit welchen aus vorliegenden numerischen Einzeldaten zusammenfassende Informationen (Kenngrößen) gewonnen und tabellarisch oder grafisch aufbereitet und dokumentiert werden. (Wikipedia)
 
@@ -82,13 +84,13 @@ a) Prognose der Häufigkeit und des Ausmaßes zukünftiger Starkregenereignisse 
 
 a) Entwicklung und Anwendung probabilistischer Sicherheitskonzepte, die streuenden Materialparametern und unsicheren Einwirkungen Rechnung tragen.
 
-a) Messwerte einer Versuchsreihe zu Stahlbetondecken. Offensichtlich streuen die Messwerte stark.
+a) Ausertung von Messwerten einer Versuchsreihe zu Stahlbetondecken, offensichtlich streuen die Werte stark.
 
 # Praktische Anwendung auf dem Computer...
 
 ## Tabellenkalkulation
 
-  ![](bilder/excel.png){}
+![](bilder/excel.png){fig-align="center"}
 
 - Geeignet für einfache Fragestellungen 
 - Man muss nichts grundsätzlich Neues lernen
@@ -96,20 +98,23 @@ a) Messwerte einer Versuchsreihe zu Stahlbetondecken. Offensichtlich streuen die
 
 ## Exkurs Excel 1/2
 
-![](bilder/schaueble.jpg){}
+![](bilder/schaueble.jpg){fig-align="center"}
 
-Wolfgang Schäuble zum „Wall Street Journal“ auf die Frage, ob der Europäische Fiskalpakt Konjunkturpakete gegen die Rezession verbieten will: „Wir haben sehr sorgfältig die Untersuchung von Rogoff und Reinhart gelesen. Sie haben empirisch belegt, dass ab einem bestimmten Grad eine zu hohe Staatsverschuldung das Wachstum beeinträchtigt.“
+Wolfgang Schäuble in seiner Haushaltsrede im Bundestag: „Man muss daran erinnern, dass die US-Ökonomen Rogoff und Reinhart vor kurzem in einer viel beachteten Untersuchung dargelegt haben, dass das Wirtschaftswachstum ab einem bestimmten Verschuldungsgrad der öffentlichen Haushalte durch öffentliche Verschuldung nicht mehr gesteigert, sondern gedämpft wird.“
+
+[Quelle: Deutscher Bundestag, [Plenarprotokoll 17/122](https://dserver.bundestag.de/btp/17/17122.pdf), 6.9.2011, S. 14351]{style="font-size: 0.6em"}
 
 ## Exkurs Excel 2/2
 
-![](bilder/Screenshot 2021-10-05 at 11.51.01.png){}
+![](bilder/Screenshot 2021-10-05 at 11.51.01.png){fig-align="center"}
 
 - Google-Suche: The Excel error that changed history 
 - <https://de.wikipedia.org/wiki/Kenneth_S._Rogoff>
+- Der Standard: [Wie ein Student Top-Ökonomen aufblättert](https://derstandard.at/1385169111513/Wie-ein-Student-Top-Oekonomen-aufblaettert)
 
 ## SPSS – Statistical Package for the Social Sciences
 
-![](bilder/SPSS-Statistics-Desktop_6.png){}
+![](bilder/SPSS-Statistics-Desktop_6.png){fig-align="center"}
 
 - Umfangreiches Statistikpaket
 - Weit verbreitet in Wirtschafts- und Sozialwissenschaften, Medizin
@@ -117,6 +122,8 @@ Wolfgang Schäuble zum „Wall Street Journal“ auf die Frage, ob der Europäis
 - Teuer
 
 ##
+
+[]{.up20}
 
 ::: {.panel-tabset}
 
@@ -136,25 +143,24 @@ df = pd.read_csv(
     comment="#",
     encoding="windows-1252",
     skipinitialspace=True,
-    parse_dates=["YYYY-MM-DD"]
+    parse_dates=["YYYY-MM-DD"],
 )
 
 df["monat"] = df["YYYY-MM-DD"].dt.month
 df_summary = df.groupby("monat")["Original"].agg(
-    mittelwert="mean", min="min", max="max"
+  mittelwert="mean", min="min", max="max"
 )
 x = df_summary.index
 y = df_summary["mittelwert"]
 yerr = [y - df_summary["min"], df_summary["max"] - y]
-monate = ("Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
+monate = [
+  "Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"
+]
 
 plt.grid()
 plt.bar(x, y)
-plt.errorbar(x, y, yerr=yerr, fmt='none', ecolor='black', capsize=10)
-plt.title(
-    "Abfluss der Donau am Pegel Hofkirchen\n"
-    "Monatliche Mittel- und Extremwerte"
-)
+plt.errorbar(x, y, yerr=yerr, fmt="none", ecolor="black", capsize=10)
+plt.title("Abfluss der Donau am Pegel Hofkirchen\nMonatliche Mittel- und Extremwerte")
 plt.xlabel("Monat")
 plt.ylabel("Abfluss in m³/s")
 plt.xticks(ticks=x, labels=monate);
@@ -170,21 +176,12 @@ plt.show()
 #| code-line-numbers: true
 library(tidyverse)
 
-d <- read_delim(
-  "daten/6342800.day",
-  delim = ";",
-  comment = "#",
-  trim_ws = TRUE
-) |>
+df <- read_delim("daten/6342800.day", delim = ";", comment = "#", trim_ws = TRUE) |>
   mutate(monat = month(`YYYY-MM-DD`, label = TRUE)) |>
   group_by(monat) |>
-  summarise(
-    mittelwert = mean(Original),
-    min = min(Original),
-    max = max(Original)
-  )
+  summarise(mittelwert = mean(Original), min = min(Original), max = max(Original))
 
-ggplot(data = d) +
+ggplot(data = df) +
   geom_col(mapping = aes(x = monat, y = mittelwert)) +
   geom_errorbar(mapping = aes(x = monat, ymin = min, ymax = max)) +
   labs(
@@ -197,23 +194,26 @@ ggplot(data = d) +
 
 :::
 
+[]{.up50}
+→ Zu Demonstrationszwecken, Darstellung nicht ideal
+
 ## Mathematik B: Quarto, R und Positron {.smaller}
 
-![](bilder/positron.png){}
+![](bilder/positron.png){fig-align="center"}
 
 - Quarto: System zur Erstellung von Dokumenten mit Text und Programmcode
-- R: Aufbereitung von Daten und Plotten komfortabler als in Python
+- R: Aufbereitung von Daten und Plotten einfacher als in Python
 - Positron: Grafische Umgebung für Quarto und R
 - Sehr mächtig, aber erfordert Einarbeitung
 - Frei verfügbar
 
-$\rightarrow$ So wenig Informatik wie möglich!
+→ So wenig Informatik wie möglich!
 
 # Aufbau der Vorlesung und Prüfungsleistung...
 
 ## Aufbau der Vorlesung
 
-![](bilder/Screenshot 2021-10-05 at 11.01.19.png){}
+![](bilder/Screenshot 2021-10-05 at 11.01.19.png){fig-align="center"}
 
 ### Inverted Classroom
 
@@ -226,17 +226,19 @@ $\rightarrow$ So wenig Informatik wie möglich!
 - Hausarbeit mit mündlicher Prüfung
   - Form: Schriftliche Ausarbeitung oder Präsentation
 - Themen aus den Bereichen Konstruktiver Ingenieurbau, Wasser und Verkehr
-    - Ausgabe Ende des Jahres
+  - Ausgabe Ende des Jahres
 - Eigene Themen sind möglich
 - Betreuung durch mich und die Fachkolleg:innen
 
 ## Was ändert sich gegenüber den letzten Jahren?
 
+[]{.down200}
+
 - Positron statt RStudio
-- Wir werden explizit KI nutzen
-  - Wichtig: Erst Grundprinzipien verstehen, dann sich von KI helfen lassen
 - Zusätzlich Wahrscheinlichkeitsrechnung und schließende Statistik
 - Mündliche Prüfung umfasst jetzt Mathematik und R
+- Wir werden explizit KI nutzen
+  - Wichtig: Erst Grundprinzipien verstehen, dann KI einsetzen
 
 # Installation der Software und erste Schritte...
 
@@ -245,8 +247,8 @@ $\rightarrow$ So wenig Informatik wie möglich!
 - R und Positron installieren (Anleitung auf Moodle)
 
 - Folien herunterladen und in Positron öffnen
-    - Zip-Datei [01-erste-schritte.zip](../folien-r/c/01-erste-schritte.zip) herunterladen
-    - In Ordner `studium/mathematik-b/folien-r/` entpacken
-    - Datei erste-schritte.code-workspace in Positron öffnen
-    - Datei `erste-schritte.qmd` in Positron anschauen
-    - Gemeinsam durchgehen
+  - Zip-Datei [01-erste-schritte.zip](../folien-r/c/01-erste-schritte.zip) herunterladen
+  - In Ordner `studium/mathematik-b/folien-r/` entpacken
+  - Datei erste-schritte.code-workspace in Positron öffnen
+  - Datei `erste-schritte.qmd` in Positron anschauen
+  - Gemeinsam durchgehen

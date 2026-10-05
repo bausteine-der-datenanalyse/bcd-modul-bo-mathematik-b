@@ -5,10 +5,8 @@ site_libs
 
 *.html
 *_files
+*.quarto_ipynb
 
 */c
-*.bib
-_bcd-setup.*
-bcd-style-notes.css
 
-**/*.quarto_ipynb
+

@@ -162,7 +162,7 @@ $selection-bg: #26351c !default;
   pointer-events: none;
 }
 
-.reveal .slide-menu-button > * {
+.reveal .slide-menu-button>* {
   pointer-events: auto;
 }
 
@@ -177,7 +177,7 @@ $selection-bg: #26351c !default;
   pointer-events: none;
 }
 
-.reveal .slide-chalkboard-buttons > * {
+.reveal .slide-chalkboard-buttons>* {
   pointer-events: auto;
 }
 
@@ -277,7 +277,7 @@ $selection-bg: #26351c !default;
   font-size: 0.9em !important;
 }
 
-.reveal div.sourceCode  {
+.reveal div.sourceCode {
   margin-top: 0.75em !important;
   margin-bottom: 0.75em !important;
 }
