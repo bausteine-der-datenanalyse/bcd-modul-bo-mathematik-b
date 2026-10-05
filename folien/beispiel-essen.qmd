@@ -1,0 +1,469 @@
+## Temperaturdaten Essen Bredeney
+
+```{r}
+d_temperatur_essen <- selectDWD(
+  "Essen-Bredeney",
+  res = "daily",
+  var = "kl",
+  per = "hr"
+) |>
+  dataDWD() |>
+  bind_rows() |>
+  select(datum = MESS_DATUM, tmin = TNK, tmittel = TMK, tmax = TXK) |>
+  distinct(datum, .keep_all = TRUE) |>
+  mutate(jahr = year(datum)) |>
+  mutate(jahr_komplett = (n() >= 365), .by = jahr)
+
+d <- d_temperatur_essen |>
+  filter(jahr_komplett) |>
+  summarise(tmittel = mean(tmittel), .by = jahr)
+
+tref <- d |>
+  filter(jahr >= 1961, jahr <= 2010) |>
+  summarise(tmittel = mean(tmittel)) |>
+  pull(tmittel)
+
+d_abweichung_essen <- d |>
+  mutate(tabweichung = tmittel - tref)
+
+b <- d_abweichung_essen |>
+  summarise(tmittel = max(abs(tabweichung))) |>
+  pull(tmittel)
+
+gg_essen_farbskala <- scale_fill_gradient2(
+  low = "#08306b",
+  mid = "#f7f7f7",
+  high = "#67000d",
+  limits = c(-b, b),
+  midpoint = 0
+)
+
+gg_essen_beschriftung <- labs(
+  x = NULL,
+  y = NULL,
+  title = "Änderung der Temperatur in Essen",
+  subtitle = "Bezogen auf die Jahre 1961 bis 2010"
+)
+```
+
+::: {.columns}
+::: {.column}
+```{r}
+d_temperatur_essen |>
+  select(datum, tmin, tmittel, tmax) |>
+  gt() |>
+  opt_interactive(use_pagination = TRUE)
+```
+:::
+::: {.column}
+```{r}
+#| fig-asp: 0.95
+#| fig-width: 4
+#| out-width: 100%
+ggplot(data = d_temperatur_essen) +
+  geom_line(mapping = aes(x = datum, y = tmittel)) +
+  labs(title = "Mittlere Tagestemperatur in °C", x = NULL, y = NULL)
+```
+:::
+:::
+
+- Datenquelle: Deutscher Wetterdienst
+- Station Essen Bredeney hat im Ruhrgebiet die meisten Datenpunkte
+
+```{r}
+#| include: false
+#| fig-asp: 0.61
+
+# Streifen mit Abweichung
+
+p <- ggplot(data = d_abweichung_essen) +
+  geom_tile(
+    mapping = aes(x = jahr, y = 1, fill = tabweichung),
+    show.legend = FALSE
+  ) +
+  scale_x_continuous(expand = expansion(0)) +
+  scale_y_continuous(expand = expansion(0)) +
+  gg_essen_farbskala +
+  theme_void()
+
+ggsave("bilder/hg-temperatur.png", p, width = 16, height = 9, dpi = 150)
+```
+
+## {background-image="bilder/hg-temperatur.png" background-size="cover"}
+
+##
+
+```{r}
+#| fig-asp: 0.61
+
+# Streifen mit Abweichung und Beschriftung
+
+p +
+  gg_essen_beschriftung +
+  scale_x_continuous(breaks = c(1940, 2020), expand = c(0, 0)) +
+  theme(axis.text.x = element_text())
+```
+
+##
+
+```{r}
+#| fig-asp: 0.61
+
+# Monatliche Abweichungen über das Jahr mit Trend und Konfidenzintervall
+
+ggplot(data = d_abweichung_essen, mapping = aes(x = jahr, y = tabweichung)) +
+  geom_hline(yintercept = 0, alpha = 0.1) +
+  geom_smooth(
+    method = 'lm',
+    color = 'darkslateblue',
+    fill = 'hotpink',
+    linewidth = 0.25,
+    alpha = 0.15
+  ) +
+  geom_line(alpha = 0.2) +
+  geom_point(
+    mapping = aes(fill = tabweichung),
+    shape = 21,
+    size = 2,
+    show.legend = FALSE
+  ) +
+  gg_essen_farbskala +
+  gg_essen_beschriftung +
+  scale_x_continuous(breaks = c(1940, 2020)) +
+  scale_y_continuous(breaks = c(-1.5, 0, 1.5)) +
+  theme(panel.grid = element_blank())
+```
+
+##
+
+```{r}
+#| include: false
+
+# Mann-Kendall-Test
+
+library(trend)
+mk <- d_abweichung_essen |> pull(tabweichung) |> mk.test()
+
+format_p_sci <- function(p) {
+  e <- floor(log10(p))
+  m <- p / 10^e
+  sprintf("%.*f \\cdot 10^{%d}", 2, m, e)
+}
+```
+
+::: {style="text-align: center; margin-top: 2em"}
+Mann-Kendall-Test auf Trend
+
+::: {style="font-size: 3em; color: darkslateblue"}
+$p = `r format_p_sci(mk$p.value)`$
+:::
+
+[]{.down80}
+
+Kendall's τ = `r round(unname(mk$estimates["tau"]), 2)`
+
+[]{.down120}
+
+Trend statistisch hoch signifikant – Zufall praktisch auszuschließen
+:::
+
+##
+
+```{r}
+#| fig-asp: 0.61
+
+# Monatsmittelwerte für alle Jahre
+
+# Hilfsfunktionen
+kuerzel <- function(imin, imax) {
+  case_when(
+    imin & imax ~ 'minmax',
+    imin ~ 'min',
+    imax ~ 'max',
+    .default = 'normal'
+  )
+}
+ist <- function(x, f) f(x) == x
+klassifiziere <- function(x) kuerzel(ist(x, min), ist(x, max))
+
+# Grundlage
+d1 <- d_temperatur_essen |>
+  filter(jahr_komplett) |>
+  mutate(monat = month(datum, label = TRUE))
+
+# Jahresmittel
+dj <- d1 |>
+  summarise(tmittel = mean(tmittel), .by = jahr) |>
+  mutate(jtyp = klassifiziere(tmittel))
+
+# Monatsmittel
+dm <- d1 |>
+  summarise(tmittel = mean(tmittel), .by = c(jahr, monat)) |>
+  mutate(mtyp = klassifiziere(tmittel), .by = monat)
+
+# Klassifizierte Jahre mit jtyp='jahr ist min/max', jmtyp='jahr hat monat mit min/max'
+djk <- dj |>
+  left_join(
+    dm |>
+      filter(mtyp != 'normal') |>
+      select(jahr, mtyp) |>
+      distinct(jahr, mtyp),
+    by = 'jahr'
+  ) |>
+  rename(jtmittel = tmittel, jmtyp = mtyp) |>
+  replace_na(list(jmtyp = 'normal'))
+
+# Monatswerte mit Jahresklassifikation
+dmk <- dm |> left_join(djk, by = 'jahr')
+
+# Min/Max Monate
+d4 <- dm |>
+  filter(mtyp != 'normal') |>
+  mutate(
+    o = if_else(mtyp == 'max', 1, -1)
+  )
+
+# Wärmstes und kältests Jahr
+jmax <- dj |> slice_max(tmittel)
+jmin <- dj |> slice_min(tmittel)
+
+# Plot
+ggplot(mapping = aes(x = monat, y = tmittel, group = jahr)) +
+  geom_line(
+    data = dmk,
+    mapping = aes(color = jmtyp, alpha = jtyp),
+    linewidth = 0.5,
+    show.legend = FALSE
+  ) +
+  geom_point(
+    data = d4,
+    mapping = aes(fill = mtyp),
+    shape = 21,
+    show.legend = FALSE
+  ) +
+  geom_text(data = d4, mapping = aes(label = jahr, nudge_y = o), size = 2.5) +
+  scale_y_continuous(breaks = c(0, 20)) +
+  scale_fill_manual(values = c(min = 'steelblue', max = 'orangered')) +
+  scale_color_manual(values = c(min = 'blue', normal = 'gray', max = 'red')) +
+  scale_alpha_manual(values = c(min = 0.75, normal = 0.2, max = 0.75)) +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = "Temperatur in Essen",
+    subtitle = glue::glue(
+      "Wärmstes Jahr: {jmax$jahr} ({round(jmax$tmittel, 1)}\u202F°C)               Kältestes Jahr: {jmin$jahr} ({round(jmin$tmittel, 1)}\u202F°C)"
+    )
+    # subtitle = "Monatliche Mittelwerte in C°"
+  )
+```
+
+##  {background-color="black"}
+
+```{r}
+#| fig-asp: 1.4
+#| fig-width: 6
+#| fig-align: center
+
+# Ridges wie Joy Division, Unknown Pleasures
+
+d <- d_temperatur_essen |>
+  mutate(jahr = factor(year(datum)))
+
+p <- ggplot(data = d) +
+  geom_density_ridges(
+    mapping = aes(x = tmittel, y = jahr),
+    scale = 8,
+    color = 'white',
+    linewidth = 0.75,
+    fill = 'black',
+    bandwidth = 0.8,
+    from = -24,
+    to = 44
+  ) +
+  scale_x_continuous(expand = c(0.02, 0), breaks = c(0, 20), labels = \(x) {
+    paste0(x, '°C')
+  }) +
+  scale_y_discrete(
+    breaks = c(min(d_temperatur_essen$jahr), max(d_temperatur_essen$jahr))
+  ) +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = 'black', colour = NA)
+  )
+p
+```
+
+##  {background-color="black"}
+
+```{r}
+#| fig-asp: 1.4
+#| fig-width: 6
+#| fig-align: center
+
+p +
+  labs(title = 'Temperatur in Essen', subtitle = 'Verteilung über die Jahre') +
+  theme(
+    plot.title = element_text(color = 'white'),
+    plot.subtitle = element_text(color = 'white'),
+    axis.text.x = element_text(color = 'white'),
+    axis.ticks.x = element_line(color = 'white'),
+    axis.ticks.length.x = unit(0.2, 'cm'),
+    axis.text.y = element_text(color = 'white')
+  )
+```
+
+```{r}
+#| echo: false
+#| output: asis
+#| fig-asp: 0.65
+#| fig-dpi: 150
+#| fig-align: center
+#| fig-format: png
+#| out-width: 90%
+
+# Plot Extremtage deutschlandweit
+
+# Temperaturklassen
+temperaturen <- c(30, 35, 40)
+klassen <- factor(c('30° ≤ T < 35°', '35° ≤ T < 40°', 'T ≥ 40°'))
+farben <- c("#fee08b", "#fc8d59", "#d73027")
+
+# Zeitraum
+sjahr <- 1950
+jahre <- c(1983, 2000:2026)
+
+# Daten laden, siehe skripte/extremtage.R
+load("daten/d_extremtage_de.RData")
+
+# Geobezug
+data(metaIndex, package = "rdwd")
+d_stationen <- metaIndex |>
+  select(station = Stations_id, long = geoLaenge, lat = geoBreite) |>
+  distinct(station, .keep_all = TRUE)
+als_sf <- function(d) {
+  d |>
+    left_join(d_stationen, by = "station") |>
+    st_as_sf(coords = c("long", "lat"), crs = "+proj=longlat")
+}
+
+# Deutschlandkarte
+d_de <- gisco_get_nuts(country = "Germany", nuts_level = 0, resolution = 10)
+d_bl <- gisco_get_nuts(country = "Germany", nuts_level = 1, resolution = 10)
+
+# Klassifizierte Extremtage
+d_kat <- d_extremtage_de |>
+  filter(year(datum) >= sjahr, tmax >= temperaturen[1]) |>
+  select(datum, station, tmax) |>
+  mutate(
+    jahr = year(datum),
+    klasse = klassen[findInterval(tmax, temperaturen)]
+  )
+
+# Maximale Anzahl Hitzetage pro Jahr und Station
+nmax <- d_kat |> count(jahr, station) |> slice_max(n) |> pull(n)
+
+# Anzahl Tage pro Jahr und Kategorie
+d_nt <- d_kat |>
+  slice_max(tmax, by = c(datum)) |>
+  count(jahr, klasse) |>
+  complete(jahr, klasse, fill = list(n = 0))
+
+# Anzahl Stationen pro Jahr und Kategorie
+d_ns <- d_kat |>
+  slice_max(tmax, by = c(jahr, station)) |>
+  count(jahr, klasse) |>
+  complete(jahr, klasse, fill = list(n = 0))
+
+# Text für Legende
+d_t <- left_join(
+  rename(d_nt, nt = n),
+  rename(d_ns, ns = n),
+  by = c('jahr', 'klasse')
+) |>
+  mutate(text = paste0(klasse, "\n", ns, " Stationen, ", nt, " Tage")) |>
+  mutate(zeile = row_number(), .by = jahr)
+
+# Barplot für ein Jahr
+gg_jahr <- function(d, y, t) {
+  d |>
+    uncount(n) |>
+    ggplot() +
+    geom_bar(mapping = aes(x = jahr, fill = klasse), show.legend = FALSE) +
+    geom_vline(xintercept = y, linewidth = 0.25) +
+    labs(title = t)
+}
+
+# Der ganze Plot
+gg_hitzetage <- function(y) {
+  # Anzahl Tage pro Station und Kategorie für ein Jahr
+  d_nj <- d_kat |>
+    filter(jahr == y) |>
+    count(jahr, station, klasse) |>
+    arrange(station, desc(klasse)) |>
+    mutate(n = cumsum(n), .by = station) |>
+    arrange(klasse, station) |>
+    als_sf()
+
+  p_nj <- ggplot() +
+    geom_sf(data = d_de, linewidth = 0.5) +
+    geom_sf(data = d_bl, fill = '#676155') +
+    geom_sf(
+      data = d_stationen |>
+        st_as_sf(coords = c("long", "lat"), crs = "+proj=longlat"),
+      color = '#A7B3CD',
+      size = 0.025
+    ) +
+    geom_sf(
+      data = d_nj,
+      mapping = aes(size = n, color = klasse)
+    ) +
+    scale_size(name = 'Hitzetage', range = c(0, 7.5), limits = c(1, nmax)) +
+    scale_color_manual(
+      values = farben,
+      drop = FALSE,
+      guide = 'none'
+    )
+
+  p_t <- d_t |>
+    filter(jahr == y) |>
+    ggplot() +
+    geom_tile(
+      mapping = aes(x = 0, y = zeile, fill = klasse),
+      width = 0.5,
+      height = 0.9,
+      show.legend = FALSE
+    ) +
+    geom_text(
+      mapping = aes(x = 0.35, y = zeile, label = text),
+      hjust = 0,
+      size = 4
+    ) +
+    geom_vline(xintercept = 3, linewidth = 0) +
+    labs(title = paste("Hitzetage im Jahr", y))
+
+  ((p_t /
+    plot_spacer() /
+    gg_jahr(d_ns, y, "Anzahl Stationen") /
+    plot_spacer() /
+    gg_jahr(d_nt, y, "Anzahl Tage") +
+    plot_layout(heights = c(1, 0.1, 1, 0.1, 1.25))) |
+    plot_spacer() |
+    p_nj) +
+    plot_layout(widths = c(1, 0.1, 2)) &
+    scale_x_continuous(expand = c(0, 0)) &
+    scale_y_continuous(expand = c(0, 0.1)) &
+    theme_void() &
+    scale_fill_manual(values = farben)
+}
+
+in_fragment <- function(y) {
+  cat('::: {.fragment .current-visible}\n\n')
+  print(gg_hitzetage(y))
+  cat('\n\n:::\n\n')
+}
+
+cat("## \n\n")
+cat("::: {.r-stack}\n\n")
+jahre |> walk(in_fragment)
+cat("\n\n:::\n\n")
+```

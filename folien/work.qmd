@@ -1,0 +1,24 @@
+---
+title: Mathematik B
+subtitle: Statistik und Datenanalyse
+execute: 
+  cache: true
+---
+
+```{r}
+#| include: false
+library(gt)
+library(sf)
+library(rdwd)
+library(giscoR)
+library(ggridges)
+library(patchwork)
+library(tidyverse)
+library(reticulate)
+
+py_require(python_version = ">=3.11")
+py_require(c("matplotlib", "pandas"))
+Sys.setlocale("LC_ALL", "de_DE")
+```
+
+{{< include beispiel-essen.qmd >}}

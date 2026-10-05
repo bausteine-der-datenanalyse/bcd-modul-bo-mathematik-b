@@ -1,54 +1,64 @@
 ---
 title: Mathematik B
 subtitle: Statistik und Datenanalyse
+execute: 
+  cache: true
 ---
 
 ```{r}
 #| include: false
+library(gt)
+library(sf)
+library(rdwd)
+library(giscoR)
+library(ggridges)
+library(patchwork)
+library(tidyverse)
 library(reticulate)
+
 py_require(python_version = ">=3.11")
 py_require(c("matplotlib", "pandas"))
-Sys.setlocale("LC_ALL", "de_DE")
+Sys.setlocale("LC_ALL", "de_DE.UTF-8")
 ```
 
 ## 
 
-[]{.down100}
-[]{.down100}
-[]{.down100}
-
+::: {style="font-size: 1.75em"}
 Herzlich willkommen, Welcome, Hoş geldiniz, أهلاً وسهلاً, Bi xêr hatin, Добро пожаловать, Witamy serdecznie, Benvenuti, Καλώς ήρθατε, Bienvenidos, Bienvenue, خوش آمدید, ښه راغلاست, Dobro došli, Bine ați venit, Chào mừng, 欢迎, स्वागत है, خوش آمدید, እንቋዕ ብደሓን መፁ
+:::
 
 ## Agenda heute
 
-- Über das Modul Mathematik B
+- Teil 1: Über das Modul Mathematik B
     - Statistik und Datenanalyse
-    - Software
+    - Praktische Anwendung auf dem Computer
     - Aufbau der Vorlesung und Prüfungsleistung
 
-- Installation der Software und erste Schritte
+- Teil 2: Installation der Software und erste Schritte
 
-# Über das Modul Mathematik B
+# Statistik und Datenanalyse...
+
+{{< include beispiel-essen.qmd >}}
 
 ## Statistik {.smaller}
 
-![](00-bilder/stochastik.svg){}
+![](bilder/stochastik.svg){}
 
-- Deskriptive Statistik: Darstellen und Aufbereiten von empirischen Datensätzen als Entscheidungsgrundlage (zum Beispiel in der Politik)
+- Beschreibende Statistik: Darstellen und Aufbereiten von empirischen Datensätzen als Entscheidungsgrundlage (zum Beispiel in der Politik)
 
-- Explorative Statistik: Aus Daten Annahmen und Hypothesen zu generieren, mit denen die Eigenschaften der Daten erklärt werden können
+- Explorative Statistik: Generieren von Annahmen und Hypothesen aus Daten, mit denen die Eigenschaften der Daten erklärt werden können
 
-- Schließende Statistik: Aus Daten Aussagen über die Grundgesamtheit abzuleiten, zentrales Hilfsmittel dabei ist die Wahrscheinlichkeitstheorie
+- Schließende Statistik: Ableiten von Aussagen über die Grundgesamtheit aus Daten; zentrales Hilfsmittel dabei ist die Wahrscheinlichkeitstheorie (schätzen, testen, modellieren)
 
-## Datenalyse
+## Datenanalyse
 
-![](00-bilder/data-science.png){}
+![](bilder/data-science.png){}
 
 In der Datenanalyse wird mit statistischen Methoden gearbeitet, mit welchen aus vorliegenden numerischen Einzeldaten zusammenfassende Informationen (Kenngrößen) gewonnen und tabellarisch oder grafisch aufbereitet und dokumentiert werden. (Wikipedia)
 
 - Daten einlesen, aufbereiten, analysieren, darstellen und kommunizieren
 
-- Querschnittsdisziplin von Statistik und Informatik
+- Querschnittsdisziplin zwischen Statistik und Informatik
 
 - Vereinfacht gesagt: Statistik auf dem Computer
 
@@ -56,71 +66,54 @@ In der Datenanalyse wird mit statistischen Methoden gearbeitet, mit welchen aus 
 
 ::: {layout-ncol=4}
 
-![](00-bilder/a_verkehr.jpg){}
+![](bilder/a_verkehr.jpg){}
 
-![](00-bilder/a_ueberflutung.jpeg){}
+![](bilder/a_ueberflutung.jpeg){}
 
-![](00-bilder/a_strommast.jpeg){}
+![](bilder/a_strommast.jpeg){}
 
-![](00-bilder/a_beton.svg){}
+![](bilder/a_beton.svg){}
 
 :::
 
 a) Ermittlung und Aufbereitung von Daten als Grundlage für die Planung der Verkehrsinfrastruktur.
 
-a) Prognose über Häufigkeit und Ausmaß zukünftiger Starkregenereignisse auf Basis von Aufzeichnungen. Entwicklung stochastischer Modelle für fließende Gewässer.
+a) Prognose der Häufigkeit und des Ausmaßes zukünftiger Starkregenereignisse auf Basis von Aufzeichnungen. Entwicklung stochastischer Modelle für fließende Gewässer.
 
 a) Entwicklung und Anwendung probabilistischer Sicherheitskonzepte, die streuenden Materialparametern und unsicheren Einwirkungen Rechnung tragen.
 
 a) Messwerte einer Versuchsreihe zu Stahlbetondecken. Offensichtlich streuen die Messwerte stark.
 
-## Beispiel: Zustand von Straßenbrücken in Deutschland
-
-- Straßenbrücken in Deutschland teils in sehr schlechtem Zustand
-- BAST veröffentlicht https://www.bast.de/BASt_2017/DE/Statistik/Bruecken/Zustandsnoten-excel.html über den Zustand von Straßenbrücken
-- Schöner Artikel (leider nicht mehr) auf Welt Online
-  http://www.welt.de/politik/interaktiv/bruecken/deutschlands-bruecken-wettlauf-gegen-den-verfall.html
-- Box-Plot (übernächste Folie) vermittelt kompakt einen ersten Eindruck über den Zustand
-- Grundlage für Entscheidungen über Maßnahmen
-
-## Beispiel: Zustand von Straßenbrücken in Deutschland
-
-![](00-bilder/Screenshot 2025-10-01 at 06.56.23.png){}
-
-## Boxplot Zustand Straßenbrücken
-
-![](00-bilder/bruecken.svg){}
-
-Wie kann man solche Grafiken erstellen?
+# Praktische Anwendung auf dem Computer...
 
 ## Tabellenkalkulation
 
-  ![](00-bilder/excel.png){}
+  ![](bilder/excel.png){}
 
-  - Geeignet für einfache Fragestellungen 
-  - Man muss nichts grundsätzlich Neues lernen
-  - Häufig unhandlich und umständlich in der Anwendung
+- Geeignet für einfache Fragestellungen 
+- Man muss nichts grundsätzlich Neues lernen
+- Häufig unhandlich und umständlich in der Anwendung
 
 ## Exkurs Excel 1/2
 
-![](00-bilder/schaueble.jpg){}
+![](bilder/schaueble.jpg){}
 
-Wolfgang Schäuble zum "Wall Street Journal" auf die Frage, ob der Europäische Fiskalpakt, Konjunkturpakete gegen die Rezession verbieten will: "Wir haben sehr sorgfältig die Untersuchung von Rogoff und Reinhart gelesen. Sie haben empirisch belegt, dass ab einem bestimmten Grad eine zu hohe Staatsverschuldung das Wachstum beeinträchtigt"
+Wolfgang Schäuble zum „Wall Street Journal“ auf die Frage, ob der Europäische Fiskalpakt Konjunkturpakete gegen die Rezession verbieten will: „Wir haben sehr sorgfältig die Untersuchung von Rogoff und Reinhart gelesen. Sie haben empirisch belegt, dass ab einem bestimmten Grad eine zu hohe Staatsverschuldung das Wachstum beeinträchtigt.“
 
 ## Exkurs Excel 2/2
 
-![](00-bilder/Screenshot 2021-10-05 at 11.51.01.png){}
+![](bilder/Screenshot 2021-10-05 at 11.51.01.png){}
 
 - Google-Suche: The Excel error that changed history 
-- https://de.wikipedia.org/wiki/Kenneth\_S.\_Rogoff  
+- <https://de.wikipedia.org/wiki/Kenneth_S._Rogoff>
 
-## SPSS - Statistical Package for the Social Sciences
+## SPSS – Statistical Package for the Social Sciences
 
-![](00-bilder/SPSS-Statistics-Desktop_6.png){}
+![](bilder/SPSS-Statistics-Desktop_6.png){}
 
 - Umfangreiches Statistikpaket
 - Weit verbreitet in Wirtschafts- und Sozialwissenschaften, Medizin
-- Komfortabel in der Anwendung aber eher unflexibel
+- Komfortabel in der Anwendung, aber eher unflexibel
 - Teuer
 
 ##
@@ -138,7 +131,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(
-    "01-daten/6342800.day",
+    "daten/6342800.day",
     sep=";",
     comment="#",
     encoding="windows-1252",
@@ -177,64 +170,83 @@ plt.show()
 #| code-line-numbers: true
 library(tidyverse)
 
-d <- read_delim("01-daten/6342800.day", delim = ";", skip = 40, trim_ws = TRUE) |>
-    mutate(monat = month(`YYYY-MM-DD`, label = TRUE)) |>
-    group_by(monat) |>
-    summarise(mittelwert = mean(Original), min = min(Original), max = max(Original))
+d <- read_delim(
+  "daten/6342800.day",
+  delim = ";",
+  comment = "#",
+  trim_ws = TRUE
+) |>
+  mutate(monat = month(`YYYY-MM-DD`, label = TRUE)) |>
+  group_by(monat) |>
+  summarise(
+    mittelwert = mean(Original),
+    min = min(Original),
+    max = max(Original)
+  )
 
 ggplot(data = d) +
-    geom_col(mapping = aes(x = monat, y = mittelwert)) +
-    geom_errorbar(mapping = aes(x = monat, ymin = min, ymax = max)) +
-    labs(
-        x = "Monat", y = "Abfluss in m³/s",
-        title = "Abfluss der Donau am Pegel Hofkirchen",
-        subtitle = "Monatliche Mittel- und Extremwerte"
-    )
+  geom_col(mapping = aes(x = monat, y = mittelwert)) +
+  geom_errorbar(mapping = aes(x = monat, ymin = min, ymax = max)) +
+  labs(
+    x = "Monat",
+    y = "Abfluss in m³/s",
+    title = "Abfluss der Donau am Pegel Hofkirchen",
+    subtitle = "Monatliche Mittel- und Extremwerte"
+  )
 ```
 
 :::
 
-## Mathematik B: Quarto, R und RStudio {.smaller}
+## Mathematik B: Quarto, R und Positron {.smaller}
 
-![](00-bilder/RStudio.png){}
+![](bilder/positron.png){}
 
 - Quarto: System zur Erstellung von Dokumenten mit Text und Programmcode
-- R: Aufbereitung von Daten und Plotten besser als in Python
-- RStudio: Grafische Umgebung für Quarto und R
+- R: Aufbereitung von Daten und Plotten komfortabler als in Python
+- Positron: Grafische Umgebung für Quarto und R
 - Sehr mächtig, aber erfordert Einarbeitung
 - Frei verfügbar
 
 $\rightarrow$ So wenig Informatik wie möglich!
 
-## Aufbau der Veranstaltung
+# Aufbau der Vorlesung und Prüfungsleistung...
 
-![](00-bilder/Screenshot 2021-10-05 at 11.01.19.png){}
+## Aufbau der Vorlesung
 
-### Inverted Clasroom
+![](bilder/Screenshot 2021-10-05 at 11.01.19.png){}
+
+### Inverted Classroom
 
 - Erklärvideos zu den Inhalten zu Hause anschauen
-- Neue Videos werden Mittwoch Abend freigeschaltet
-- Fragen diskutieren, Aufgaben lösen und 'echte' Daten analysieren in Präsenz
+- Neue Videos werden jeweils bis Ende der Woche freigeschaltet
+- Fragen diskutieren, Aufgaben lösen und „echte“ Daten analysieren in Präsenz
 
 ## Prüfungsleistung
 
-- Hausarbeit mit Kolloquium
-- Themen aus den Bereichen Konstruktiv, Wasser und Verkehr 
+- Hausarbeit mit mündlicher Prüfung
+  - Form: Schriftliche Ausarbeitung oder Präsentation
+- Themen aus den Bereichen Konstruktiver Ingenieurbau, Wasser und Verkehr
     - Ausgabe Ende des Jahres
 - Eigene Themen sind möglich
-- Betreuung durch mich und die Fachkollegen
-- Schriftliche Ausarbeitung oder Präsentation
-- Kolloquium mit Fragen zu theoretischen Zusammenhängen
+- Betreuung durch mich und die Fachkolleg:innen
 
-# Installation der Software und erste Schritte
+## Was ändert sich gegenüber den letzten Jahren?
+
+- Positron statt RStudio
+- Wir werden explizit KI nutzen
+  - Wichtig: Erst Grundprinzipien verstehen, dann sich von KI helfen lassen
+- Zusätzlich Wahrscheinlichkeitsrechnung und schließende Statistik
+- Mündliche Prüfung umfasst jetzt Mathematik und R
+
+# Installation der Software und erste Schritte...
 
 ## Aufgaben
 
-- R und RStudio installieren (Anleitung auf Moodle)
+- R und Positron installieren (Anleitung auf Moodle)
 
-- Folien herunterladen und in RStudio öffnen
+- Folien herunterladen und in Positron öffnen
     - Zip-Datei [01-erste-schritte.zip](../folien-r/c/01-erste-schritte.zip) herunterladen
-    - In Ordner 'studium/mathematik-b/folien-r/' entpacken
-    - Datei erste-schritte.Rproj doppelklicken
-    - Datei `erste-schritte.qmd` in RStudio anschauen
+    - In Ordner `studium/mathematik-b/folien-r/` entpacken
+    - Datei erste-schritte.code-workspace in Positron öffnen
+    - Datei `erste-schritte.qmd` in Positron anschauen
     - Gemeinsam durchgehen
