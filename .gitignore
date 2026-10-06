@@ -1,13 +1,20 @@
+# Ausgabe von quarto render und PDF-Vergleich
 _output
+_vergleich
+
+# Arbeitsdateien von Quarto und Editoren
 .quarto
 .Rproj.user
+*_ipynb
+*_files
 site_libs
 
+# Gerendertes HTML, außer den Seiten für Moodle
 *.html
 !moodle/*.html
-*_files
-*.quarto_ipynb
 
+# Von collect-content.R befüllt (siehe content.yml)
 */c
-
-
+skript/_bcd-setup.*
+skript/*.bib
+skript/bcd-style-notes.css
