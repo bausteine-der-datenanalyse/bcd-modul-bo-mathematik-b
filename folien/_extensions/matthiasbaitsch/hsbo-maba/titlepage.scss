@@ -1,0 +1,17 @@
+/*-- scss:defaults --*/
+
+// Logo auf der Titelfolie, kann im Projekt überschrieben werden
+$title-logo: url("https://www.hochschule-bochum.de/_assets/e1b7833f96a3afb11c987930cb75faa0/Images/hs-bo_logo.svg") !default;
+$title-logo-scale: 0.4 !default;
+
+/*-- scss:rules --*/
+
+#title-slide .title:before {
+  content: $title-logo;
+  scale: $title-logo-scale;
+  display: block;
+}
+
+#title-slide .quarto-title-author-name {
+  font-size: 0.8em;
+}

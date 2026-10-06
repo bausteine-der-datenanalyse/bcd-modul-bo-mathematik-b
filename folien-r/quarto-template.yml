@@ -1,10 +1,4 @@
-execute: 
+execute:
   echo: true
 
-format: 
-  revealjs:
-    overview: true
-    slide-number: "c/t"
-    code-line-numbers: false
-    theme: 
-    - bcd-style-slides.scss
+format: hsbo-maba-revealjs
