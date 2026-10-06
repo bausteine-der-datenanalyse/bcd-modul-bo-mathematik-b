@@ -29,7 +29,7 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 - BCD-Submodule (`bcd-bausteine-montieren`, `bcd-bausteine-r`, `bcd-bausteine-statistik`) gehören zum
   Gemeinschaftsprojekt und bleiben unverändert.
 
-## 0. Voraussetzung: Extension ergänzen
+## Voraussetzung: Extension ergänzen
 
 - [X]  Rahmen für `.framed` und `.raw` wie in `bcd-bausteine-r/bcd-style-slides.scss` (in Mathe B bisher
   ohne Stil, `.imagesource` bleibt undefiniert)
@@ -37,19 +37,19 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
   `bcd-bausteine-r/w-kenngroessen/folien/folien.qmd`)
 - [X]  Version 0.2.0 getaggt und gepusht
 
-## 1. Folien als PDF
+## Folien als PDF
 
 - [X]  Make-Targets analog Informatik (dort im `Makefile`: `render-slides-pdf`, `save-slides-pdf`,
   `diff-slides-pdf`): `_output/folien/woche-*.html`, `_output/folien-r/c/*.html`
 
-## 2. `folien` umstellen
+## `folien` umstellen
 
 - [X]  `quarto add matthiasbaitsch/quarto-hsbo-maba` in `folien/`
 - [X]  `_quarto.yml`: `revealjs` → `hsbo-maba-revealjs`, Optionen entfernen, die die Extension schon setzt
   (`lang`, `overview`, `slide-number`, `code-line-numbers`, `theme`)
 - [X]  `style.scss` löschen
 
-## 3. `folien-r` umstellen
+## `folien-r` umstellen
 
 - [X]  `quarto add matthiasbaitsch/quarto-hsbo-maba` in `folien-r/`
 - [X]  Zuerst testen: Finden die Web-Folien unter `folien-r/c/` die Extension in `folien-r/_extensions/`? (ja)
@@ -66,13 +66,31 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 - [X]  `bcd-style-slides.scss` löschen
 - [X]  Ein Zip entpacken und lokal rendern (`09-daten-einlesen`, inkl. `.framed`)
 
-## 4. Allgemein
+## Allgemein
 
 - [X]  Logo der Titelseite festlegen. Die Extension nimmt standardmäßig das HS-Bochum-Logo (Variable
   `$title-logo` in `titlepage.scss`). Überschreiben per eigener SCSS-Datei ist noch nicht getestet.
 - [X]  Make-Target `update-extension` wie in Informatik, aber für beide Ordner (`folien`, `folien-r`)
 
-## 5. Ordnerstruktur wie Informatik
+## CI
+
+- [ ]  Workflow prüfen (`make render`, Checkout mit Submodulen), `_extensions/` in beiden Ordnern im Checkout
+  vorhanden
+
+## Folien und Aufgaben erste Schritte
+
+- [X] Text in `bcd-bausteine-r/w-erste-schritte/folien/folien.qmd` von RStudio auf Positron umgestellt
+  (noch nicht committet)
+- [ ] Bilder in `w-erste-schritte/folien/bilder/` erstellen (werden in `folien.qmd` schon referenziert):
+  - `positron.svg`: Screenshot der Oberfläche mit Bereichen 1–4 (Editor, Variablen, Konsole, Plots/Hilfe),
+    ersetzt `rstudio.svg`
+  - `quarto-markdown-positron.svg`: Editor mit `.qmd`-Datei, beschriftet (Preview/Render, Chunk ausführen,
+    alle Chunks ausführen …), ersetzt `quarto-markdown-rstudio.svg`
+  - `logos.svg` (Quelle `logos.afdesign`): RStudio-Logo durch Positron-Logo ersetzen
+- [ ] Alte RStudio-Bilder (`rstudio.svg`, `quarto-markdown-rstudio.svg`) löschen oder nach `bilder/alt/` verschieben
+- [ ] Aufgabe ggf. ergänzen
+
+## Ordnerstruktur wie Informatik
 
 - [ ]  `folien`, `folien-r` usw. in einen Unterordner `lernpfad/` verschieben (Informatik: `lernpfad/aufgaben`,
   `lernpfad/folien`, `lernpfad/folien-alle`, …). Festlegen, welche Ordner dazugehören.
@@ -80,17 +98,12 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
   den `content.yml`, Aufrufe von `collect-content.R` und `SLIDES_PDF_DIRS` im `Makefile`, `.gitignore` (`*/c`)
 - [ ]  Prüfen, ob sich die URLs auf GitHub Pages ändern (Links in Moodle)
 
-## 6. CI
-
-- [ ]  Workflow prüfen (`make render`, Checkout mit Submodulen), `_extensions/` in beiden Ordnern im Checkout
-  vorhanden
-
-## 7. Dokumentation
+## Dokumentation
 
 - [ ]  CLAUDE.md um Hinweis auf die Extension ergänzen (nur `folien`, `folien-r`; zwei Kopien)
 - [ ]  README der Extension um Mathe-Besonderheiten ergänzen
 
-## 8. Folien-PDFs in der CI
+## Folien-PDFs in der CI
 
 - [ ]  Ggf. veröffentlichen und in der CI erzeugen (Informatik: Node und decktape im Workflow,
   `make publish PDF_JOBS=2 DECKTAPE_ARGS=--chrome-arg=--no-sandbox`)

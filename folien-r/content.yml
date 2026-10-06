@@ -22,7 +22,7 @@ jobs-on-parts:
   from: ${part-folder}/bilder
   to: ${target-folder}/bilder
   optional: yes
-  exclude-patterns: [".afdesign$"]
+  exclude-patterns: [".afdesign$", ".af$", "~lock~$"]
 - copy:
   from: ${part-folder}/daten
   to: ${target-folder}/daten
@@ -45,7 +45,7 @@ jobs-on-parts:
   from: ${part-folder}/bilder
   to: ${target-folder}/${idx}-${name}/bilder
   optional: yes
-  exclude-patterns: [".afdesign$"]
+  exclude-patterns: [".afdesign$", ".af$", "~lock~$"]
 - copy:
   from: ${part-folder}/daten
   to: ${target-folder}/${idx}-${name}/daten
