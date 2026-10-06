@@ -19,8 +19,8 @@ jobs:
   from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/bibliographie.bib
   to: ${target-folder}/schreiben-mit-quarto/bibliographie.bib
 - copy:
-  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/schreiben-mit-quarto.Rproj
-  to: ${target-folder}/schreiben-mit-quarto/schreiben-mit-quarto.Rproj
+  from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/schreiben-mit-quarto.code-workspace
+  to: ${target-folder}/schreiben-mit-quarto/schreiben-mit-quarto.code-workspace
 - copy:
   from: ${bcd-bausteine-r}/w-schreiben-mit-quarto/bilder
   to: ${target-folder}/schreiben-mit-quarto/bilder
@@ -34,8 +34,8 @@ jobs:
   from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.qmd
   to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.qmd
 - copy:
-  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.Rproj
-  to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.Rproj
+  from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/praesentationen-mit-quarto.code-workspace
+  to: ${target-folder}/praesentationen-mit-quarto/praesentationen-mit-quarto.code-workspace
 - copy:
   from: ${bcd-bausteine-r}/w-praesentationen-mit-quarto/bilder
   to: ${target-folder}/praesentationen-mit-quarto/bilder

@@ -39,8 +39,8 @@ jobs-on-parts:
   from: ${part-folder}/folien.qmd
   to: ${target-folder}/${idx}-${name}/${name}.qmd
 - copy:
-  from: ${part-folder}/folien.Rproj
-  to: ${target-folder}/${idx}-${name}/${name}.Rproj
+  from: ${part-folder}/folien.code-workspace
+  to: ${target-folder}/${idx}-${name}/${name}.code-workspace
 - copy:
   from: ${part-folder}/bilder
   to: ${target-folder}/${idx}-${name}/bilder

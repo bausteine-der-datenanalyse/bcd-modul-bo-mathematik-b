@@ -118,8 +118,8 @@ jobs-on-parts:
   from: ${part-folder}/aufgaben.qmd
   to: ${target-folder}/${idx}-${name}-aufgaben/${name}-aufgaben.qmd
 - copy: 
-  from: ${part-folder}/aufgaben.Rproj
-  to: ${target-folder}/${idx}-${name}-aufgaben/${name}-aufgaben.Rproj
+  from: ${part-folder}/aufgaben.code-workspace
+  to: ${target-folder}/${idx}-${name}-aufgaben/${name}-aufgaben.code-workspace
 - copy: 
   from: ${part-folder}/daten
   to: ${target-folder}/${idx}-${name}-aufgaben/daten
