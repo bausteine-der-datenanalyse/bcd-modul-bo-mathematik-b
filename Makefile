@@ -11,7 +11,6 @@ clean:
 	done
 
 bootstrap:
-	pip
 	R -e "install.packages(\"remotes\", repos = \"https://cran.uni-muenster.de\"); remotes::install_deps(upgrade = \"always\")"
 
 update-from-github:
