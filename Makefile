@@ -6,7 +6,7 @@ SLIDES_PDF_DIRS = folien folien-r/c
 
 clean:
 	rm -rf _output
-	for f in skript aufgaben folien-r folien-r-alle weitere-unterlagen; do \
+	for f in lernpfad/skript lernpfad/aufgaben lernpfad/folien-r lernpfad/folien-r-alle weitere-unterlagen; do \
 		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/bcd-style-notes.css $$f/*_files $$f/index.html; \
 	done
 
@@ -19,20 +19,20 @@ update-from-github:
 	git submodule update --recursive --remote
 
 prepare-render:
-	cd folien-r-alle && ../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd skript && ../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd folien-r && ../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd aufgaben && ../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd lernpfad/folien-r-alle && ../../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd lernpfad/skript && ../../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd lernpfad/folien-r && ../../bausteine/bcd-bausteine-montieren/collect-content.R
+	cd lernpfad/aufgaben && ../../bausteine/bcd-bausteine-montieren/collect-content.R
 	cd weitere-unterlagen && ../bausteine/bcd-bausteine-montieren/collect-content.R
 
 render-slides:
-	quarto render folien
+	quarto render lernpfad/folien
 
 render-slides-r: prepare-render
-	quarto render folien-r
+	quarto render lernpfad/folien-r
 
 render-slides-r-all: prepare-render
-	quarto render folien-r-alle -t html
+	quarto render lernpfad/folien-r-alle -t html
 
 render-slides-pdf:
 	for d in $(SLIDES_PDF_DIRS); do \
@@ -60,10 +60,10 @@ diff-slides-pdf:
 	done
 
 render-notes: prepare-render
-	quarto render skript
+	quarto render lernpfad/skript
 
 render-assignments: prepare-render
-	quarto render aufgaben
+	quarto render lernpfad/aufgaben
 
 render-additional-materials: prepare-render
 	quarto render weitere-unterlagen
@@ -73,8 +73,8 @@ render: render-slides render-slides-r render-slides-r-all render-notes render-as
 publish: render render-slides-pdf
 
 update-extension:
-	cd folien && quarto update matthiasbaitsch/quarto-hsbo-maba --no-prompt
-	cd folien-r && quarto update matthiasbaitsch/quarto-hsbo-maba --no-prompt
+	cd lernpfad/folien && quarto update matthiasbaitsch/quarto-hsbo-maba --no-prompt
+	cd lernpfad/folien-r && quarto update matthiasbaitsch/quarto-hsbo-maba --no-prompt
 
 commit:
 	git add .

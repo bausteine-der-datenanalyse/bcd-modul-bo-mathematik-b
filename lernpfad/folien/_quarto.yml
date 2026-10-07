@@ -1,5 +1,5 @@
 project:
   type: default
-  output-dir: ../_output/folien
+  output-dir: ../../_output/folien
 
 format: hsbo-maba-revealjs

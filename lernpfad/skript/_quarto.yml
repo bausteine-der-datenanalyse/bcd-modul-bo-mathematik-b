@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: ../_output/skript
+  output-dir: ../../_output/skript
 
 lang: de
 number-depth: 2

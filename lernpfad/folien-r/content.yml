@@ -57,7 +57,6 @@ jobs-on-parts:
 - copy:
   from: quarto-template.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml
-# copy kopiert Ordner nicht rekursiv, daher den Extension-Ordner direkt angeben
 - copy:
   from: _extensions/matthiasbaitsch/hsbo-maba
   to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/hsbo-maba

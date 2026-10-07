@@ -1,6 +1,6 @@
 project: 
   type: book
-  output-dir: ../_output/folien-r-alle
+  output-dir: ../../_output/folien-r-alle
 
 lang: de
 
