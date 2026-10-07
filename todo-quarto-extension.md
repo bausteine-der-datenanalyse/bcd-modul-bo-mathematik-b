@@ -79,16 +79,16 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 
 ## Folien und Aufgaben erste Schritte
 
-- [X] Text in `bcd-bausteine-r/w-erste-schritte/folien/folien.qmd` von RStudio auf Positron umgestellt
+- [X]  Text in `bcd-bausteine-r/w-erste-schritte/folien/folien.qmd` von RStudio auf Positron umgestellt
   (noch nicht committet)
-- [ ] Bilder in `w-erste-schritte/folien/bilder/` erstellen (werden in `folien.qmd` schon referenziert):
+- [X]  Bilder in `w-erste-schritte/folien/bilder/` erstellen (werden in `folien.qmd` schon referenziert):
   - `positron.svg`: Screenshot der Oberfläche mit Bereichen 1–4 (Editor, Variablen, Konsole, Plots/Hilfe),
     ersetzt `rstudio.svg`
   - `quarto-markdown-positron.svg`: Editor mit `.qmd`-Datei, beschriftet (Preview/Render, Chunk ausführen,
     alle Chunks ausführen …), ersetzt `quarto-markdown-rstudio.svg`
   - `logos.svg` (Quelle `logos.afdesign`): RStudio-Logo durch Positron-Logo ersetzen
-- [ ] Alte RStudio-Bilder (`rstudio.svg`, `quarto-markdown-rstudio.svg`) löschen oder nach `bilder/alt/` verschieben
-- [ ] Aufgabe ggf. ergänzen
+- [X]  Alte RStudio-Bilder (`rstudio.svg`, `quarto-markdown-rstudio.svg`) löschen oder nach `bilder/alt/` verschieben
+- [X]  Aufgabe ggf. ergänzen
 
 ## Ordnerstruktur wie Informatik
 
@@ -107,3 +107,10 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 
 - [ ]  Ggf. veröffentlichen und in der CI erzeugen (Informatik: Node und decktape im Workflow,
   `make publish PDF_JOBS=2 DECKTAPE_ARGS=--chrome-arg=--no-sandbox`)
+- [ ]  PDFs auf der Titelfolie verlinken wie in Informatik (`lernpfad-zusammenstellen.jl` fügt
+  `[⬇ Folien als PDF](name.pdf){download="name.pdf"}` vor der ersten Überschrift ein)
+  - `folien-r`: `collect-content.R` kann nur zeilenweise ersetzen, nicht einfügen
+  - Vorschlag: Lua-Filter in der Extension, per `pdf-download: true` eingeschaltet, Dateiname aus der
+    Eingabedatei. Nur für die Webseite einschalten (`folien/_quarto.yml`, eigene Metadaten-Datei für
+    `folien-r/c/`), nicht in den Zips
+  - Alternative für `folien`: Zeile von Hand in die `woche-*.qmd`
