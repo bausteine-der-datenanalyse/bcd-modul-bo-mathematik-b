@@ -7,14 +7,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Lehrmaterial für das Modul "Mathematik B" (Statistik und Datenanalyse) im Master-Studiengang
 Bauingenieurwesen/Umweltingenieurwesen der Fachhochschule Bochum, erstellt mit
 [Quarto](https://quarto.org/) und R. Veröffentlichung erfolgt automatisch auf GitHub Pages beim Push
-auf `main`. Sechs unabhängige Quarto-Projekte liegen nebeneinander im Repo-Root:
+auf `main`. Sechs unabhängige Quarto-Projekte, fünf davon in `lernpfad/` (wie im Informatik-Projekt):
 
-- `skript` – Skript (HTML + PDF)
-- `aufgaben` – Aufgabenblätter (HTML + PDF)
-- `folien` – Foliensatz (revealjs)
-- `folien-r` – R-Folien
-- `folien-r-alle` – Gesamtfassung der R-Folien (HTML + PDF, in CI/Makefile nur HTML gerendert)
+- `lernpfad/skript` – Skript (HTML + PDF)
+- `lernpfad/aufgaben` – Aufgabenblätter (HTML + PDF)
+- `lernpfad/folien` – Foliensatz (revealjs)
+- `lernpfad/folien-r` – R-Folien
+- `lernpfad/folien-r-alle` – Gesamtfassung der R-Folien (HTML + PDF, in CI/Makefile nur HTML gerendert)
 - `weitere-unterlagen` – sonstiges Material
+
+Die Ausgabe landet unabhängig davon in `_output/<projekt>` (z. B. `_output/folien`), die URLs auf GitHub
+Pages enthalten also kein `lernpfad/`.
 
 ## Bausteine-Architektur (wichtig!)
 
@@ -34,12 +37,32 @@ den Bausteine-Repos in einen lokalen Zielordner, standardmäßig `c/` (siehe `ta
 
 `folien` hat kein `content.yml` und wird direkt aus den `.qmd`-Dateien im Ordner gerendert.
 
+Pfade in `content.yml` (`parts`, `deploy-folder`, `${project-folder}`) sind relativ zum Repo-Root, einfache
+Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. Der `copy`-Job kopiert Ordner
+**nicht rekursiv**, nur die Dateien direkt darin.
+
+## Quarto-Extension `hsbo-maba`
+
+`lernpfad/folien` und `lernpfad/folien-r` nutzen die Extension `hsbo-maba` (Repo
+`matthiasbaitsch/quarto-hsbo-maba`, lokal `~/sciebo/lehrveranstaltungen/quarto-hsbo-maba`) mit dem Format
+`hsbo-maba-revealjs`. Sie enthält das gemeinsame Aussehen der Folien (auch für Informatik), z. B. die Klassen
+`.up*`/`.down*`, `.framed`, `.raw`.
+
+- Die Extension liegt in zwei Kopien: `lernpfad/folien/_extensions/` und `lernpfad/folien-r/_extensions/`
+  (eingecheckt). `folien-r/content.yml` kopiert sie zusätzlich in jedes Zip, damit Studierende lokal rendern
+  können.
+- Stiländerungen nur im Extension-Repo, dort Version erhöhen, taggen, pushen, dann hier `make update-extension`.
+- `skript`, `aufgaben`, `folien-r-alle` und `weitere-unterlagen` nutzen die Extension nicht; ihr Stil
+  (`bcd-style-notes.css`, `_bcd-setup.tex`) kommt aus den BCD-Bausteinen.
+
 ## Befehle
 
 ```bash
 make prepare-render   # führt collect-content.R für skript, aufgaben, folien-r, folien-r-alle,
                        # weitere-unterlagen aus (füllt jeweils c/)
-make render           # prepare-render + quarto render für alle sechs Projekte
+make render           # rendert alle sechs Projekte (render-slides, render-slides-r, render-notes, …)
+make render-slides-pdf # Folien (folien, folien-r) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
+make update-extension  # Extension hsbo-maba in folien und folien-r aktualisieren
 make clean             # entfernt _output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)
@@ -48,8 +71,8 @@ make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)
 Einzelnes Projekt rendern (nach `prepare-render`, sofern das Projekt eine `content.yml` hat):
 
 ```bash
-quarto render skript
-quarto render folien-r-alle -t html   # PDF-Format hier bewusst ausgelassen
+quarto render lernpfad/skript
+quarto render lernpfad/folien-r-alle -t html   # PDF-Format hier bewusst ausgelassen
 ```
 
 R-Pakete werden über `DESCRIPTION` (Paketname `bcdstatistik`) verwaltet:

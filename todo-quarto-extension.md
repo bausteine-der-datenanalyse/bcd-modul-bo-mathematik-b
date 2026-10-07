@@ -74,7 +74,7 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 
 ## CI
 
-- [ ]  Workflow prüfen (`make render`, Checkout mit Submodulen), `_extensions/` in beiden Ordnern im Checkout
+- [X]  Workflow prüfen (`make render`, Checkout mit Submodulen), `_extensions/` in beiden Ordnern im Checkout
   vorhanden
 
 ## Folien und Aufgaben erste Schritte
@@ -92,16 +92,18 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 
 ## Ordnerstruktur wie Informatik
 
-- [ ]  `folien`, `folien-r` usw. in einen Unterordner `lernpfad/` verschieben (Informatik: `lernpfad/aufgaben`,
+- [X]  `folien`, `folien-r` usw. in einen Unterordner `lernpfad/` verschieben (Informatik: `lernpfad/aufgaben`,
   `lernpfad/folien`, `lernpfad/folien-alle`, …). Festlegen, welche Ordner dazugehören.
-- [ ]  Relative Pfade anpassen: `output-dir` und `pre-render` in den `_quarto.yml`, `deploy-folder` und Pfade in
+  (`folien`, `folien-r`, `folien-r-alle`, `aufgaben`, `skript`; `weitere-unterlagen` bleibt im Root)
+- [X]  Relative Pfade anpassen: `output-dir` und `pre-render` in den `_quarto.yml`, `deploy-folder` und Pfade in
   den `content.yml`, Aufrufe von `collect-content.R` und `SLIDES_PDF_DIRS` im `Makefile`, `.gitignore` (`*/c`)
-- [ ]  Prüfen, ob sich die URLs auf GitHub Pages ändern (Links in Moodle)
+- [X]  Prüfen, ob sich die URLs auf GitHub Pages ändern (Links in Moodle): nein, `output-dir` zeigt weiter auf
+  `_output/<projekt>`
 
 ## Dokumentation
 
-- [ ]  CLAUDE.md um Hinweis auf die Extension ergänzen (nur `folien`, `folien-r`; zwei Kopien)
-- [ ]  README der Extension um Mathe-Besonderheiten ergänzen
+- [X]  CLAUDE.md um Hinweis auf die Extension ergänzen (nur `folien`, `folien-r`; zwei Kopien)
+- [X]  README der Extension um Mathe-Besonderheiten ergänzen
 
 ## Folien-PDFs in der CI
 
