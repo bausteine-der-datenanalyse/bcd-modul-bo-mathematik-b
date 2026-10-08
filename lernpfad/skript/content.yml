@@ -63,4 +63,11 @@ parts:
 - folder: bausteine/bcd-bausteine-statistik/m-kenngroessen/skript
 - folder: bausteine/bcd-bausteine-statistik/m-dichtekurven-und-normalverteilung/skript
 - folder: bausteine/bcd-bausteine-statistik/m-zwei-merkmale/skript
+- folder: bausteine/bcd-bausteine-statistik/m-grundbegriffe-wahrscheinlichkeitsrechnung/skript
+- folder: bausteine/bcd-bausteine-statistik/m-wahrscheinlichkeit/skript
+- folder: bausteine/bcd-bausteine-statistik/m-kombinatorik/skript
+- folder: bausteine/bcd-bausteine-statistik/m-rechnen-mit-wahrscheinlichkeiten/skript
+- folder: bausteine/bcd-bausteine-statistik/m-zufallsvariablen/skript
+- folder: bausteine/bcd-bausteine-statistik/m-zuverlaessigkeit-von-tragwerken/skript
+- folder: bausteine/bcd-bausteine-statistik/m-schliessende-statistik/skript
 

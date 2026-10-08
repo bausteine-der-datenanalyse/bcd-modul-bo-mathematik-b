@@ -96,6 +96,19 @@ Workflow.
   `{.raw}` (Klasse) statt `{raw}` (Engine) verwenden – sonst meldet `knitr` "Unknown language
   engine 'raw'".
 
+## Umstellung altes LaTeX-Skript → Quarto
+
+Das alte LaTeX-Skript liegt in `/Users/maba/sciebo/mathematik-fbb/mathematik-b/01-skript.old` (Kapitel
+`NN-name/01-k-name.tex`). Kapitel werden nach und nach zu Modulen `m-<name>/skript/skript.qmd` in
+`bausteine/bcd-bausteine-statistik` umgestellt (Formatierung siehe dort `style.md`). Dabei gilt:
+
+- Text neben Bild (`\mbildmittext`, `minipage` usw.) wird untereinander gesetzt – Bild neben Text funktioniert in
+  Quarto nicht gut.
+- Mit R erstellte Grafiken (`00-pics-r/00-R/*.R`) werden als R-Code in das qmd übernommen, nicht als Bild: Daten
+  und Hilfsfunktionen in `01-daten/<name>.R` (per `source()` im ersten Chunk), der Plot-Code selbst in Chunks im
+  qmd (Vorbild: `m-zwei-merkmale`).
+- Sonstige Bilder als SVG in `00-bilder/`.
+
 ## Verwandtes Projekt
 
 Die Vorlesung **Informatik Master Bauingenieurwesen** (OOP mit C#) unter

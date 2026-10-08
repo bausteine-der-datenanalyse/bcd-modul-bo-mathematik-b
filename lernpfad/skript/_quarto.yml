@@ -13,11 +13,24 @@ book:
   date: today
   chapters:
     - index.qmd
-    - c/01-statistische-daten.qmd
-    - c/02-einzelne-merkmale.qmd
-    - c/03-kenngroessen.qmd
-    - c/04-dichtekurven-und-normalverteilung.qmd
-    - c/05-zwei-merkmale.qmd
+    - part: Beschreibende Statistik
+      chapters:
+        - c/01-statistische-daten.qmd
+        - c/02-einzelne-merkmale.qmd
+        - c/03-kenngroessen.qmd
+        - c/04-dichtekurven-und-normalverteilung.qmd
+        - c/05-zwei-merkmale.qmd
+    - part: Wahrscheinlichkeitstheorie
+      chapters:
+        - c/06-grundbegriffe-wahrscheinlichkeitsrechnung.qmd
+        - c/07-wahrscheinlichkeit.qmd
+        - c/08-kombinatorik.qmd
+        - c/09-rechnen-mit-wahrscheinlichkeiten.qmd
+        - c/10-zufallsvariablen.qmd
+        - c/11-zuverlaessigkeit-von-tragwerken.qmd
+    - part: Schließende Statistik
+      chapters:
+        - c/12-schliessende-statistik.qmd
     - literatur.qmd
 
 filters: 

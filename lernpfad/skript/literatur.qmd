@@ -1,4 +1,8 @@
-# Literatur
+```{=latex}
+\bookmarksetup{startatroot}
+```
+
+# Literatur {.unnumbered}
 
 ::: {#refs}
 :::
