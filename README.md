@@ -1,5 +1,8 @@
 # Modul Mathematik B
 
+Lehrmaterial für das Modul "Mathematik B" (Statistik und Datenanalyse), erstellt mit
+[Quarto](https://quarto.org/) und R.
+
 Dokumente auf GitHub-Pages:
 
 - [Skript Grundlagen der Statistik (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/skript/index.html)
@@ -8,89 +11,62 @@ Dokumente auf GitHub-Pages:
 
 - [Folien zu R (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/folien-r-alle/index.html)
 
-## Voraussetzungen
+Installation und Erstellen der Unterlagen: siehe [INSTALLATION.md](INSTALLATION.md).
 
-Folgende Software muss installiert sein:
+## Aufbau
 
-- [Git](https://git-scm.com/)
-- [R](https://cran.r-project.org/)
-- [Quarto](https://quarto.org/)
-- **rsvg-convert** – wird von Quarto benötigt, um SVG-Bilder in PDF zu konvertieren.
+```
+bausteine/                 Git-Submodule mit den eigentlichen Inhalten
+  bcd-bausteine-statistik    Statistik: Skript, Aufgaben (Module m-*)
+  bcd-bausteine-r            R: Folien, Aufgaben (Module w-*)
+  bcd-bausteine-montieren    collect-content.R zum Zusammensetzen
+lernpfad/                  Quarto-Projekte des Lernpfads
+  skript                     Skript (HTML + PDF)
+  aufgaben                   Aufgabenblätter mit Lösungen (HTML + PDF)
+  folien                     Folien der Präsenzveranstaltung (revealjs)
+  folien-r                   R-Folien, einzeln und als Zip zum Herunterladen
+  folien-r-alle              alle R-Folien in einem Dokument
+weitere-unterlagen/        sonstiges Material (Schreiben/Präsentieren mit Quarto)
+_output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
+```
 
+### Bausteine zusammensetzen
 
-### rsvg-convert installieren
+Die Inhalte werden nicht in den Projektordnern geschrieben, sondern in den Bausteine-Repos. Jedes Projekt
+außer `lernpfad/folien` hat eine `content.yml`. Sie legt fest, welche Bausteine
+`bausteine/bcd-bausteine-montieren/collect-content.R` in den Ordner `c/` des Projekts kopiert. Quarto rendert
+anschließend den Inhalt von `c/`.
 
-#### macOS (Homebrew)
+```
+bausteine/*  --collect-content.R + content.yml-->  <projekt>/c/  --quarto render-->  _output/<projekt>
+```
+
+`c/` wird bei jedem Lauf geleert und neu befüllt – dort nichts von Hand ändern. Inhaltliche Änderungen gehören
+in die Bausteine, die Auswahl und Reihenfolge in die `content.yml`. Aufbau und Möglichkeiten der `content.yml`
+sind in der [README von bcd-bausteine-montieren](bausteine/bcd-bausteine-montieren/README.md) beschrieben.
+
+| Projekt                | Quelle                                         | Ergebnis in `c/`                                   |
+|------------------------|------------------------------------------------|----------------------------------------------------|
+| `lernpfad/skript`      | `m-*/skript` aus `bcd-bausteine-statistik`     | ein Kapitel `NN-name.qmd` je Modul                 |
+| `lernpfad/aufgaben`    | `m-*/aufgaben` und `w-*/aufgaben`              | `aufgabenblatt-N.qmd` und Lösungsblatt, Zips       |
+| `lernpfad/folien-r`    | `w-*/folien` aus `bcd-bausteine-r`             | ein Foliensatz `NN-name.qmd` je Modul, Zips        |
+| `lernpfad/folien-r-alle` | `w-*/folien` aus `bcd-bausteine-r`           | alle Foliensätze als Kapitel eines Dokuments       |
+| `weitere-unterlagen`   | `w-schreiben-mit-quarto`, `w-praesentationen-mit-quarto` | Zips zum Herunterladen                   |
+
+### Aussehen
+
+`lernpfad/folien` und `lernpfad/folien-r` verwenden die Quarto-Extension
+[hsbo-maba](https://github.com/matthiasbaitsch/quarto-hsbo-maba) (Format `hsbo-maba-revealjs`), die in beiden
+Ordnern unter `_extensions/` liegt. Aktualisieren mit `make update-extension`. Die übrigen Projekte beziehen
+ihren Stil (`bcd-style-notes.css`, `_bcd-setup.tex`) aus `bcd-bausteine-statistik`.
+
+## Schnellstart
 
 ```bash
-brew install librsvg
-```
-#### Windows
-
-Unter Windows wird rsvg-convert über [Chocolatey](https://chocolatey.org/) installiert,
-einen Paketmanager für Windows.
-
-**Schritt 1: Chocolatey installieren (einmalig)**
-
- PowerShell **als Administrator** öffnen:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(&#x27;https://community.chocolatey.org/install.ps1&#x27;))
+make update-from-github   # git pull + Submodule aktualisieren
+make render               # Bausteine zusammensetzen und alle Projekte rendern
+make clean                # _output und alle generierten Dateien entfernen
 ```
 
-**Schritt 2: rsvg-convert installieren**
-
-```powershell
-choco install rsvg-convert
-```
-
-**Schritt 3: Prüfen**
-
-Eine **neue** PowerShell öffnen und testen:
-
-```powershell
-rsvg-convert --version
-```
-
-Wenn eine Versionsnummer erscheint, hat alles geklappt.
-
-## Repository auschecken
-
-```bash
-git clone --recurse-submodules https://github.com/bausteine-der-datenanalyse/bcd-modul-bo-mathematik-b.git
-```
-
-## R-Pakete installieren
-
-Eine R-Shell im Projektverzeichnis starten und Folgendes eingeben:
-
-```r
-options(install.packages.compile.from.source = &quot;never&quot;)
-options(pkgType = &quot;binary&quot;)
-install.packages(&quot;remotes&quot;)
-remotes::install_deps(upgrade = &quot;always&quot;)
-```
-
-## Unterlagen erstellen
-
-1. Im Projektverzeichnis die neuesten Änderungen holen:
-
-```bash
-git pull
-git submodule update --remote
-```
-
-2. Im Ordner `folien-r-alle` das Sammelskript ausführen:
-
-```bash
-../bausteine/bcd-bausteine-montieren/collect-content.R
-```
-
-3. Quarto ausführen – je nach Bedarf einen oder mehrere der folgenden Befehle:
-
-```bash
-quarto render folien
-quarto render aufgaben
-quarto render folien-r
-quarto render folien-r-alle
-```
+Bei jedem Push auf `main` rendert GitHub Actions die Unterlagen mit `make render` und veröffentlicht `_output`
+auf GitHub Pages.
