@@ -70,14 +70,33 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
 - [ ]  Statistik-Folien in `bcd-bausteine-statistik`
 
   - Je Modul `m-*/folien/` neben `skript/` und `aufgaben/`, gleich gegliedert wie das Skript.
-  - Format `hsbo-maba-revealjs`.
-  - Gemeinsame Daten/R-Hilfsfunktionen von Skript und Folien in einen Ordner auf Modulebene (z. B.
-    `m-*/gemeinsam/`) statt `skript/01-daten/`. Erst angehen, wenn es die ersten echten Folien gibt.
+  - [X]  Erste Folien: `m-statistische-daten/folien/folien.qmd`.
+  - Keine Kopien: Folien nutzen Bilder, Daten und R-Hilfsfunktionen des Skripts über `../skript/`
+    (`../skript/00-bilder/…`, R per `withr::with_dir("../skript", source("01-daten/<name>.R"))`).
+  - [X]  Format: Folien nur als PDF, mit Typst (auch das Skript soll längerfristig auf Typst umgestellt werden).
+    Extension `kazuyanagimoto/quarto-touying-typst` (Format `touying-typst`, Theme `clean-theme` aus dem
+    Typst-Paket `touying-quarto-clean`), vorerst in `bcd-bausteine-statistik/_extensions/`. Klassen
+    (`neuerbegriff`, `ja`, `nein`) über `commands:` und `_bcd-setup.typ` (Gegenstück zu `_bcd-setup.tex`),
+    Typst-Zweig in `_bcd-setup.R`, Tabellen mit tinytable statt gt.
+  - [ ]  Später: Typst-Folienformat in die Extension `hsbo-maba` (z. B. `hsbo-maba-typst` mit touying, Theme,
+    Farben, Titelseite), dann aus `bcd-bausteine-statistik/_extensions/` entfernen.
+  - [ ]  CI von `bcd-bausteine-statistik` anpassen: Die Folien werden vorerst nur lokal gebraucht und sollen nicht
+    in der CI gerendert werden. `build.yaml` (Zeile 39) rendert aber `for f in m-*; do quarto render $f; done`,
+    also auch `folien/`. Render-Lauf auf `skript/` und `aufgaben/` beschränken (oder `folien/` ausnehmen),
+    bevor `bcd-bausteine-statistik` mit den Folien gepusht wird.
+  - [ ]  Makefile von `bcd-bausteine-statistik` anpassen: Die Targets `html` und `pdf` rendern
+    `quarto render $folder -t html` bzw. `-t pdf` für jeden Ordner `m-*` und erzwingen damit das Format auch
+    für `folien/`. Skript/Aufgaben und Folien trennen, z. B. eigenes Target `folien` mit
+    `quarto render m-*/folien/folien.qmd`.
+  - [ ]  Titelfolie ausbauen (Untertitel, Autor, Datum, Aussehen der Hochschule).
+  - [ ]  Beim Zusammensetzen (`lernpfad/statistik-folien/content.yml`) berücksichtigen, dass die Folien auf
+    `../skript/` zugreifen: Bilder, Daten und R-Dateien des Skripts so nach `c/` kopieren, dass die Pfade
+    stimmen (oder Pfade per `transform` umschreiben). Ebenso `../../_bcd-setup.typ` im Kopf der Folien.
 - [ ]  Neues Projekt `lernpfad/statistik-folien` analog `r-folien`
 
-  - Offen, ob Studierende die Folien bekommen (HTML/PDF/Zip) oder nur die Videos. Tendenz: nur Videos, sie
-    sollen das Skript lesen.
-  - PDF für Goodnotes über `make render-slides-pdf`.
+  - Nur PDF (Typst), kein HTML und keine Zips. Offen, ob Studierende die PDFs bekommen oder nur die Videos.
+    Tendenz: nur Videos, sie sollen das Skript lesen.
+  - PDF direkt in Goodnotes, `make render-slides-pdf` (decktape) wird dafür nicht gebraucht.
 - [ ]  Aufgabenblätter nach Abschnitten statt Terminen (zurückgestellt)
 
   - Blätter bleiben nummeriert, damit man einfach darauf verweisen kann.
