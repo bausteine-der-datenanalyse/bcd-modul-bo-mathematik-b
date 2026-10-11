@@ -86,7 +86,7 @@ R-Pakete werden über `DESCRIPTION` (Paketname `bcdstatistik`) verwaltet:
 remotes::install_deps(upgrade = "always")
 ```
 
-R-Lint-Konfiguration liegt in `.lintr` (Zeilenlänge 120, Einrückung 4).
+R-Lint-Konfiguration liegt in `.lintr` (Zeilenlänge 120, Einrückung 2).
 
 ## CI
 

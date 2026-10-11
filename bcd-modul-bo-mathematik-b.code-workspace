@@ -5,6 +5,12 @@
 		}
 	],
 	"settings": {
+		"[quarto]": {
+			"editor.tabSize": 2
+		},
+		"[r]": {
+			"editor.tabSize": 2
+		},
 		"cSpell.enableFiletypes": [
 			"quarto"
 		],
