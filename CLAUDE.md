@@ -7,17 +7,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Lehrmaterial für das Modul "Mathematik B" (Statistik und Datenanalyse) im Master-Studiengang
 Bauingenieurwesen/Umweltingenieurwesen der Fachhochschule Bochum, erstellt mit
 [Quarto](https://quarto.org/) und R. Veröffentlichung erfolgt automatisch auf GitHub Pages beim Push
-auf `main`. Sechs unabhängige Quarto-Projekte, fünf davon in `lernpfad/` (wie im Informatik-Projekt):
+auf `main`. Sechs unabhängige Quarto-Projekte, fünf davon in `lernpfad/` (wie im Informatik-Projekt),
+benannt nach dem Muster `<quelle>-<art>`:
 
-- `lernpfad/skript` – Skript (HTML + PDF)
+- `lernpfad/statistik-skript` – Skript Statistik (HTML + PDF)
 - `lernpfad/aufgaben` – Aufgabenblätter (HTML + PDF)
-- `lernpfad/folien` – Foliensatz (revealjs)
-- `lernpfad/folien-r` – R-Folien
-- `lernpfad/folien-r-alle` – Gesamtfassung der R-Folien (HTML + PDF, in CI/Makefile nur HTML gerendert)
+- `lernpfad/r-folien` – R-Folien, einzeln und als Zip
+- `lernpfad/r-folien-alle` – Gesamtfassung der R-Folien (HTML + PDF, in CI/Makefile nur HTML gerendert)
+- `lernpfad/veranstaltung` – Folien, die nur zu dieser Veranstaltung gehören (Einführung, …), einzeln und als Zip
 - `weitere-unterlagen` – sonstiges Material
 
-Die Ausgabe landet unabhängig davon in `_output/<projekt>` (z. B. `_output/folien`), die URLs auf GitHub
+Die Ausgabe landet unabhängig davon in `_output/<projekt>` (z. B. `_output/r-folien`), die URLs auf GitHub
 Pages enthalten also kein `lernpfad/`.
+
+Grundsatz: Material ist nach Themen geordnet (Bausteine), der Wochenablauf (Agenda, Links) steht nur in Moodle,
+nicht im Repo. Hintergrund und offene Schritte in `todo-umstellung-aufbau.md`.
 
 ## Bausteine-Architektur (wichtig!)
 
@@ -25,7 +29,7 @@ Inhalte werden nicht direkt in den Projektordnern geschrieben, sondern aus drei 
 "Bausteine"-Repos zusammengesetzt, die als Git-Submodule unter `bausteine/` eingebunden sind
 (`bcd-bausteine-statistik`, `bcd-bausteine-montieren`, `bcd-bausteine-r`).
 
-Jedes Quarto-Projekt (außer `folien`) hat eine `content.yml`, die als Job-Pipeline für
+Jedes Quarto-Projekt hat eine `content.yml`, die als Job-Pipeline für
 `bausteine/bcd-bausteine-montieren/collect-content.R` dient: Sie kopiert/transformiert Dateien aus
 den Bausteine-Repos in einen lokalen Zielordner, standardmäßig `c/` (siehe `target-folder` in
 `content.yml`).
@@ -35,7 +39,9 @@ den Bausteine-Repos in einen lokalen Zielordner, standardmäßig `c/` (siehe `ta
 Änderungen gehören entweder in die Quelle im jeweiligen `bausteine/*`-Submodul oder in die
 `content.yml`, die den Kopiervorgang steuert.
 
-`folien` hat kein `content.yml` und wird direkt aus den `.qmd`-Dateien im Ordner gerendert.
+Ausnahme `veranstaltung`: Die Quellen liegen lokal, ein Ordner je Foliensatz (z. B. `einfuehrung/` mit
+`folien.qmd`, `bilder/`, `daten/`, `skripte/`); `parts` in `content.yml` zeigen auf diese Ordner. `_quarto.yml`
+rendert nur `c/*.qmd`.
 
 Pfade in `content.yml` (`parts`, `deploy-folder`, `${project-folder}`) sind relativ zum Repo-Root, einfache
 Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. Der `copy`-Job kopiert Ordner
@@ -43,36 +49,35 @@ Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. D
 
 ## Quarto-Extension `hsbo-maba`
 
-`lernpfad/folien` und `lernpfad/folien-r` nutzen die Extension `hsbo-maba` (Repo
+`lernpfad/veranstaltung` und `lernpfad/r-folien` nutzen die Extension `hsbo-maba` (Repo
 `matthiasbaitsch/quarto-hsbo-maba`, lokal `~/sciebo/lehrveranstaltungen/quarto-hsbo-maba`) mit dem Format
 `hsbo-maba-revealjs`. Sie enthält das gemeinsame Aussehen der Folien (auch für Informatik), z. B. die Klassen
 `.up*`/`.down*`, `.framed`, `.raw`.
 
-- Die Extension liegt in zwei Kopien: `lernpfad/folien/_extensions/` und `lernpfad/folien-r/_extensions/`
-  (eingecheckt). `folien-r/content.yml` kopiert sie zusätzlich in jedes Zip, damit Studierende lokal rendern
+- Die Extension liegt in zwei Kopien: `lernpfad/veranstaltung/_extensions/` und `lernpfad/r-folien/_extensions/`
+  (eingecheckt). Die beiden `content.yml` kopieren sie zusätzlich in jedes Zip, damit Studierende lokal rendern
   können.
 - Stiländerungen nur im Extension-Repo, dort Version erhöhen, taggen, pushen, dann hier `make update-extension`.
-- `skript`, `aufgaben`, `folien-r-alle` und `weitere-unterlagen` nutzen die Extension nicht; ihr Stil
+- `statistik-skript`, `aufgaben`, `r-folien-alle` und `weitere-unterlagen` nutzen die Extension nicht; ihr Stil
   (`bcd-style-notes.css`, `_bcd-setup.tex`) kommt aus den BCD-Bausteinen.
 
 ## Befehle
 
 ```bash
-make prepare-render   # führt collect-content.R für skript, aufgaben, folien-r, folien-r-alle,
-                       # weitere-unterlagen aus (füllt jeweils c/)
+make prepare-render   # führt collect-content.R für alle Projekte aus (füllt jeweils c/)
 make render           # rendert alle sechs Projekte (render-slides, render-slides-r, render-notes, …)
-make render-slides-pdf # Folien (folien, folien-r) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
-make update-extension  # Extension hsbo-maba in folien und folien-r aktualisieren
+make render-slides-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
+make update-extension  # Extension hsbo-maba in veranstaltung und r-folien aktualisieren
 make clean             # entfernt _output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)
 ```
 
-Einzelnes Projekt rendern (nach `prepare-render`, sofern das Projekt eine `content.yml` hat):
+Einzelnes Projekt rendern (nach `prepare-render`):
 
 ```bash
-quarto render lernpfad/skript
-quarto render lernpfad/folien-r-alle -t html   # PDF-Format hier bewusst ausgelassen
+quarto render lernpfad/statistik-skript
+quarto render lernpfad/r-folien-alle -t html   # PDF-Format hier bewusst ausgelassen
 ```
 
 R-Pakete werden über `DESCRIPTION` (Paketname `bcdstatistik`) verwaltet:

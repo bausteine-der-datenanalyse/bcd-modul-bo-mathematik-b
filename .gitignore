@@ -16,6 +16,6 @@ site_libs
 # Von collect-content.R befüllt (siehe content.yml)
 */c
 lernpfad/*/c
-lernpfad/skript/_bcd-setup.*
-lernpfad/skript/*.bib
-lernpfad/skript/bcd-style-notes.css
+lernpfad/statistik-skript/_bcd-setup.*
+lernpfad/statistik-skript/*.bib
+lernpfad/statistik-skript/bcd-style-notes.css

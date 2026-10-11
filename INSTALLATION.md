@@ -83,18 +83,18 @@ make prepare-render
 Für ein einzelnes Projekt das Sammelskript im jeweiligen Projektordner ausführen, z. B.:
 
 ```bash
-cd lernpfad/skript
+cd lernpfad/statistik-skript
 ../../bausteine/bcd-bausteine-montieren/collect-content.R
 ```
 
 3. Quarto ausführen – alles mit `make render` oder einzeln:
 
 ```bash
-quarto render lernpfad/skript
+quarto render lernpfad/statistik-skript
 quarto render lernpfad/aufgaben
-quarto render lernpfad/folien
-quarto render lernpfad/folien-r
-quarto render lernpfad/folien-r-alle -t html
+quarto render lernpfad/veranstaltung
+quarto render lernpfad/r-folien
+quarto render lernpfad/r-folien-alle -t html
 quarto render weitere-unterlagen
 ```
 

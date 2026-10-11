@@ -247,8 +247,8 @@ ggplot(data = df) +
 - R und Positron installieren (Anleitung auf Moodle)
 
 - Folien herunterladen und in Positron öffnen
-  - Zip-Datei [01-erste-schritte.zip](../folien-r/c/01-erste-schritte.zip) herunterladen
-  - In Ordner `studium/mathematik-b/folien-r/` entpacken
+  - Zip-Datei [01-erste-schritte.zip](../../r-folien/c/01-erste-schritte.zip) herunterladen
+  - In Ordner `studium/mathematik-b/r-folien/` entpacken
   - Datei erste-schritte.code-workspace in Positron öffnen
   - Datei `erste-schritte.qmd` in Positron anschauen
   - Gemeinsam durchgehen

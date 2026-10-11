@@ -1,0 +1,87 @@
+# Output goes here, this folder is cleared on each run
+# Absolute path or relative to the folder containing this file
+target-folder: "c"
+
+# Folder where things go for deployment, relative to project folder
+deploy-folder: _output/veranstaltung/c
+
+# Jobs
+jobs:
+- copy:
+  from: quarto-template.yml
+  to: ${target-folder}/_metadata.yml
+
+# Jobs running on all parts
+jobs-on-parts:
+
+# Copy into target folder (web access)
+- copy:
+  from: ${part-folder}/folien.qmd
+  to: ${target-folder}/${idx}-${name}.qmd
+- copy:
+  from: ${part-folder}/_beispiel-essen.qmd
+  to: ${target-folder}/_beispiel-essen.qmd
+  optional: yes
+- copy:
+  from: ${part-folder}/bilder
+  to: ${target-folder}/bilder
+  optional: yes
+  exclude-patterns: [".afdesign$", ".af$", ".graffle$", "~lock~$"]
+- copy:
+  from: ${part-folder}/daten
+  to: ${target-folder}/daten
+  optional: yes
+  overwrite: yes
+- copy:
+  from: ${part-folder}/skripte
+  to: ${target-folder}/skripte
+  optional: yes
+
+# Into subfolders of target folder to be zipped and deleted. Zipfile
+# for download from Moodle
+- copy:
+  from: ${part-folder}/folien.qmd
+  to: ${target-folder}/${idx}-${name}/${name}.qmd
+- copy:
+  from: ${part-folder}/_beispiel-essen.qmd
+  to: ${target-folder}/${idx}-${name}/_beispiel-essen.qmd
+  optional: yes
+- copy:
+  from: ${part-folder}/folien.code-workspace
+  to: ${target-folder}/${idx}-${name}/${name}.code-workspace
+- copy:
+  from: ${part-folder}/bilder
+  to: ${target-folder}/${idx}-${name}/bilder
+  optional: yes
+  exclude-patterns: [".afdesign$", ".af$", ".graffle$", "~lock~$"]
+- copy:
+  from: ${part-folder}/daten
+  to: ${target-folder}/${idx}-${name}/daten
+  optional: yes
+- copy:
+  from: ${part-folder}/skripte
+  to: ${target-folder}/${idx}-${name}/skripte
+  optional: yes
+- copy:
+  from: quarto-template.yml
+  to: ${target-folder}/${idx}-${name}/_quarto.yml
+- copy:
+  from: _extensions/matthiasbaitsch/hsbo-maba
+  to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/hsbo-maba
+- zip:
+  zipfile: ${idx}-${name}.zip
+  folder: ${idx}-${name}
+  root: ${target-folder}
+- copy:
+  from: ${target-folder}/${idx}-${name}.zip
+  to: ${deploy-folder}/${idx}-${name}.zip
+  overwrite: yes
+- delete:
+  folder: ${target-folder}/${idx}-${name}
+
+# Pattern to extract name from part folder
+part-name-pattern: "veranstaltung/(.*)"
+
+# Parts, folders relative to project root
+parts:
+- folder: lernpfad/veranstaltung/einfuehrung
