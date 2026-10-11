@@ -37,6 +37,8 @@ filters:
   - latex-environment
 commands:
   - neuerbegriff
+  - ja
+  - nein
 environments:
   - beispiel
 
