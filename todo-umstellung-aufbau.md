@@ -52,27 +52,31 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
     `_output/veranstaltung`.
 - [X]  `_beispiel-essen.qmd` in `einfuehrung/folien.qmd` übernehmen, statt per `include` einzubinden. Dann
   entfallen die beiden eigenen `copy`-Jobs dafür in `lernpfad/veranstaltung/content.yml` (und ggf. `_work.qmd`).
-- [ ]  Links auf Moodle aktualisieren (nach dem Push, wenn GitHub Pages neu gebaut ist). Basis-URL
+- [X]  Links auf Moodle aktualisieren (nach dem Push, wenn GitHub Pages neu gebaut ist). Basis-URL
   `https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/`, darunter:
 
-  | Alt                                   | Neu                                              |
-  |---------------------------------------|--------------------------------------------------|
-  | `skript/index.html`                   | `statistik-skript/index.html`                    |
-  | `skript/skript-mathematik-b.pdf`      | `statistik-skript/skript-mathematik-b.pdf`       |
-  | `skript/c/NN-name.html` (Kapitel)     | `statistik-skript/c/NN-name.html`                |
-  | `folien-r/c/NN-name.html`             | `r-folien/c/NN-name.html`                        |
-  | `folien-r/c/NN-name.zip`              | `r-folien/c/NN-name.zip`                         |
-  | `folien-r-alle/index.html`            | `r-folien-alle/index.html`                       |
-  | `folien/woche-1.html`                 | `veranstaltung/c/01-einfuehrung.html` (neu auch `.zip`) |
-  | `folien/woche-2.html` … `woche-11.html` | entfallen, Agenda steht im Wochen-Tab          |
+
+  | Alt                                      | Neu                                                     |
+  | ------------------------------------------ | --------------------------------------------------------- |
+  | `skript/index.html`                      | `statistik-skript/index.html`                           |
+  | `skript/skript-mathematik-b.pdf`         | `statistik-skript/skript-mathematik-b.pdf`              |
+  | `skript/c/NN-name.html` (Kapitel)        | `statistik-skript/c/NN-name.html`                       |
+  | `folien-r/c/NN-name.html`                | `r-folien/c/NN-name.html`                               |
+  | `folien-r/c/NN-name.zip`                 | `r-folien/c/NN-name.zip`                                |
+  | `folien-r-alle/index.html`               | `r-folien-alle/index.html`                              |
+  | `folien/woche-1.html`                    | `veranstaltung/c/01-einfuehrung.html` (neu auch `.zip`) |
+  | `folien/woche-2.html` … `woche-11.html` | entfallen, Agenda steht im Wochen-Tab                   |
 
   - Die Seite `moodle/installation-r-positron.html` enthält keine Links auf GitHub Pages.
 - [ ]  Statistik-Folien in `bcd-bausteine-statistik`
 
   - Je Modul `m-*/folien/` neben `skript/` und `aufgaben/`, gleich gegliedert wie das Skript.
+
   - [X]  Erste Folien: `m-statistische-daten/folien/folien.qmd`.
+
   - Keine Kopien: Folien nutzen Bilder, Daten und R-Hilfsfunktionen des Skripts über `../skript/`
     (`../skript/00-bilder/…`, R per `withr::with_dir("../skript", source("01-daten/<name>.R"))`).
+
   - [X]  Format: Folien nur als PDF, mit Typst (auch das Skript soll längerfristig auf Typst umgestellt werden).
     Extension `kazuyanagimoto/quarto-touying-typst` (Format `touying-typst`, Theme `clean-theme` aus dem
     Typst-Paket `touying-quarto-clean`), vorerst in `bcd-bausteine-statistik/_extensions/`. Klassen
@@ -83,7 +87,7 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
   - [X]  CI von `bcd-bausteine-statistik` anpassen: Folien werden vorerst nur lokal gebraucht. `build.yaml` rendert
     jetzt `for f in m-*/skript m-*/aufgaben`, dazu `GITHUB_TOKEN` beim Setup von Quarto (vorher 403 bei TinyTeX).
     In der CI scheiterte Typst beim Herunterladen von `@preview/touying` (access denied, Quarto 1.9.20).
-  - [ ]  Makefile von `bcd-bausteine-statistik` anpassen: Die Targets `html` und `pdf` rendern
+  - [X]  Makefile von `bcd-bausteine-statistik` anpassen: Die Targets `html` und `pdf` rendern
     `quarto render $folder -t html` bzw. `-t pdf` für jeden Ordner `m-*` und erzwingen damit das Format auch
     für `folien/`. Skript/Aufgaben und Folien trennen, z. B. eigenes Target `folien` mit
     `quarto render m-*/folien/folien.qmd`.
@@ -91,20 +95,21 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
   - [ ]  Beim Zusammensetzen (`lernpfad/statistik-folien/content.yml`) berücksichtigen, dass die Folien auf
     `../skript/` zugreifen: Bilder, Daten und R-Dateien des Skripts so nach `c/` kopieren, dass die Pfade
     stimmen (oder Pfade per `transform` umschreiben). Ebenso `../../_bcd-setup.typ` im Kopf der Folien.
-- [ ]  Neues Projekt `lernpfad/statistik-folien` analog `r-folien`
+- [X]  Neues Projekt `lernpfad/statistik-folien` analog `r-folien`
 
   - Nur PDF (Typst), kein HTML und keine Zips. Offen, ob Studierende die PDFs bekommen oder nur die Videos.
     Tendenz: nur Videos, sie sollen das Skript lesen.
   - PDF direkt in Goodnotes, `make render-slides-pdf` (decktape) wird dafür nicht gebraucht.
-- [ ]  Aufgabenblätter nach Abschnitten statt Terminen (zurückgestellt)
+- [X]  Aufgabenblätter nach Themen statt Terminen
 
-  - Blätter bleiben nummeriert, damit man einfach darauf verweisen kann.
-  - Lücke bei Blatt 08: Blatt 07 umfasst zwei R-Projekte (`weitere-geoms-und-plots-aufbereiten`,
-    `grundlagen-r`), deren Zips die Nummern 07 und 08 tragen. Das doppelte `increment-index` hält Blatt- und
-    Zip-Nummern gleich, die `skip`-Einträge in `parts` stehen für die Blätter 01 und 02 ohne R-Projekt.
-  - Die Zip-Namen mit Nummer stehen fest in den Aufgabentexten von `bcd-bausteine-r` (z. B.
-    `03-einzelne-merkmale-aufgaben.zip`). Möglichkeiten: Blatt 07 teilen, oder Zips ohne Nummer benennen und die
-    Texte anpassen (dann kennen die allgemeinen Bausteine keine Nummern dieser Veranstaltung mehr).
+  - [X]  Ein Blatt je Thema, Blätter bleiben nummeriert, damit man einfach darauf verweisen kann. Nummern laufen
+    deshalb nicht mit Wochen oder Skriptkapiteln gleich (Hinweis dazu in Moodle). Blatt 02 (Statistische Daten)
+    und Blatt 03 (Grundlagen von ggplot2) getrennt, folgende Blätter um eins verschoben.
+  - [X]  Zip-Namen in den Aufgabentexten per Platzhalter `${zipfile}` (siehe `collect-content.R`), nicht mehr fest.
+  - [X]  Lücke bei Blatt 09: Blatt 08 (Plots aufbereiten und Grundlagen R) umfasst zwei R-Projekte
+    (`weitere-geoms-und-plots-aufbereiten`, `grundlagen-r`), deren Zips die Nummern 08 und 09 tragen. Das doppelte
+    `increment-index` hält Blatt- und Zip-Nummern gleich, die `skip`-Einträge in `parts` stehen für die Blätter 01
+    und 02 ohne R-Projekt. Möglichkeit: Blatt 08 teilen.
 - [ ]  Aufbau in `README.md` (Tabelle Projekte) und `CLAUDE.md` festhalten (bei den offenen Schritten ergänzen).
 - [ ]  Eigener Job für Foliensätze in `collect-content.R` (zurückgestellt, funktioniert im Moment auch so). Name
   z. B. `slides-project`, analog `assignment-paper`. Er legt fest, wie ein Foliensatz-Ordner aussieht (`folien.qmd`, `folien.code-workspace`,
