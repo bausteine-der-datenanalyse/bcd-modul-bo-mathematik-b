@@ -3,3 +3,5 @@ project:
   output-dir: ../../_output/veranstaltung
   render:
     - c/*.qmd
+
+brand: ../_brand/_brand.yml

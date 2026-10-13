@@ -47,19 +47,25 @@ Pfade in `content.yml` (`parts`, `deploy-folder`, `${project-folder}`) sind rela
 Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. Der `copy`-Job kopiert Ordner
 **nicht rekursiv**, nur die Dateien direkt darin.
 
-## Quarto-Extension `hsbo-maba`
+## Quarto-Extension `tinh` und Brand
 
-`lernpfad/veranstaltung` und `lernpfad/r-folien` nutzen die Extension `hsbo-maba` (Repo
-`matthiasbaitsch/quarto-hsbo-maba`, lokal `~/sciebo/lehrveranstaltungen/quarto-hsbo-maba`) mit dem Format
-`hsbo-maba-revealjs`. Sie enthält das gemeinsame Aussehen der Folien (auch für Informatik), z. B. die Klassen
-`.up*`/`.down*`, `.framed`, `.raw`.
+`lernpfad/veranstaltung` und `lernpfad/r-folien` nutzen die neutrale Extension `tinh-slides` (Repo
+`matthiasbaitsch/quarto-tinh`, lokal `~/sciebo/lehrveranstaltungen/quarto-tinh`) mit dem Format
+`tinh-slides-revealjs`. Sie enthält das gemeinsame Aussehen der Folien (auch für Informatik und die BCD-Bausteine),
+z. B. die Klassen `.neuerbegriff`, `.ja`/`.nein`, `.up*`/`.down*`, `.framed`, `.raw`. Hintergrund und offene
+Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 
-- Die Extension liegt in zwei Kopien: `lernpfad/veranstaltung/_extensions/` und `lernpfad/r-folien/_extensions/`
-  (eingecheckt). Die beiden `content.yml` kopieren sie zusätzlich in jedes Zip, damit Studierende lokal rendern
-  können.
-- Stiländerungen nur im Extension-Repo, dort Version erhöhen, taggen, pushen, dann hier `make update-extension`.
-- `statistik-skript`, `aufgaben`, `r-folien-alle` und `weitere-unterlagen` nutzen die Extension nicht; ihr Stil
-  (`bcd-style-notes.css`, `_bcd-setup.tex`) kommt aus den BCD-Bausteinen.
+- Was HSBO ausmacht (Logo), steht in der Brand `lernpfad/_brand/_brand.yml`, auf die beide Projekte per
+  `brand: ../_brand/_brand.yml` verweisen. Das Logo (`logo.medium`, als URL auf die Website der Hochschule)
+  erscheint auf der Titelfolie.
+- Die Extension liegt in Kopien unter `lernpfad/*/_extensions/` (veranstaltung, r-folien, statistik-skript,
+  aufgaben; eingecheckt). Bei `veranstaltung` und `r-folien` kopieren die `content.yml` sie zusätzlich in jedes Zip,
+  damit Studierende lokal rendern können, ebenso die Brand als `_brand.yml` (Quarto findet sie dort automatisch).
+- Stiländerungen nur im Extension-Repo, dort Version erhöhen, pushen, dann hier `make update-extension`.
+- `statistik-skript` nutzt `tinh-notes-html`/`tinh-notes-pdf` (ebenfalls mit HSBO-Brand), `aufgaben` nutzt
+  `tinh-assignments-html`/`tinh-assignments-pdf`. Darin stecken CSS, LaTeX-Präambel und die Befehle
+  (`neuerbegriff`, `ja`, `nein`, Umgebung `beispiel`), früher `bcd-style-notes.css` und `_bcd-setup.tex`.
+- `r-folien-alle` und `weitere-unterlagen` nutzen die Extension nicht.
 
 ## Befehle
 
@@ -67,7 +73,7 @@ Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. D
 make prepare-render   # führt collect-content.R für alle Projekte aus (füllt jeweils c/)
 make render           # rendert alle sechs Projekte (render-slides, render-slides-r, render-notes, …)
 make render-slides-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
-make update-extension  # Extension hsbo-maba in veranstaltung und r-folien aktualisieren
+make update-extension  # Extension quarto-tinh in veranstaltung, r-folien, statistik-skript, aufgaben aktualisieren
 make clean             # entfernt _output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)

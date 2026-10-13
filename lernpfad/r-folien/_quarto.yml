@@ -2,3 +2,5 @@ project:
   output-dir: ../../_output/r-folien
 
 lang: de
+
+brand: ../_brand/_brand.yml

@@ -78,8 +78,8 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
     Typst-Paket `touying-quarto-clean`), vorerst in `bcd-bausteine-statistik/_extensions/`. Klassen
     (`neuerbegriff`, `ja`, `nein`) über `commands:` und `_bcd-setup.typ` (Gegenstück zu `_bcd-setup.tex`),
     Typst-Zweig in `_bcd-setup.R`, Tabellen mit tinytable statt gt.
-  - [ ]  Später: Typst-Folienformat in die Extension `hsbo-maba` (z. B. `hsbo-maba-typst` mit touying, Theme,
-    Farben, Titelseite), dann aus `bcd-bausteine-statistik/_extensions/` entfernen.
+  - [X]  Typst-Folienformat jetzt `tinh-slides-typst` in der neutralen Extension `quarto-tinh` (statt in
+    `hsbo-maba`), siehe `todo-quarto-extension-2.md`.
   - [X]  CI von `bcd-bausteine-statistik` anpassen: Folien werden vorerst nur lokal gebraucht. `build.yaml` rendert
     jetzt `for f in m-*/skript m-*/aufgaben`, dazu `GITHUB_TOKEN` beim Setup von Quarto (vorher 403 bei TinyTeX).
     In der CI scheiterte Typst beim Herunterladen von `@preview/touying` (access denied, Quarto 1.9.20).

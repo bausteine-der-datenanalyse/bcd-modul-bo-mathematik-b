@@ -58,8 +58,11 @@ jobs-on-parts:
   from: quarto-template.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml
 - copy:
-  from: _extensions/matthiasbaitsch/hsbo-maba
-  to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/hsbo-maba
+  from: ${project-folder}/lernpfad/_brand/_brand.yml
+  to: ${target-folder}/${idx}-${name}/_brand.yml
+- copy:
+  from: _extensions/matthiasbaitsch/tinh-slides
+  to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-slides
 - zip:
   zipfile: ${idx}-${name}.zip
   folder: ${idx}-${name}

@@ -7,7 +7,6 @@ number-depth: 3
 number-sections: true
 
 format: 
-  html: 
+  tinh-assignments-html: 
     license: CC BY-SA
-    css: ../../bausteine/bcd-bausteine-statistik/bcd-style-notes.css
-  pdf: default
+  tinh-assignments-pdf: default

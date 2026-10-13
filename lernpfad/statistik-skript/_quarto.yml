@@ -33,33 +33,16 @@ book:
         - c/12-schliessende-statistik.qmd
     - literatur.qmd
 
-filters: 
-  - latex-environment
-commands:
-  - neuerbegriff
-  - ja
-  - nein
-environments:
-  - beispiel
-
 format: 
-  html: 
-    toc: true
-    toc-depth: 4
+  tinh-notes-html: 
     license: CC BY-SA
-    css: bcd-style-notes.css
-    default-image-extension: svg
     format-links:
-      - pdf
-  pdf:
+      - tinh-notes-pdf
+  tinh-notes-pdf:
     include-in-header:
-      - _bcd-setup.tex
       - text: |
           \AddToHook{cmd/section/before}{\clearpage}
-    include-after-body:
-      text: |
-        \printindex
-    default-image-extension: pdf
     
 bibliography: bcd-bausteine-statistik.bib
 
+brand: ../_brand/_brand.yml

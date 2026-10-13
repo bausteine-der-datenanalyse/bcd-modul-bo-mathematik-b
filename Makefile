@@ -73,8 +73,10 @@ render: render-slides render-slides-r render-slides-r-all render-notes render-as
 publish: render render-slides-pdf
 
 update-extension:
-	cd lernpfad/veranstaltung && quarto update matthiasbaitsch/quarto-hsbo-maba --no-prompt
-	cd lernpfad/r-folien && quarto update matthiasbaitsch/quarto-hsbo-maba --no-prompt
+	cd lernpfad/veranstaltung && quarto update matthiasbaitsch/quarto-tinh --no-prompt
+	cd lernpfad/r-folien && quarto update matthiasbaitsch/quarto-tinh --no-prompt
+	cd lernpfad/statistik-skript && quarto update matthiasbaitsch/quarto-tinh --no-prompt
+	cd lernpfad/aufgaben && quarto update matthiasbaitsch/quarto-tinh --no-prompt
 
 commit:
 	git add .

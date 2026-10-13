@@ -38,6 +38,7 @@ lernpfad/                  Quarto-Projekte des Lernpfads, Namen nach dem Muster 
   r-folien-alle              alle R-Folien in einem Dokument
   aufgaben                   Aufgabenblätter mit Lösungen (HTML + PDF)
   veranstaltung              Folien zur Veranstaltung (Einführung, …), einzeln und als Zip
+  _brand                     HSBO-Brand (Logo) für die Projekte im Lernpfad
 weitere-unterlagen/        sonstiges Material (Schreiben/Präsentieren mit Quarto)
 _output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
 ```
@@ -70,10 +71,11 @@ In `lernpfad/veranstaltung` liegen die Quellen ausnahmsweise im Projekt selbst, 
 
 ### Aussehen
 
-`lernpfad/veranstaltung` und `lernpfad/r-folien` verwenden die Quarto-Extension
-[hsbo-maba](https://github.com/matthiasbaitsch/quarto-hsbo-maba) (Format `hsbo-maba-revealjs`), die in beiden
-Ordnern unter `_extensions/` liegt. Aktualisieren mit `make update-extension`. Die übrigen Projekte beziehen
-ihren Stil (`bcd-style-notes.css`, `_bcd-setup.tex`) aus `bcd-bausteine-statistik`.
+`lernpfad/veranstaltung` und `lernpfad/r-folien` verwenden die neutrale Quarto-Extension
+[quarto-tinh](https://github.com/matthiasbaitsch/quarto-tinh) (Format `tinh-slides-revealjs`), die in beiden
+Ordnern unter `_extensions/` liegt. Aktualisieren mit `make update-extension`. Logo und Name der Hochschule kommen
+aus der Brand `lernpfad/_brand/_brand.yml`. `statistik-skript` verwendet `tinh-notes`, `aufgaben` verwendet
+`tinh-assignments` aus derselben Extension.
 
 ## Schnellstart
 
