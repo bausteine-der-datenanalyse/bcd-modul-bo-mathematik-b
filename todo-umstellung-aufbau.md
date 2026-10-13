@@ -80,10 +80,9 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
     Typst-Zweig in `_bcd-setup.R`, Tabellen mit tinytable statt gt.
   - [ ]  Später: Typst-Folienformat in die Extension `hsbo-maba` (z. B. `hsbo-maba-typst` mit touying, Theme,
     Farben, Titelseite), dann aus `bcd-bausteine-statistik/_extensions/` entfernen.
-  - [ ]  CI von `bcd-bausteine-statistik` anpassen: Die Folien werden vorerst nur lokal gebraucht und sollen nicht
-    in der CI gerendert werden. `build.yaml` (Zeile 39) rendert aber `for f in m-*; do quarto render $f; done`,
-    also auch `folien/`. Render-Lauf auf `skript/` und `aufgaben/` beschränken (oder `folien/` ausnehmen),
-    bevor `bcd-bausteine-statistik` mit den Folien gepusht wird.
+  - [X]  CI von `bcd-bausteine-statistik` anpassen: Folien werden vorerst nur lokal gebraucht. `build.yaml` rendert
+    jetzt `for f in m-*/skript m-*/aufgaben`, dazu `GITHUB_TOKEN` beim Setup von Quarto (vorher 403 bei TinyTeX).
+    In der CI scheiterte Typst beim Herunterladen von `@preview/touying` (access denied, Quarto 1.9.20).
   - [ ]  Makefile von `bcd-bausteine-statistik` anpassen: Die Targets `html` und `pdf` rendern
     `quarto render $folder -t html` bzw. `-t pdf` für jeden Ordner `m-*` und erzwingen damit das Format auch
     für `folien/`. Skript/Aufgaben und Folien trennen, z. B. eigenes Target `folien` mit
