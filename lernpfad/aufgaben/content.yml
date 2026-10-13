@@ -8,6 +8,9 @@ definitions:
 - bcd-bausteine-r: ${project-folder}/bausteine/bcd-bausteine-r
 - bcd-bausteine-statistik: ${project-folder}/bausteine/bcd-bausteine-statistik
 
+# Zip file of a part, also replaces the placeholder ${zipfile} in the assignments (see assignment-paper)
+- zipfile: ${idx}-${name}-aufgaben.zip
+
 - assignment-header: |
     ---
     title: "Aufgabenblatt ${sidx}"
@@ -140,12 +143,12 @@ jobs-on-parts:
   from: quarto-template.yml
   to: ${target-folder}/${idx}-${name}-aufgaben/_quarto.yml
 - zip:
-  zipfile: ${idx}-${name}-aufgaben.zip
+  zipfile: ${zipfile}
   folder: ${idx}-${name}-aufgaben
   root: ${target-folder}
 - copy:
-  from: ${target-folder}/${idx}-${name}-aufgaben.zip
-  to: ${deploy-folder}/${idx}-${name}-aufgaben.zip
+  from: ${target-folder}/${zipfile}
+  to: ${deploy-folder}/${zipfile}
   overwrite: yes
 
 
