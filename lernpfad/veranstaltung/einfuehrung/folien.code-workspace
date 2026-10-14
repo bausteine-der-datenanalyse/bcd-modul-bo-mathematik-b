@@ -6,6 +6,16 @@
 	],
 	"settings": {
 		"editor.formatOnSave": true,
+		"chat.disableAIFeatures": true,
+		"workbench.startupEditor": "none",
+		"editor.stickyScroll.enabled": false,
+		"files.exclude": {
+			".vscode": true,
+			"*_cache": true,
+			"*_files": true,
+			".editorconfig": true,
+			"*.code-workspace": true
+		},
 		"ruff.enable": false
 	}
 }
