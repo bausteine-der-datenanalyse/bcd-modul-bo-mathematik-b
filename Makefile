@@ -2,7 +2,7 @@ PDF_JOBS ?= 4
 DECKTAPE_ARGS ?=
 
 # Ordner mit Folien (relativ zu _output), aus denen PDFs erzeugt werden
-SLIDES_PDF_DIRS = veranstaltung/c r-folien/c
+SLIDES_PDF_DIRS = r-folien/c
 
 clean:
 	rm -rf _output
@@ -25,13 +25,13 @@ prepare-render:
 	cd lernpfad/aufgaben && ../../bausteine/bcd-bausteine-montieren/collect-content.R
 	cd weitere-unterlagen && ../bausteine/bcd-bausteine-montieren/collect-content.R
 
-render-slides: prepare-render
+render-veranstaltung: prepare-render
 	quarto render lernpfad/veranstaltung
 
-render-slides-r: prepare-render
+render-r-folien: prepare-render
 	quarto render lernpfad/r-folien
 
-render-slides-r-all: prepare-render
+render-r-folien-alle: prepare-render
 	quarto render lernpfad/r-folien-alle -t html
 
 render-slides-pdf:
@@ -59,20 +59,20 @@ diff-slides-pdf:
 		done; \
 	done
 
-render-notes: prepare-render
+render-statistik-skript: prepare-render
 	quarto render lernpfad/statistik-skript
 
-render-assignments: prepare-render
+render-aufgaben: prepare-render
 	quarto render lernpfad/aufgaben
 
-render-additional-materials: prepare-render
+render-weitere-unterlagen: prepare-render
 	quarto render weitere-unterlagen
 
-render: render-slides render-slides-r render-slides-r-all render-notes render-assignments render-additional-materials
+render: render-veranstaltung render-r-folien render-r-folien-alle render-statistik-skript render-aufgaben render-weitere-unterlagen
 
 publish: render render-slides-pdf
 
-update-extension:
+update-extension: prepare-render
 	cd lernpfad/veranstaltung && quarto update matthiasbaitsch/quarto-tinh --no-prompt
 	cd lernpfad/r-folien && quarto update matthiasbaitsch/quarto-tinh --no-prompt
 	cd lernpfad/statistik-skript && quarto update matthiasbaitsch/quarto-tinh --no-prompt

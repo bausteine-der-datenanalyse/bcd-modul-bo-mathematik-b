@@ -71,7 +71,7 @@ Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 
 ```bash
 make prepare-render   # führt collect-content.R für alle Projekte aus (füllt jeweils c/)
-make render           # rendert alle sechs Projekte (render-slides, render-slides-r, render-notes, …)
+make render           # rendert alle sechs Projekte (render-<ordner>, z. B. render-r-folien, render-aufgaben, …)
 make render-slides-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
 make update-extension  # Extension quarto-tinh in veranstaltung, r-folien, statistik-skript, aufgaben aktualisieren
 make clean             # entfernt _output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
