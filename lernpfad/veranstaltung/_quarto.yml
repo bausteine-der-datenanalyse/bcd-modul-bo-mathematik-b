@@ -5,3 +5,6 @@ project:
     - c/*.qmd
 
 brand: ../_brand/_brand.yml
+
+format: 
+  tinh-slides-revealjs: default
