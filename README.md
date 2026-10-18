@@ -42,7 +42,7 @@ lernpfad/                  Quarto-Projekte des Lernpfads, Namen nach dem Muster 
   veranstaltung              Folien zur Veranstaltung (Einführung, …), einzeln und als Zip
   weitere-unterlagen         sonstiges Material (Schreiben/Präsentieren mit Quarto)
 _output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
-_quarto.yml                Quarto-Projekt für alles außer den Books (statistik-skript, r-folien-alle)
+_quarto.yml                Quarto-Projekt für alles außer statistik-skript, r-folien-alle, weitere-unterlagen
 _brand.yml                 HSBO-Brand (Logo)
 _extensions/               Quarto-Extension tinh
 ```
@@ -74,8 +74,8 @@ sind in der [README von bcd-bausteine-montieren](bausteine/bcd-bausteine-montier
 ### Quarto-Projekte
 
 Wie im Informatik-Projekt gibt es ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
-`_extensions/`). Nur die Books `lernpfad/statistik-skript` und `lernpfad/r-folien-alle` haben ein eigenes
-`_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt. Die
+`_extensions/`). Nur die Books `lernpfad/statistik-skript` und `lernpfad/r-folien-alle` sowie
+`lernpfad/weitere-unterlagen` (eigenständige Projekte wie bei den Studierenden) haben ein eigenes `_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt. Die
 übrigen Projekte haben nur ein `_metadata.yml` (falls nötig), das auch für `c/` gilt. Die Ausgabe landet unter
 demselben Pfad in `_output`, z. B. `_output/lernpfad/r-folien`.
 

@@ -20,12 +20,13 @@ auf `main`. Sieben Teile in `lernpfad/` (wie im Informatik-Projekt), benannt nac
 - `lernpfad/weitere-unterlagen` – sonstiges Material
 
 Aufbau wie im Informatik-Projekt: Ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
-`_extensions/`), nur die Books `statistik-skript` und `r-folien-alle` haben ein eigenes `_quarto.yml`. Die übrigen
+`_extensions/`), nur die Books `statistik-skript` und `r-folien-alle` sowie `weitere-unterlagen` (eigenständige
+Projekte wie bei den Studierenden, nur `output-dir`) haben ein eigenes `_quarto.yml`. Die übrigen
 Ordner haben höchstens ein `_metadata.yml` (gilt auch für `c/`). Grundsatz: Einstellungen in den Projektordner,
 Symlinks nur wo nötig, so wenig Inhalt in den yml-Dateien wie möglich.
 
 - Quarto liest bei jedem Aufruf alle Dateien des Projekts ein, auch beim Rendern eines Unterordners. Daher
-  beschränkt `project.render` im Haupt-`_quarto.yml` das Projekt auf die Nicht-Book-Ordner – sonst scheitert es
+  beschränkt `project.render` im Haupt-`_quarto.yml` das Projekt auf die Ordner ohne eigenes `_quarto.yml` – sonst scheitert es
   an `bausteine/` und `statistik-skript/c/` (Include `_bcd-setup.qmd`).
 - `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt (gitignored).
 - Gerendert wird immer über das Makefile.
