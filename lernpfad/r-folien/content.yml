@@ -15,6 +15,15 @@ jobs-on-parts:
 - copy:
   from: ${part-folder}/folien.qmd
   to: ${target-folder}/${idx}-${name}.qmd
+  # Links auf zweiter Folie, PDF erzeugt make render-slides-pdf
+  transform:
+    type: insert-after-header
+    text: |
+      []{.down150}
+
+      [⬇ Projekt zu den Folien herunterladen](${idx}-${name}.zip){target="_blank"}
+
+      [⬇ Folien als PDF](${idx}-${name}.pdf){download="${idx}-${name}.pdf"}
 - copy:
   from: ${part-folder}/bilder
   to: ${target-folder}/bilder
