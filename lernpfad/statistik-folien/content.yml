@@ -16,6 +16,10 @@ jobs:
   from: ${bcd-bausteine-statistik}/_bcd-setup.R
   to: ${project-folder}/_bcd-setup.R
   overwrite: true
+# Hilfsfunktionen aus dem Skript lesen Daten relativ zum Ordner der Folien
+- symlink:
+  target: ../skript/01-daten
+  link: ${target-folder}/folien/01-daten
 
 # Jobs running on all parts
 jobs-on-parts:
@@ -40,3 +44,4 @@ part-name-pattern: "m\\-(.*)/"
 # Parts, folders relative to project root
 parts:
 - folder: bausteine/bcd-bausteine-statistik/m-statistische-daten/folien
+- folder: bausteine/bcd-bausteine-statistik/m-einzelne-merkmale/folien
