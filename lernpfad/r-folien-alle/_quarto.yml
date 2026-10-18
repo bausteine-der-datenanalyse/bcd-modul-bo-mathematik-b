@@ -2,7 +2,7 @@ lang: de
 
 project: 
   type: book
-  output-dir: ../../_output/lernpfad/r-folien-alle
+  output-dir: ../../__output/lernpfad/r-folien-alle
 
 book:
   title: "Mathematik B - R"

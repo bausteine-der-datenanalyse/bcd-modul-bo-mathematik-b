@@ -3,7 +3,7 @@
 target-folder: "c"
 
 # Folder where things go for deployment, relative to project folder
-deploy-folder: _output/lernpfad/r-folien/c
+deploy-folder: __output/lernpfad/r-folien/c
 
 # Jobs
 jobs:

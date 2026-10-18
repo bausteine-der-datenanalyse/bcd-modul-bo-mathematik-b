@@ -40,7 +40,7 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 ## Folien als PDF
 
 - [X]  Make-Targets analog Informatik (dort im `Makefile`: `render-slides-pdf`, `save-slides-pdf`,
-  `diff-slides-pdf`): `_output/folien/woche-*.html`, `_output/folien-r/c/*.html`
+  `diff-slides-pdf`): `__output/folien/woche-*.html`, `__output/folien-r/c/*.html`
 
 ## `folien` umstellen
 
@@ -98,7 +98,7 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 - [X]  Relative Pfade anpassen: `output-dir` und `pre-render` in den `_quarto.yml`, `deploy-folder` und Pfade in
   den `content.yml`, Aufrufe von `collect-content.R` und `SLIDES_PDF_DIRS` im `Makefile`, `.gitignore` (`*/c`)
 - [X]  Prüfen, ob sich die URLs auf GitHub Pages ändern (Links in Moodle): nein, `output-dir` zeigt weiter auf
-  `_output/<projekt>`
+  `__output/<projekt>`
 
 ## Dokumentation
 

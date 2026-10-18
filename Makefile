@@ -1,11 +1,11 @@
 PDF_JOBS ?= 4
 DECKTAPE_ARGS ?=
 
-# Ordner mit Folien (relativ zu _output), aus denen PDFs erzeugt werden
+# Ordner mit Folien (relativ zu __output), aus denen PDFs erzeugt werden
 SLIDES_PDF_DIRS = lernpfad/r-folien/c
 
 clean:
-	rm -rf _output .quarto _bcd-setup.R
+	rm -rf __output .quarto _bcd-setup.R
 	for f in lernpfad/statistik-skript lernpfad/statistik-folien lernpfad/aufgaben lernpfad/r-folien lernpfad/r-folien-alle lernpfad/veranstaltung lernpfad/weitere-unterlagen; do \
 		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/bcd-style-notes.css $$f/*_files $$f/index.html $$f/site_libs; \
 	done
@@ -35,7 +35,7 @@ render-r-folien-alle: prepare-render
 
 render-slides-pdf:
 	for d in $(SLIDES_PDF_DIRS); do \
-		find _output/$$d -maxdepth 1 -name '*.html' -print0; \
+		find __output/$$d -maxdepth 1 -name '*.html' -print0; \
 	done | \
 		xargs -0 -P $(PDF_JOBS) -I {} sh -c 'decktape reveal $(DECKTAPE_ARGS) -s 1050x700 -p 200 "$$1" "$${1%.html}.pdf"' _ {}
 
@@ -51,7 +51,7 @@ render-aufgaben:
 save-slides-pdf:
 	for d in $(SLIDES_PDF_DIRS); do \
 		mkdir -p _vergleich/$$d; \
-		cp _output/$$d/*.pdf _vergleich/$$d/; \
+		cp __output/$$d/*.pdf _vergleich/$$d/; \
 	done
 
 diff-slides-pdf:
@@ -59,7 +59,7 @@ diff-slides-pdf:
 		mkdir -p _vergleich/diff/$$d; \
 		for f in _vergleich/$$d/*.pdf; do \
 			n=`basename "$$f"`; \
-			if diff-pdf -s -m --output-diff="_vergleich/diff/$$d/$$n" "$$f" "_output/$$d/$$n"; then \
+			if diff-pdf -s -m --output-diff="_vergleich/diff/$$d/$$n" "$$f" "__output/$$d/$$n"; then \
 				echo "gleich:      $$d/$$n"; \
 			else \
 				echo "verschieden: $$d/$$n"; \

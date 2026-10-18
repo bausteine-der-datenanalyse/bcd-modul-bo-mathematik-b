@@ -1,7 +1,7 @@
 lang: de
 
 project:
-  output-dir: _output
+  output-dir: __output
   render:
     - lernpfad/aufgaben/
     - lernpfad/r-folien/

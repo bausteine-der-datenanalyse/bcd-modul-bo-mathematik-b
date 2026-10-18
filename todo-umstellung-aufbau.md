@@ -49,7 +49,7 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
   - Agenda-Folien `woche-2` bis `woche-11` entfallen, nicht mehr benötigte Bilder/Daten entfernen.
   - Prüfen: entpacktes Zip rendert in leerem Ordner.
   - Makefile (`prepare-render`, `render-slides`, `SLIDES_PDF_DIRS`, `clean`) anpassen, Ausgabe nach
-    `_output/veranstaltung`.
+    `__output/veranstaltung`.
 - [X]  `_beispiel-essen.qmd` in `einfuehrung/folien.qmd` übernehmen, statt per `include` einzubinden. Dann
   entfallen die beiden eigenen `copy`-Jobs dafür in `lernpfad/veranstaltung/content.yml` (und ggf. `_work.qmd`).
 - [X]  Links auf Moodle aktualisieren (nach dem Push, wenn GitHub Pages neu gebaut ist). Basis-URL

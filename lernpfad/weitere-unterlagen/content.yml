@@ -3,7 +3,7 @@
 target-folder: "c"
 
 # Folder where things go for deployment, relative to project folder
-deploy-folder: _output/lernpfad/weitere-unterlagen/c
+deploy-folder: __output/lernpfad/weitere-unterlagen/c
 
 definitions:
 - bcd-bausteine-r: ${project-folder}/bausteine/bcd-bausteine-r

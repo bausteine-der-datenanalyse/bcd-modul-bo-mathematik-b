@@ -98,4 +98,4 @@ quarto render lernpfad/r-folien-alle
 quarto render lernpfad/weitere-unterlagen
 ```
 
-Die Ausgabe landet unter demselben Pfad in `_output`, z. B. `_output/lernpfad/aufgaben`.
+Die Ausgabe landet unter demselben Pfad in `__output`, z. B. `__output/lernpfad/aufgaben`.

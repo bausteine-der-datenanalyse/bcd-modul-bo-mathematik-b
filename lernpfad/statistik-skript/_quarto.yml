@@ -2,7 +2,7 @@ lang: de
 
 project:
   type: book
-  output-dir: ../../_output/lernpfad/statistik-skript
+  output-dir: ../../__output/lernpfad/statistik-skript
 
 book:
   title: "Mathematik B"

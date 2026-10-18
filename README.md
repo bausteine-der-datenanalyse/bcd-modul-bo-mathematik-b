@@ -41,7 +41,7 @@ lernpfad/                  Quarto-Projekte des Lernpfads, Namen nach dem Muster 
   aufgaben                   Aufgabenblätter mit Lösungen (HTML + PDF)
   veranstaltung              Folien zur Veranstaltung (Einführung, …), einzeln und als Zip
   weitere-unterlagen         sonstiges Material (Schreiben/Präsentieren mit Quarto)
-_output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
+__output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
 _quarto.yml                Quarto-Projekt für alles außer statistik-skript, r-folien-alle, weitere-unterlagen
 _brand.yml                 HSBO-Brand (Logo)
 _extensions/               Quarto-Extension tinh
@@ -54,7 +54,7 @@ eine `content.yml`. Sie legt fest, welche Bausteine `bausteine/bcd-bausteine-mon
 Ordner `c/` des Projekts kopiert. Quarto rendert anschließend den Inhalt von `c/`.
 
 ```
-bausteine/*  --collect-content.R + content.yml-->  <projekt>/c/  --quarto render-->  _output/<pfad>
+bausteine/*  --collect-content.R + content.yml-->  <projekt>/c/  --quarto render-->  __output/<pfad>
 ```
 
 `c/` wird bei jedem Lauf geleert und neu befüllt – dort nichts von Hand ändern. Inhaltliche Änderungen gehören
@@ -77,7 +77,7 @@ Wie im Informatik-Projekt gibt es ein Quarto-Projekt im Hauptordner (`_quarto.ym
 `_extensions/`). Nur die Books `lernpfad/statistik-skript` und `lernpfad/r-folien-alle` sowie
 `lernpfad/weitere-unterlagen` (eigenständige Projekte wie bei den Studierenden) haben ein eigenes `_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt. Die
 übrigen Projekte haben nur ein `_metadata.yml` (falls nötig), das auch für `c/` gilt. Die Ausgabe landet unter
-demselben Pfad in `_output`, z. B. `_output/lernpfad/r-folien`.
+demselben Pfad in `__output`, z. B. `__output/lernpfad/r-folien`.
 
 ### Aussehen
 
@@ -92,8 +92,8 @@ kommen aus der Brand `_brand.yml`. `statistik-skript` und `r-folien-alle` verwen
 ```bash
 make update-from-github   # git pull + Submodule aktualisieren
 make render               # Bausteine zusammensetzen und alle Projekte rendern
-make clean                # _output und alle generierten Dateien entfernen
+make clean                # __output und alle generierten Dateien entfernen
 ```
 
-Bei jedem Push auf `main` rendert GitHub Actions die Unterlagen mit `make render` und veröffentlicht `_output`
+Bei jedem Push auf `main` rendert GitHub Actions die Unterlagen mit `make render` und veröffentlicht `__output`
 auf GitHub Pages.

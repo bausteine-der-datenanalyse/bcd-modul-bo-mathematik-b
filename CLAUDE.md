@@ -31,7 +31,7 @@ Symlinks nur wo nötig, so wenig Inhalt in den yml-Dateien wie möglich.
 - `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt (gitignored).
 - Gerendert wird immer über das Makefile.
 
-Die Ausgabe landet unter demselben Pfad in `_output` (z. B. `_output/lernpfad/r-folien`), die URLs auf GitHub
+Die Ausgabe landet unter demselben Pfad in `__output` (z. B. `__output/lernpfad/r-folien`), die URLs auf GitHub
 Pages enthalten also `lernpfad/`.
 
 Grundsatz: Material ist nach Themen geordnet (Bausteine), der Wochenablauf (Agenda, Links) steht nur in Moodle,
@@ -90,7 +90,7 @@ make prepare-render   # nur Books: führt collect-content.R aus (füllt c/) und 
 make render           # rendert alle Projekte (render-<ordner>, z. B. render-r-folien, render-aufgaben, …)
 make render-slides-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
 make update-extension  # Extension quarto-tinh im Hauptordner aktualisieren
-make clean             # entfernt _output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
+make clean             # entfernt __output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)
 ```
@@ -112,7 +112,7 @@ R-Lint-Konfiguration liegt in `.lintr` (Zeilenlänge 120, Einrückung 2).
 
 ## CI
 
-`.github/workflows/build.yaml` (Job `render`) ruft `make render` auf und lädt `_output` als Pages-Artifact
+`.github/workflows/build.yaml` (Job `render`) ruft `make render` auf und lädt `__output` als Pages-Artifact
 hoch; der Job `deploy` published anschließend auf GitHub Pages. Das Makefile ist damit die
 maßgebliche Quelle für den Renderprozess – Änderungen am Ablauf gehören dort hin, nicht in den
 Workflow.

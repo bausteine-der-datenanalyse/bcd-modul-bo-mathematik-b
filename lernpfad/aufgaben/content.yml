@@ -1,5 +1,5 @@
 target-folder: c
-deploy-folder: _output/lernpfad/aufgaben/c
+deploy-folder: __output/lernpfad/aufgaben/c
 
 
 # Global variable definitions
