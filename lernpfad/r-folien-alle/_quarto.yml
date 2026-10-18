@@ -1,11 +1,8 @@
-project: 
-  type: book
-  output-dir: ../../_output/r-folien-alle
-
 lang: de
 
-execute:
-  warning: false
+project: 
+  type: book
+  output-dir: ../../_output/lernpfad/r-folien-alle
 
 book:
   title: "Mathematik B - R"
@@ -29,10 +26,10 @@ book:
     - c/15-viele-modelle.qmd
     - c/16-zeitreihen.qmd
 
+toc-depth: 3
+number-depth: 2
+
 format:
-  html:
-    number-depth: 2
-    toc-depth: 2
-  pdf: default
+  tinh-notes-html: default
 
 

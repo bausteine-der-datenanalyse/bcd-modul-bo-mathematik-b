@@ -5,11 +5,11 @@ Lehrmaterial für das Modul "Mathematik B" (Statistik und Datenanalyse), erstell
 
 Dokumente auf GitHub-Pages:
 
-- [Skript Grundlagen der Statistik (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/statistik-skript/index.html)
+- [Skript Grundlagen der Statistik (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/statistik-skript/index.html)
 
-- [Skript Grundlagen der Statistik (pdf)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/statistik-skript/skript-mathematik-b.pdf)
+- [Skript Grundlagen der Statistik (pdf)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/statistik-skript/skript-mathematik-b.pdf)
 
-- [Folien zu R (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/r-folien-alle/index.html)
+- [Folien zu R (html)](https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien-alle/index.html)
 
 Installation und Erstellen der Unterlagen: siehe [INSTALLATION.md](INSTALLATION.md).
 
@@ -22,7 +22,7 @@ besprochen und Aufgaben bearbeitet. Daraus ergibt sich die Trennung:
   Foliensatz im Video oder in Präsenz verwendet wird, ist keine Eigenschaft der Folien.
 - **Ablauf** (welche Woche was, Agenda) steht nur in Moodle: Die Wochen-Tabs enthalten Agenda und Links auf die
   Unterlagen.
-- Was nur zu dieser Veranstaltung gehört (Einführung, Studienarbeit), liegt in `lernpfad/veranstaltung` und
+- Was nur zu dieser Veranstaltung gehört (Einführung, Studienarbeit), liegt in `bausteine/veranstaltung` und
   bindet die allgemeinen Bausteine an die Vorlesung an.
 
 ## Aufbau
@@ -32,15 +32,19 @@ bausteine/                 Git-Submodule mit den eigentlichen Inhalten
   bcd-bausteine-statistik    Statistik: Skript, Aufgaben (Module m-*)
   bcd-bausteine-r            R: Folien, Aufgaben (Module w-*)
   bcd-bausteine-montieren    collect-content.R zum Zusammensetzen
+  veranstaltung              nur für diese Veranstaltung (Einführung, …), kein Submodul
 lernpfad/                  Quarto-Projekte des Lernpfads, Namen nach dem Muster <quelle>-<art>
   statistik-skript           Skript Statistik (HTML + PDF)
+  statistik-folien           Folien Statistik (PDF, Typst)
   r-folien                   R-Folien, einzeln und als Zip zum Herunterladen
   r-folien-alle              alle R-Folien in einem Dokument
   aufgaben                   Aufgabenblätter mit Lösungen (HTML + PDF)
   veranstaltung              Folien zur Veranstaltung (Einführung, …), einzeln und als Zip
-  _brand                     HSBO-Brand (Logo) für die Projekte im Lernpfad
-weitere-unterlagen/        sonstiges Material (Schreiben/Präsentieren mit Quarto)
+  weitere-unterlagen         sonstiges Material (Schreiben/Präsentieren mit Quarto)
 _output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
+_quarto.yml                Quarto-Projekt für alles außer den Books (statistik-skript, r-folien-alle)
+_brand.yml                 HSBO-Brand (Logo)
+_extensions/               Quarto-Extension tinh
 ```
 
 ### Bausteine zusammensetzen
@@ -50,7 +54,7 @@ eine `content.yml`. Sie legt fest, welche Bausteine `bausteine/bcd-bausteine-mon
 Ordner `c/` des Projekts kopiert. Quarto rendert anschließend den Inhalt von `c/`.
 
 ```
-bausteine/*  --collect-content.R + content.yml-->  <projekt>/c/  --quarto render-->  _output/<projekt>
+bausteine/*  --collect-content.R + content.yml-->  <projekt>/c/  --quarto render-->  _output/<pfad>
 ```
 
 `c/` wird bei jedem Lauf geleert und neu befüllt – dort nichts von Hand ändern. Inhaltliche Änderungen gehören
@@ -60,21 +64,27 @@ sind in der [README von bcd-bausteine-montieren](bausteine/bcd-bausteine-montier
 | Projekt                   | Quelle                                         | Ergebnis in `c/`                                   |
 |---------------------------|------------------------------------------------|----------------------------------------------------|
 | `lernpfad/statistik-skript` | `m-*/skript` aus `bcd-bausteine-statistik`   | ein Kapitel `NN-name.qmd` je Modul                 |
+| `lernpfad/statistik-folien` | `m-*/folien` aus `bcd-bausteine-statistik`  | `folien/NN-name.qmd` je Modul, Bilder/Daten in `skript/` |
 | `lernpfad/r-folien`       | `w-*/folien` aus `bcd-bausteine-r`             | ein Foliensatz `NN-name.qmd` je Modul, Zips        |
 | `lernpfad/r-folien-alle`  | `w-*/folien` aus `bcd-bausteine-r`             | alle Foliensätze als Kapitel eines Dokuments       |
 | `lernpfad/aufgaben`       | `m-*/aufgaben` und `w-*/aufgaben`              | `aufgabenblatt-N.qmd` und Lösungsblatt, Zips       |
-| `lernpfad/veranstaltung`  | lokale Ordner, z. B. `einfuehrung/`            | ein Foliensatz `NN-name.qmd` je Ordner, Zips       |
-| `weitere-unterlagen`      | `w-schreiben-mit-quarto`, `w-praesentationen-mit-quarto` | Zips zum Herunterladen                   |
+| `lernpfad/veranstaltung`  | `*/folien` aus `bausteine/veranstaltung`       | ein Foliensatz `NN-name.qmd` je Ordner, Zips       |
+| `lernpfad/weitere-unterlagen` | `w-schreiben-mit-quarto`, `w-praesentationen-mit-quarto` | Zips zum Herunterladen                   |
 
-In `lernpfad/veranstaltung` liegen die Quellen ausnahmsweise im Projekt selbst, je Foliensatz ein Ordner mit
-`folien.qmd`, `folien.code-workspace`, `bilder/`, `daten/` und `skripte/` (wie bei den Bausteinen).
+### Quarto-Projekte
+
+Wie im Informatik-Projekt gibt es ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
+`_extensions/`). Nur die Books `lernpfad/statistik-skript` und `lernpfad/r-folien-alle` haben ein eigenes
+`_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt. Die
+übrigen Projekte haben nur ein `_metadata.yml` (falls nötig), das auch für `c/` gilt. Die Ausgabe landet unter
+demselben Pfad in `_output`, z. B. `_output/lernpfad/r-folien`.
 
 ### Aussehen
 
 `lernpfad/veranstaltung` und `lernpfad/r-folien` verwenden die neutrale Quarto-Extension
 [quarto-tinh](https://github.com/matthiasbaitsch/quarto-tinh) (Format `tinh-slides-revealjs`), die in beiden
-Ordnern unter `_extensions/` liegt. Aktualisieren mit `make update-extension`. Logo und Name der Hochschule kommen
-aus der Brand `lernpfad/_brand/_brand.yml`. `statistik-skript` verwendet `tinh-notes`, `aufgaben` verwendet
+Hauptordner unter `_extensions/` liegt. Aktualisieren mit `make update-extension`. Logo und Name der Hochschule
+kommen aus der Brand `_brand.yml`. `statistik-skript` und `r-folien-alle` verwenden `tinh-notes`, `aufgaben` verwendet
 `tinh-assignments` aus derselben Extension.
 
 ## Schnellstart

@@ -94,8 +94,8 @@ quarto render lernpfad/statistik-skript
 quarto render lernpfad/aufgaben
 quarto render lernpfad/veranstaltung
 quarto render lernpfad/r-folien
-quarto render lernpfad/r-folien-alle -t html
-quarto render weitere-unterlagen
+quarto render lernpfad/r-folien-alle
+quarto render lernpfad/weitere-unterlagen
 ```
 
-Die Ausgabe landet in `_output/<projekt>`.
+Die Ausgabe landet unter demselben Pfad in `_output`, z. B. `_output/lernpfad/aufgaben`.

@@ -10,7 +10,7 @@
 - [ ]  Pfade in `administration/*.bat` aktualisieren: noch ohne `lernpfad/`, `03-prepare-render.bat` bereitet nur
   `folien-r-alle` und `skript` vor, `04-render.bat` rendert nicht alle Projekte (Abgleich mit `Makefile`).
 - [ ]  `.code-workspace`-Dateien aus einer Vorlage erzeugen: Die 27 gleichen `.code-workspace`-Dateien in
-  `bcd-bausteine-r/w-*/` (und `lernpfad/veranstaltung/einfuehrung/`, dort zusätzlich `ruff.enable`) sind von Hand
+  `bcd-bausteine-r/w-*/` (und `bausteine/veranstaltung/einfuehrung/folien/`, dort zusätzlich `ruff.enable`) sind von Hand
   kopiert. Im Oktober 2026 von Hand auf den Stand von `w-erste-schritte/folien` gebracht. Vorbild: Target `copy-templates` im Makefile von `informatik-master_2.0/unterlagen` (Vorlage in
   `bausteine/00-templates/projekt.code-workspace`). Hier z. B. Vorlage `00-templates/projekt.code-workspace` in
   `bcd-bausteine-r` und Make-Target, das sie in alle `w-*/folien/` und `w-*/aufgaben/` kopiert. Offen, ob das Target

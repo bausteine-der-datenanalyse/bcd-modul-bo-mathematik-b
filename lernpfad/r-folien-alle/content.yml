@@ -3,7 +3,7 @@
 target-folder: "c"
 
 # Folder where things go for deployment, relative to project folder
-deploy-folder: _output/r-folien-alle/c
+deploy-folder: _output/lernpfad/r-folien-alle/c
 
 # Jobs - TODO run without that
 jobs:

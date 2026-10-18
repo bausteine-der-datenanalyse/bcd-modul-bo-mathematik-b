@@ -3,7 +3,7 @@
 target-folder: "c"
 
 # Folder where things go for deployment, relative to project folder
-deploy-folder: _output/statistik-skript
+deploy-folder: _output/lernpfad/statistik-skript
 
 # Global variable definitions
 definitions:

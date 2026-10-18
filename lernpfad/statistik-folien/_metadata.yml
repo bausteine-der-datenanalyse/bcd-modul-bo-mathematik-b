@@ -1,0 +1,9 @@
+subtitle: "Mathematik B"
+author: "Matthias Baitsch"
+
+execute:
+  echo: false
+  cache: true
+
+format:
+  tinh-slides-typst: default

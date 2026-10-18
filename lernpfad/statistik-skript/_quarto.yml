@@ -1,9 +1,8 @@
+lang: de
+
 project:
   type: book
-  output-dir: ../../_output/statistik-skript
-
-lang: de
-number-depth: 2
+  output-dir: ../../_output/lernpfad/statistik-skript
 
 book:
   title: "Mathematik B"
@@ -34,15 +33,10 @@ book:
     - literatur.qmd
 
 format: 
-  tinh-notes-html: 
-    license: CC BY-SA
-    format-links:
-      - tinh-notes-pdf
+  tinh-notes-html: default
   tinh-notes-pdf:
     include-in-header:
       - text: |
           \AddToHook{cmd/section/before}{\clearpage}
     
 bibliography: bcd-bausteine-statistik.bib
-
-brand: ../_brand/_brand.yml

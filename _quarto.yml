@@ -1,0 +1,10 @@
+lang: de
+
+project:
+  output-dir: _output
+  render:
+    - lernpfad/aufgaben/
+    - lernpfad/r-folien/
+    - lernpfad/statistik-folien/
+    - lernpfad/veranstaltung/
+    - lernpfad/weitere-unterlagen/

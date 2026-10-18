@@ -1,3 +1,0 @@
-project: 
-  output-dir: ../_output/weitere-unterlagen
-  pre-render: ../bausteine/bcd-bausteine-montieren/collect-content.R

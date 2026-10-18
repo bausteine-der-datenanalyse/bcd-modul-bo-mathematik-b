@@ -1,0 +1,42 @@
+# Output goes here, this folder is cleared on each run
+# Absolute path or relative to the folder containing this file
+target-folder: "c"
+
+# Folder where things go for deployment, relative to project folder
+deploy-folder: _output/lernpfad/statistik-folien/c
+
+# Global variable definitions
+definitions:
+- bcd-bausteine-statistik: ${project-folder}/bausteine/bcd-bausteine-statistik
+
+# Jobs
+jobs:
+# Die Folien suchen _bcd-setup.R im Quarto-Projekt, also im Hauptordner
+- copy:
+  from: ${bcd-bausteine-statistik}/_bcd-setup.R
+  to: ${project-folder}/_bcd-setup.R
+  overwrite: true
+
+# Jobs running on all parts
+jobs-on-parts:
+
+# Die Folien verwenden Bilder und Daten aus ../skript, daher gleiche Struktur in c/
+- copy:
+  from: ${part-folder}/folien.qmd
+  to: ${target-folder}/folien/${idx}-${name}.qmd
+- copy:
+  from: ${part-folder}/../skript/00-bilder
+  to: ${target-folder}/skript/00-bilder
+  optional: yes
+  exclude-patterns: [".afdesign$", ".af$", "~lock~$"]
+- copy:
+  from: ${part-folder}/../skript/01-daten
+  to: ${target-folder}/skript/01-daten
+  optional: yes
+
+# Pattern to extract name from part folder
+part-name-pattern: "m\\-(.*)/"
+
+# Parts, folders relative to project root
+parts:
+- folder: bausteine/bcd-bausteine-statistik/m-statistische-daten/folien

@@ -3,13 +3,10 @@
 target-folder: "c"
 
 # Folder where things go for deployment, relative to project folder
-deploy-folder: _output/r-folien/c
+deploy-folder: _output/lernpfad/r-folien/c
 
 # Jobs
 jobs:
-- copy:
-  from: quarto-template.yml
-  to: ${target-folder}/_metadata.yml
 
 # Jobs running on all parts
 jobs-on-parts:
@@ -55,13 +52,13 @@ jobs-on-parts:
   to: ${target-folder}/${idx}-${name}/skripte
   optional: yes
 - copy:
-  from: quarto-template.yml
+  from: _metadata.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml
 - copy:
-  from: ${project-folder}/lernpfad/_brand/_brand.yml
+  from: ${project-folder}/_brand.yml
   to: ${target-folder}/${idx}-${name}/_brand.yml
 - copy:
-  from: _extensions/matthiasbaitsch/tinh-slides
+  from: ${project-folder}/_extensions/matthiasbaitsch/tinh-slides
   to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-slides
 - zip:
   zipfile: ${idx}-${name}.zip

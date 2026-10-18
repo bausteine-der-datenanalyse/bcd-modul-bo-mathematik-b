@@ -7,18 +7,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Lehrmaterial für das Modul "Mathematik B" (Statistik und Datenanalyse) im Master-Studiengang
 Bauingenieurwesen/Umweltingenieurwesen der Fachhochschule Bochum, erstellt mit
 [Quarto](https://quarto.org/) und R. Veröffentlichung erfolgt automatisch auf GitHub Pages beim Push
-auf `main`. Sechs unabhängige Quarto-Projekte, fünf davon in `lernpfad/` (wie im Informatik-Projekt),
-benannt nach dem Muster `<quelle>-<art>`:
+auf `main`. Sieben Teile in `lernpfad/` (wie im Informatik-Projekt), benannt nach dem Muster `<quelle>-<art>`:
 
 - `lernpfad/statistik-skript` – Skript Statistik (HTML + PDF)
+- `lernpfad/statistik-folien` – Folien Statistik (PDF mit `tinh-slides-typst`). Die Folien greifen auf
+  `../skript/00-bilder` und `../skript/01-daten` zu, daher `c/folien/` und `c/skript/`. `_bcd-setup.R` wird
+  per `rprojroot::is_quarto_project` gesucht und deshalb in den Hauptordner kopiert (gitignored).
 - `lernpfad/aufgaben` – Aufgabenblätter (HTML + PDF)
 - `lernpfad/r-folien` – R-Folien, einzeln und als Zip
-- `lernpfad/r-folien-alle` – Gesamtfassung der R-Folien (HTML + PDF, in CI/Makefile nur HTML gerendert)
+- `lernpfad/r-folien-alle` – Gesamtfassung der R-Folien (HTML)
 - `lernpfad/veranstaltung` – Folien, die nur zu dieser Veranstaltung gehören (Einführung, …), einzeln und als Zip
-- `weitere-unterlagen` – sonstiges Material
+- `lernpfad/weitere-unterlagen` – sonstiges Material
 
-Die Ausgabe landet unabhängig davon in `_output/<projekt>` (z. B. `_output/r-folien`), die URLs auf GitHub
-Pages enthalten also kein `lernpfad/`.
+Aufbau wie im Informatik-Projekt: Ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
+`_extensions/`), nur die Books `statistik-skript` und `r-folien-alle` haben ein eigenes `_quarto.yml`. Die übrigen
+Ordner haben höchstens ein `_metadata.yml` (gilt auch für `c/`). Grundsatz: Einstellungen in den Projektordner,
+Symlinks nur wo nötig, so wenig Inhalt in den yml-Dateien wie möglich.
+
+- Quarto liest bei jedem Aufruf alle Dateien des Projekts ein, auch beim Rendern eines Unterordners. Daher
+  beschränkt `project.render` im Haupt-`_quarto.yml` das Projekt auf die Nicht-Book-Ordner – sonst scheitert es
+  an `bausteine/` und `statistik-skript/c/` (Include `_bcd-setup.qmd`).
+- `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt (gitignored).
+- Gerendert wird immer über das Makefile.
+
+Die Ausgabe landet unter demselben Pfad in `_output` (z. B. `_output/lernpfad/r-folien`), die URLs auf GitHub
+Pages enthalten also `lernpfad/`.
 
 Grundsatz: Material ist nach Themen geordnet (Bausteine), der Wochenablauf (Agenda, Links) steht nur in Moodle,
 nicht im Repo. Hintergrund und offene Schritte in `todo-umstellung-aufbau.md`.
@@ -39,12 +52,12 @@ den Bausteine-Repos in einen lokalen Zielordner, standardmäßig `c/` (siehe `ta
 Änderungen gehören entweder in die Quelle im jeweiligen `bausteine/*`-Submodul oder in die
 `content.yml`, die den Kopiervorgang steuert.
 
-Ausnahme `veranstaltung`: Die Quellen liegen lokal, ein Ordner je Foliensatz (z. B. `einfuehrung/` mit
-`folien.qmd`, `bilder/`, `daten/`, `skripte/`); `parts` in `content.yml` zeigen auf diese Ordner. `_quarto.yml`
-rendert nur `c/*.qmd`.
+Was nur zu dieser Veranstaltung gehört (Einführung, …), liegt in `bausteine/veranstaltung` (normaler Ordner, kein
+Submodul), aufgebaut wie die BCD-Bausteine: `einfuehrung/folien/` mit `folien.qmd`, `folien.code-workspace`,
+`bilder/`, `daten/`, `skripte/`. `lernpfad/` enthält damit nur noch, was zusammensetzt.
 
 Pfade in `content.yml` (`parts`, `deploy-folder`, `${project-folder}`) sind relativ zum Repo-Root, einfache
-Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. Der `copy`-Job kopiert Ordner
+Dateinamen bei `copy` (z. B. `_metadata.yml`) relativ zum Projektordner. Der `copy`-Job kopiert Ordner
 **nicht rekursiv**, nur die Dateien direkt darin.
 
 ## Quarto-Extension `tinh` und Brand
@@ -55,25 +68,24 @@ Dateinamen bei `copy` (z. B. `quarto-template.yml`) relativ zum Projektordner. D
 z. B. die Klassen `.neuerbegriff`, `.ja`/`.nein`, `.up*`/`.down*`, `.framed`, `.raw`. Hintergrund und offene
 Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 
-- Was HSBO ausmacht (Logo), steht in der Brand `lernpfad/_brand/_brand.yml`, auf die beide Projekte per
-  `brand: ../_brand/_brand.yml` verweisen. Das Logo (`logo.medium`, als URL auf die Website der Hochschule)
+- Was HSBO ausmacht (Logo), steht in der Brand `_brand.yml` im Hauptordner. Das Logo (`logo.medium`, als URL auf die Website der Hochschule)
   erscheint auf der Titelfolie.
-- Die Extension liegt in Kopien unter `lernpfad/*/_extensions/` (veranstaltung, r-folien, statistik-skript,
-  aufgaben; eingecheckt). Bei `veranstaltung` und `r-folien` kopieren die `content.yml` sie zusätzlich in jedes Zip,
-  damit Studierende lokal rendern können, ebenso die Brand als `_brand.yml` (Quarto findet sie dort automatisch).
+- Die Extension liegt einmal unter `_extensions/` im Hauptordner (eingecheckt). Bei `veranstaltung` und
+  `r-folien` kopieren die `content.yml` sie zusätzlich in jedes Zip, damit Studierende lokal rendern können, ebenso
+  die Brand als `_brand.yml` und das `_metadata.yml` des Projekts als `_quarto.yml`.
 - Stiländerungen nur im Extension-Repo, dort Version erhöhen, pushen, dann hier `make update-extension`.
 - `statistik-skript` nutzt `tinh-notes-html`/`tinh-notes-pdf` (ebenfalls mit HSBO-Brand), `aufgaben` nutzt
-  `tinh-assignments-html`/`tinh-assignments-pdf`. Darin stecken CSS, LaTeX-Präambel und die Befehle
+  `tinh-assignments-html`/`tinh-assignments-typst`. Darin stecken CSS, LaTeX-Präambel und die Befehle
   (`neuerbegriff`, `ja`, `nein`, Umgebung `beispiel`), früher `bcd-style-notes.css` und `_bcd-setup.tex`.
-- `r-folien-alle` und `weitere-unterlagen` nutzen die Extension nicht.
+- `r-folien-alle` nutzt ebenfalls `tinh-notes-html` (PDF vorerst weggelassen), `weitere-unterlagen` nutzt die Extension nicht.
 
 ## Befehle
 
 ```bash
 make prepare-render   # führt collect-content.R für alle Projekte aus (füllt jeweils c/)
-make render           # rendert alle sechs Projekte (render-<ordner>, z. B. render-r-folien, render-aufgaben, …)
+make render           # rendert alle Projekte (render-<ordner>, z. B. render-r-folien, render-aufgaben, …)
 make render-slides-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
-make update-extension  # Extension quarto-tinh in veranstaltung, r-folien, statistik-skript, aufgaben aktualisieren
+make update-extension  # Extension quarto-tinh im Hauptordner aktualisieren
 make clean             # entfernt _output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)
@@ -83,7 +95,7 @@ Einzelnes Projekt rendern (nach `prepare-render`):
 
 ```bash
 quarto render lernpfad/statistik-skript
-quarto render lernpfad/r-folien-alle -t html   # PDF-Format hier bewusst ausgelassen
+quarto render lernpfad/r-folien-alle
 ```
 
 R-Pakete werden über `DESCRIPTION` (Paketname `bcdstatistik`) verwaltet:

@@ -14,8 +14,15 @@ site_libs
 !moodle/*.html
 
 # Von collect-content.R befüllt (siehe content.yml)
-*/c
 lernpfad/*/c
 lernpfad/statistik-skript/_bcd-setup.*
 lernpfad/statistik-skript/*.bib
 lernpfad/statistik-skript/bcd-style-notes.css
+/_bcd-setup.R
+
+# Symlinks auf Extension und Brand im Hauptordner (siehe Makefile, prepare-render)
+lernpfad/*/_extensions
+lernpfad/*/_brand.yml
+
+/.quarto/
+**/*.quarto_ipynb
