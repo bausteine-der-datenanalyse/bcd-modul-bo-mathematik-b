@@ -41,8 +41,16 @@ jobs:
         with:
           extra-packages: rcmdcheck
 
-      - name: Render
-        run: make render
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install decktape
+        run: npm install -g decktape
+
+      - name: Render and export PDF
+        run: make publish PDF_JOBS=2 DECKTAPE_ARGS=--chrome-arg=--no-sandbox
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

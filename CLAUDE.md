@@ -112,7 +112,8 @@ R-Lint-Konfiguration liegt in `.lintr` (Zeilenlänge 120, Einrückung 2).
 
 ## CI
 
-`.github/workflows/build.yaml` (Job `render`) ruft `make render` auf und lädt `__output` als Pages-Artifact
+`.github/workflows/build.yaml` (Job `render`) ruft `make publish` auf (`render` und `render-slides-pdf`, dafür
+wird decktape installiert) und lädt `__output` als Pages-Artifact
 hoch; der Job `deploy` published anschließend auf GitHub Pages. Das Makefile ist damit die
 maßgebliche Quelle für den Renderprozess – Änderungen am Ablauf gehören dort hin, nicht in den
 Workflow.

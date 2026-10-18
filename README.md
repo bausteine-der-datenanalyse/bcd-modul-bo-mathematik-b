@@ -95,5 +95,5 @@ make render               # Bausteine zusammensetzen und alle Projekte rendern
 make clean                # __output und alle generierten Dateien entfernen
 ```
 
-Bei jedem Push auf `main` rendert GitHub Actions die Unterlagen mit `make render` und veröffentlicht `__output`
+Bei jedem Push auf `main` rendert GitHub Actions die Unterlagen mit `make publish` (inklusive PDF der Folien) und veröffentlicht `__output`
 auf GitHub Pages.
