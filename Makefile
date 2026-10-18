@@ -20,8 +20,6 @@ update-from-github:
 prepare-render:
 	for f in lernpfad/statistik-skript lernpfad/r-folien-alle; do \
 		(cd $$f && ../../bausteine/bcd-bausteine-montieren/collect-content.R) || exit 1; \
-		ln -sfn ../../_extensions $$f/_extensions; \
-		ln -sfn ../../_brand.yml $$f/_brand.yml; \
 	done
 
 render-veranstaltung:

@@ -5,8 +5,15 @@ target-folder: "c"
 # Folder where things go for deployment, relative to project folder
 deploy-folder: __output/lernpfad/r-folien-alle/c
 
-# Jobs - TODO run without that
+# Jobs
 jobs:
+# Eigenes Quarto-Projekt (Book), findet Extension und Brand im Hauptordner nur über Symlinks
+- symlink:
+  target: ../../_extensions
+  link: _extensions
+- symlink:
+  target: ../../_brand.yml
+  link: _brand.yml
 
 # Jobs running on all parts
 jobs-on-parts:

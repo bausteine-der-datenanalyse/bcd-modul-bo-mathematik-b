@@ -11,6 +11,13 @@ definitions:
 
 # Jobs
 jobs:
+# Eigenes Quarto-Projekt (Book), findet Extension und Brand im Hauptordner nur über Symlinks
+- symlink:
+  target: ../../_extensions
+  link: _extensions
+- symlink:
+  target: ../../_brand.yml
+  link: _brand.yml
 - copy:
   from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
   to: bcd-bausteine-statistik.bib
