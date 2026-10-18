@@ -84,6 +84,10 @@ https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/
 
 ## Folien R
 
+**Alle R-Folien**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien-alle/index.html
+
 ### 01 Erste Schritte in R und Positron
 
 **Folien**
