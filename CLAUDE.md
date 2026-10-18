@@ -48,6 +48,9 @@ Jedes Quarto-Projekt hat eine `content.yml`, die als Job-Pipeline für
 den Bausteine-Repos in einen lokalen Zielordner, standardmäßig `c/` (siehe `target-folder` in
 `content.yml`).
 
+Aufgerufen wird `collect-content.R` als `pre-render` (Haupt-`_quarto.yml` für alle vier Ordner darin,
+`weitere-unterlagen/_quarto.yml`), nur für die Books (`statistik-skript`, `r-folien-alle`) über `make prepare-render`.
+
 **`c/` (bzw. der in `target-folder` angegebene Ordner) wird bei jedem Lauf von
 `collect-content.R` geleert und neu befüllt – niemals direkt darin editieren.** Inhaltliche
 Änderungen gehören entweder in die Quelle im jeweiligen `bausteine/*`-Submodul oder in die
@@ -83,7 +86,7 @@ Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 ## Befehle
 
 ```bash
-make prepare-render   # führt collect-content.R für alle Projekte aus (füllt jeweils c/)
+make prepare-render   # nur Books: führt collect-content.R aus (füllt c/) und legt Symlinks an
 make render           # rendert alle Projekte (render-<ordner>, z. B. render-r-folien, render-aufgaben, …)
 make render-slides-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-slides-pdf zum Vergleich
 make update-extension  # Extension quarto-tinh im Hauptordner aktualisieren
@@ -92,7 +95,7 @@ make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)
 ```
 
-Einzelnes Projekt rendern (nach `prepare-render`):
+Einzelnes Book rendern (nach `prepare-render`, die übrigen Ordner brauchen das dank `pre-render` nicht):
 
 ```bash
 quarto render lernpfad/statistik-skript

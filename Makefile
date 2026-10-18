@@ -18,23 +18,16 @@ update-from-github:
 	git submodule update --recursive --remote
 
 prepare-render:
-	cd lernpfad/r-folien-alle && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd lernpfad/statistik-skript && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd lernpfad/statistik-folien && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd lernpfad/r-folien && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd lernpfad/veranstaltung && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd lernpfad/aufgaben && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	cd lernpfad/weitere-unterlagen && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	# Eigene Quarto-Projekte (Books), finden Extension und Brand im Hauptordner nur über Symlinks
 	for f in lernpfad/statistik-skript lernpfad/r-folien-alle; do \
+		(cd $$f && ../../bausteine/bcd-bausteine-montieren/collect-content.R) || exit 1; \
 		ln -sfn ../../_extensions $$f/_extensions; \
 		ln -sfn ../../_brand.yml $$f/_brand.yml; \
 	done
 
-render-veranstaltung: prepare-render
+render-veranstaltung:
 	quarto render lernpfad/veranstaltung
 
-render-r-folien: prepare-render
+render-r-folien:
 	quarto render lernpfad/r-folien
 
 render-r-folien-alle: prepare-render
@@ -49,10 +42,10 @@ render-slides-pdf:
 render-statistik-skript: prepare-render
 	quarto render lernpfad/statistik-skript
 
-render-statistik-folien: prepare-render
+render-statistik-folien:
 	quarto render lernpfad/statistik-folien
 
-render-aufgaben: prepare-render
+render-aufgaben:
 	quarto render lernpfad/aufgaben
 
 save-slides-pdf:
@@ -74,7 +67,7 @@ diff-slides-pdf:
 		done; \
 	done
 
-render-weitere-unterlagen: prepare-render
+render-weitere-unterlagen:
 	quarto render lernpfad/weitere-unterlagen
 
 render: render-veranstaltung render-r-folien render-r-folien-alle render-statistik-skript render-statistik-folien render-aufgaben render-weitere-unterlagen
