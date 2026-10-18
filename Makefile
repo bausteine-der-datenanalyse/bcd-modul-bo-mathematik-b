@@ -31,7 +31,7 @@ render-r-folien:
 render-r-folien-alle: prepare-render
 	quarto render lernpfad/r-folien-alle
 
-render-slides-pdf:
+render-folien-pdf:
 	for d in $(SLIDES_PDF_DIRS); do \
 		find __output/$$d -maxdepth 1 -name '*.html' -print0; \
 	done | \
@@ -70,7 +70,7 @@ render-weitere-unterlagen:
 
 render: render-veranstaltung render-r-folien render-r-folien-alle render-statistik-skript render-statistik-folien render-aufgaben render-weitere-unterlagen
 
-publish: render render-slides-pdf
+publish: render render-folien-pdf
 
 update-extension:
 	quarto update matthiasbaitsch/quarto-tinh --no-prompt
