@@ -107,9 +107,9 @@ Kopien: `folien/_extensions/` und `folien-r/_extensions/`.
 
 ## Folien-PDFs in der CI
 
-- [ ]  Ggf. veröffentlichen und in der CI erzeugen (Informatik: Node und decktape im Workflow,
+- [X]  Ggf. veröffentlichen und in der CI erzeugen (Informatik: Node und decktape im Workflow,
   `make publish PDF_JOBS=2 DECKTAPE_ARGS=--chrome-arg=--no-sandbox`)
-- [ ]  PDFs auf der Titelfolie verlinken wie in Informatik (`lernpfad-zusammenstellen.jl` fügt
+- [X]  PDFs auf der Titelfolie verlinken wie in Informatik (`lernpfad-zusammenstellen.jl` fügt
   `[⬇ Folien als PDF](name.pdf){download="name.pdf"}` vor der ersten Überschrift ein)
   - `folien-r`: `collect-content.R` kann nur zeilenweise ersetzen, nicht einfügen
   - Vorschlag: Lua-Filter in der Extension, per `pdf-download: true` eingeschaltet, Dateiname aus der

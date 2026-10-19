@@ -68,7 +68,7 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
   | `folien/woche-2.html` … `woche-11.html` | entfallen, Agenda steht im Wochen-Tab                   |
 
   - Die Seite `moodle/installation-r-positron.html` enthält keine Links auf GitHub Pages.
-- [ ]  Statistik-Folien in `bcd-bausteine-statistik`
+- [X]  Statistik-Folien in `bcd-bausteine-statistik`
 
   - Je Modul `m-*/folien/` neben `skript/` und `aufgaben/`, gleich gegliedert wie das Skript.
 
@@ -91,8 +91,8 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
     `quarto render $folder -t html` bzw. `-t pdf` für jeden Ordner `m-*` und erzwingen damit das Format auch
     für `folien/`. Skript/Aufgaben und Folien trennen, z. B. eigenes Target `folien` mit
     `quarto render m-*/folien/folien.qmd`.
-  - [ ]  Titelfolie ausbauen (Untertitel, Autor, Datum, Aussehen der Hochschule).
-  - [ ]  Beim Zusammensetzen (`lernpfad/statistik-folien/content.yml`) berücksichtigen, dass die Folien auf
+  - [X]  Titelfolie ausbauen (Untertitel, Autor, Datum, Aussehen der Hochschule).
+  - [X]  Beim Zusammensetzen (`lernpfad/statistik-folien/content.yml`) berücksichtigen, dass die Folien auf
     `../skript/` zugreifen: Bilder, Daten und R-Dateien des Skripts so nach `c/` kopieren, dass die Pfade
     stimmen (oder Pfade per `transform` umschreiben). Ebenso `../../_bcd-setup.typ` im Kopf der Folien.
 - [X]  Neues Projekt `lernpfad/statistik-folien` analog `r-folien`
@@ -110,14 +110,4 @@ Pages ändern sich dadurch; unkritisch, weil Moodle ohnehin neu aufgebaut wird.
     (`weitere-geoms-und-plots-aufbereiten`, `grundlagen-r`), deren Zips die Nummern 08 und 09 tragen. Das doppelte
     `increment-index` hält Blatt- und Zip-Nummern gleich, die `skip`-Einträge in `parts` stehen für die Blätter 01
     und 02 ohne R-Projekt. Möglichkeit: Blatt 08 teilen.
-- [ ]  Aufbau in `README.md` (Tabelle Projekte) und `CLAUDE.md` festhalten (bei den offenen Schritten ergänzen).
-- [ ]  Eigener Job für Foliensätze in `collect-content.R` (zurückgestellt, funktioniert im Moment auch so). Name
-  z. B. `slides-project`, analog `assignment-paper`. Er legt fest, wie ein Foliensatz-Ordner aussieht (`folien.qmd`, `folien.code-workspace`,
-  optional `bilder/`, `daten/`, `skripte/`), und erledigt Webfassung in `c/` und Zip (mit `_quarto.yml` aus
-  `quarto-template.yml` und Extension) in einem Schritt.
-
-  - Ersetzt die fast gleichen `jobs-on-parts` in `lernpfad/r-folien/content.yml` und
-    `lernpfad/veranstaltung/content.yml` (dort sind die `exclude-patterns` schon auseinandergelaufen, `.graffle`).
-  - Ggf. auch für `r-folien-alle` (nur Webfassung, mit `transform`) nutzbar machen.
-  - Vorher `_beispiel-essen.qmd` übernehmen (siehe oben), damit es keine Sonderfälle gibt.
-  - README von `bcd-bausteine-montieren` ergänzen.
+- [X]  Aufbau in `README.md` (Tabelle Projekte) und `CLAUDE.md` festhalten (bei den offenen Schritten ergänzen).
