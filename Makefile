@@ -41,7 +41,7 @@ diff-folien-pdf:
 publish: render render-folien-pdf
 
 clean:
-	rm -rf __output .quarto _bcd-setup.R
+	rm -rf __output .quarto
 	for f in $(RENDER_TARGETS:render-%=lernpfad/%); do \
 		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/bcd-style-notes.css $$f/*_files $$f/index.html $$f/site_libs; \
 	done

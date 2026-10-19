@@ -11,10 +11,10 @@ definitions:
 
 # Jobs
 jobs:
-# Die Folien suchen _bcd-setup.R im Quarto-Projekt, also im Hauptordner
+# Die Folien suchen _bcd-setup.R im nächsten Ordner darüber, der die Datei enthält
 - copy:
   from: ${bcd-bausteine-statistik}/_bcd-setup.R
-  to: ${project-folder}/_bcd-setup.R
+  to: ${target-folder}/_bcd-setup.R
   overwrite: true
 # Hilfsfunktionen aus dem Skript lesen Daten relativ zum Ordner der Folien
 - symlink:

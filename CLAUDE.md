@@ -12,7 +12,7 @@ auf `main`. Sieben Teile in `lernpfad/` (wie im Informatik-Projekt), benannt nac
 - `lernpfad/statistik-skript` – Skript Statistik (HTML + PDF)
 - `lernpfad/statistik-folien` – Folien Statistik (PDF mit `tinh-slides-typst`). Die Folien greifen auf
   `../skript/00-bilder` und `../skript/01-daten` zu, daher `c/folien/` und `c/skript/`. `_bcd-setup.R` wird
-  per `rprojroot::is_quarto_project` gesucht und deshalb in den Hauptordner kopiert (gitignored).
+  per `rprojroot::has_file("_bcd-setup.R")` im nächsten Ordner darüber gesucht und liegt deshalb in `c/`.
 - `lernpfad/aufgaben` – Aufgabenblätter (HTML + PDF)
 - `lernpfad/r-folien` – R-Folien, einzeln und als Zip
 - `lernpfad/r-folien-alle` – Gesamtfassung der R-Folien (HTML)
