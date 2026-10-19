@@ -75,7 +75,7 @@ sind in der [README von bcd-bausteine-montieren](bausteine/bcd-bausteine-montier
 
 Wie im Informatik-Projekt gibt es ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
 `_extensions/`). Nur die Books `lernpfad/statistik-skript` und `lernpfad/r-folien-alle` sowie
-`lernpfad/weitere-unterlagen` (eigenständige Projekte wie bei den Studierenden) haben ein eigenes `_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `make prepare-render` anlegt. Die
+`lernpfad/weitere-unterlagen` (eigenständige Projekte wie bei den Studierenden) haben ein eigenes `_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `collect-content.R` anlegt. Die
 übrigen Projekte haben nur ein `_metadata.yml` (falls nötig), das auch für `c/` gilt. Die Ausgabe landet unter
 demselben Pfad in `__output`, z. B. `__output/lernpfad/r-folien`.
 

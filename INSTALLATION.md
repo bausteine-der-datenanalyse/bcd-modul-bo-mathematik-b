@@ -74,20 +74,17 @@ git pull
 git submodule update --remote
 ```
 
-2. Inhalte aus den Bausteinen zusammensetzen (füllt die Ordner `c/`):
-
-```bash
-make prepare-render
-```
-
-Für ein einzelnes Projekt das Sammelskript im jeweiligen Projektordner ausführen, z. B.:
+2. Rendern mit `make render` (alles) oder `make render-<ordner>` (einzeln, z. B. `make render-aufgaben`). Jedes
+Target setzt zuerst mit `collect-content.R` die Inhalte aus den Bausteinen zusammen (füllt den Ordner `c/`) und
+ruft dann Quarto auf. Ohne `make` beides von Hand, z. B.:
 
 ```bash
 cd lernpfad/statistik-skript
 ../../bausteine/bcd-bausteine-montieren/collect-content.R
+cd ../..
 ```
 
-3. Quarto ausführen – alles mit `make render` oder einzeln:
+Danach Quarto ausführen:
 
 ```bash
 quarto render lernpfad/statistik-skript

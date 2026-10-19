@@ -20,7 +20,7 @@ lernpfad/statistik-skript/*.bib
 lernpfad/statistik-skript/bcd-style-notes.css
 /_bcd-setup.R
 
-# Symlinks auf Extension und Brand im Hauptordner (siehe Makefile, prepare-render)
+# Symlinks auf Extension und Brand im Hauptordner (legt collect-content.R laut content.yml an)
 lernpfad/*/_extensions
 lernpfad/*/_brand.yml
 

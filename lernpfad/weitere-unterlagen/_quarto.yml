@@ -1,3 +1,2 @@
 project:
   output-dir: ../../__output/lernpfad/weitere-unterlagen
-  pre-render: ../../bausteine/bcd-bausteine-montieren/collect-content.R

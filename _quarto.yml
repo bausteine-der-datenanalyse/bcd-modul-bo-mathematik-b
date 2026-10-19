@@ -7,8 +7,3 @@ project:
     - lernpfad/r-folien/
     - lernpfad/statistik-folien/
     - lernpfad/veranstaltung/
-  pre-render:
-    - sh -c "cd lernpfad/aufgaben && ../../bausteine/bcd-bausteine-montieren/collect-content.R"
-    - sh -c "cd lernpfad/r-folien && ../../bausteine/bcd-bausteine-montieren/collect-content.R"
-    - sh -c "cd lernpfad/statistik-folien && ../../bausteine/bcd-bausteine-montieren/collect-content.R"
-    - sh -c "cd lernpfad/veranstaltung && ../../bausteine/bcd-bausteine-montieren/collect-content.R"
