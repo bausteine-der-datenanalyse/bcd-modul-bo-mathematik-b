@@ -26,3 +26,4 @@ lernpfad/*/_brand.yml
 
 /.quarto/
 **/*.quarto_ipynb
+.claude/settings.json
