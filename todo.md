@@ -3,6 +3,8 @@
 - [X]  Tabellen in html
 - [X]  Aufbau umstellen, siehe `todo-umstellung-aufbau.md`
 - [X]  Extension an einer stelle installieren
+- [ ]  _bcd-setup.R im Projektverzeichnis raus
+- [ ]  Pre-render-skripte verteilen
 - [ ]  Besseres Beispiel für Diagrammtypen, die Energieträger sind keine Häufigkeitsverteilunge k
 - [ ]  Wasserwirtschaftsjahr, [www.enso.info/enso-lexikon/lemma/abflussjahr](https://www.enso.info/enso-lexikon/lemma/abflussjahr), Mail von Marco Noack vom 14.10.2026
 - [ ]
