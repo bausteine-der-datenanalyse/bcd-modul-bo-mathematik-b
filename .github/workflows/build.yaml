@@ -20,7 +20,7 @@ jobs:
         run: sudo apt-get install librsvg2-bin
 
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -53,7 +53,7 @@ jobs:
         run: make publish PDF_JOBS=2 DECKTAPE_ARGS=--chrome-arg=--no-sandbox
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: '__output'
 
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
     - name: Setup Pages
-      uses: actions/configure-pages@v5
+      uses: actions/configure-pages@v6
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5
