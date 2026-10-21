@@ -59,7 +59,7 @@ jobs:
   sol: 834hja1
   files: 
   - ${bcd-bausteine-statistik}/m-einzelne-merkmale/aufgaben/*.qmd    
-  - ${bcd-bausteine-r}/w-einzelne-merkmale/aufgaben/10.*.qmd
+  - ${bcd-bausteine-r}/w-einzelne-merkmale/aufgaben/[1-5]0.*.qmd
   folders:
   - ${bcd-bausteine-statistik}/m-einzelne-merkmale/aufgaben/*
 - increment-index:
