@@ -45,3 +45,4 @@ part-name-pattern: "m\\-(.*)/"
 parts:
 - folder: bausteine/bcd-bausteine-statistik/m-statistische-daten/folien
 - folder: bausteine/bcd-bausteine-statistik/m-einzelne-merkmale/folien
+- folder: bausteine/bcd-bausteine-statistik/m-kenngroessen/folien

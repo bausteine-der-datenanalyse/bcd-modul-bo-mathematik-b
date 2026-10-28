@@ -7,6 +7,10 @@ deploy-folder: __output/lernpfad/r-folien/c
 
 # Jobs
 jobs:
+# Die Folien suchen _bcd-setup.R im nächsten Ordner darüber, der die Datei enthält
+- copy:
+  from: ${project-folder}/bausteine/bcd-bausteine-r/_bcd-setup.R
+  to: ${target-folder}/_bcd-setup.R
 
 # Jobs running on all parts
 jobs-on-parts:
@@ -59,6 +63,9 @@ jobs-on-parts:
   from: ${part-folder}/skripte
   to: ${target-folder}/${idx}-${name}/skripte
   optional: yes
+- copy:
+  from: ${project-folder}/bausteine/bcd-bausteine-r/_bcd-setup.R
+  to: ${target-folder}/${idx}-${name}/_bcd-setup.R
 - copy:
   from: _metadata.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml

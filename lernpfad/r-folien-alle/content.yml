@@ -14,6 +14,10 @@ jobs:
 - symlink:
   target: ../../_brand
   link: _brand
+# Die Folien suchen _bcd-setup.R im nächsten Ordner darüber, der die Datei enthält
+- copy:
+  from: ${project-folder}/bausteine/bcd-bausteine-r/_bcd-setup.R
+  to: ${target-folder}/_bcd-setup.R
 
 # Jobs running on all parts
 jobs-on-parts:
