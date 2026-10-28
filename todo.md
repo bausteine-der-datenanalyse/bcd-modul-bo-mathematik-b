@@ -9,7 +9,7 @@
 - [ ]  Besseres Beispiel für Diagrammtypen, die Energieträger sind keine Häufigkeitsverteilunge k
 - [ ]  Wasserwirtschaftsjahr, [www.enso.info/enso-lexikon/lemma/abflussjahr](https://www.enso.info/enso-lexikon/lemma/abflussjahr), Mail von Marco Noack vom 14.10.2026
 - [ ]
-- [ ]  Lösungen wie in numPDE als `::: {.tinh-solution}`-Block am Ende des `#exr-…`-Divs statt in eigenen
+- [X]  Lösungen wie in numPDE als `::: {.tinh-solution}`-Block am Ende des `#exr-…`-Divs statt in eigenen
   `.sol.qmd`-Dateien (35 Stück in `bcd-bausteine-statistik` und `bcd-bausteine-r`). Aufgabenblatt mit
   `tinh-target: blank`, Lösungsblatt mit `tinh-target: solution` und `tinh-solution-task: title` (Filter
   `solution-scaffold.lua` der Extension, „Keine Lösung.“ setzt der Filter). Dann vereinfacht sich
