@@ -15,12 +15,16 @@ definitions:
     ---
     title: "Aufgabenblatt ${sidx}"
     subtitle: "${subtitle}"
+    tinh-target: blank
     ---
 
+# Von jeder Aufgabe nur Titel und Lösung (Filter der Extension tinh)
 - assignment-solution-header: |
     ---
     title: "Lösungen zu Aufgabenblatt ${sidx}"
     subtitle: "${subtitle}"
+    tinh-target: solution
+    tinh-solution-task: title
     ---
 
 
