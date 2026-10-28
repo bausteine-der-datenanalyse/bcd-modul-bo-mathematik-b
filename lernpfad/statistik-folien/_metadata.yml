@@ -1,5 +1,6 @@
 subtitle: "Mathematik B"
 author: "Matthias Baitsch"
+bibliography: c/bcd-bausteine-statistik.bib
 
 execute:
   echo: false

@@ -16,6 +16,10 @@ jobs:
   from: ${bcd-bausteine-statistik}/_bcd-setup.R
   to: ${target-folder}/_bcd-setup.R
   overwrite: true
+- copy:
+  from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
+  to: ${target-folder}/bcd-bausteine-statistik.bib
+  overwrite: true
 # Hilfsfunktionen aus dem Skript lesen Daten relativ zum Ordner der Folien
 - symlink:
   target: ../skript/01-daten
