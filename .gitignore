@@ -21,7 +21,7 @@ lernpfad/statistik-skript/bcd-style-notes.css
 
 # Symlinks auf Extension und Brand im Hauptordner (legt collect-content.R laut content.yml an)
 lernpfad/*/_extensions
-lernpfad/*/_brand.yml
+lernpfad/*/_brand
 
 /.quarto/
 **/*.quarto_ipynb

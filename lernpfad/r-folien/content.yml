@@ -63,8 +63,11 @@ jobs-on-parts:
   from: _metadata.yml
   to: ${target-folder}/${idx}-${name}/_quarto.yml
 - copy:
-  from: ${project-folder}/_brand.yml
-  to: ${target-folder}/${idx}-${name}/_brand.yml
+  from: ${project-folder}/_brand
+  to: ${target-folder}/${idx}-${name}/_brand
+- copy:
+  from: ${project-folder}/_brand/logos
+  to: ${target-folder}/${idx}-${name}/_brand/logos
 - copy:
   from: ${project-folder}/_extensions/matthiasbaitsch/tinh-slides
   to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-slides

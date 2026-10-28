@@ -43,7 +43,7 @@ lernpfad/                  Quarto-Projekte des Lernpfads, Namen nach dem Muster 
   weitere-unterlagen         sonstiges Material (Schreiben/Präsentieren mit Quarto)
 __output/                   gerenderte Unterlagen, wird auf GitHub Pages veröffentlicht
 _quarto.yml                Quarto-Projekt für alles außer statistik-skript, r-folien-alle, weitere-unterlagen
-_brand.yml                 HSBO-Brand (Logo)
+_brand/                    HSBO-Brand (hsbo-brand)
 _extensions/               Quarto-Extension tinh
 ```
 
@@ -73,7 +73,7 @@ sind in der [README von bcd-bausteine-montieren](bausteine/bcd-bausteine-montier
 
 ### Quarto-Projekte
 
-Wie im Informatik-Projekt gibt es ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
+Wie im Informatik-Projekt gibt es ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand/`,
 `_extensions/`). Nur die Books `lernpfad/statistik-skript` und `lernpfad/r-folien-alle` sowie
 `lernpfad/weitere-unterlagen` (eigenständige Projekte wie bei den Studierenden) haben ein eigenes `_quarto.yml`. `statistik-skript` und `r-folien-alle` finden Extension und Brand über Symlinks, die `collect-content.R` anlegt. Die
 übrigen Projekte haben nur ein `_metadata.yml` (falls nötig), das auch für `c/` gilt. Die Ausgabe landet unter
@@ -84,7 +84,7 @@ demselben Pfad in `__output`, z. B. `__output/lernpfad/r-folien`.
 `lernpfad/veranstaltung` und `lernpfad/r-folien` verwenden die neutrale Quarto-Extension
 [quarto-tinh](https://github.com/matthiasbaitsch/quarto-tinh) (Format `tinh-slides-revealjs`), die in beiden
 Hauptordner unter `_extensions/` liegt. Aktualisieren mit `make update-extension`. Logo und Name der Hochschule
-kommen aus der Brand `_brand.yml`. `statistik-skript` und `r-folien-alle` verwenden `tinh-notes`, `aufgaben` verwendet
+kommen aus der Brand [hsbo-brand](https://github.com/matthiasbaitsch/hsbo-brand) in `_brand/`, ebenfalls mit `make update-extension` aktualisiert. `statistik-skript` und `r-folien-alle` verwenden `tinh-notes`, `aufgaben` verwendet
 `tinh-assignments` aus derselben Extension.
 
 ## Schnellstart

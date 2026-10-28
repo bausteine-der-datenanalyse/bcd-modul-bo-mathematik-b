@@ -1,138 +1,31 @@
-// Aus Quarto 1.10 (formats/typst/pandoc/quarto/typst-template.typ).
-// Geändert: Titel, Autoren und Datum linksbündig statt zentriert.
+// Ersetzt Quartos article-Funktion durch eine schlanke Fassung für Aufgabenblätter:
+// Titel und Untertitel linksbündig, mehr Abstand unter Überschriften. Weitere
+// Argumente aus Quartos typst-show.typ (Autoren, Datum, Inhaltsverzeichnis, ...)
+// werden ignoriert.
 #let article(
   title: none,
   subtitle: none,
-  authors: none,
-  keywords: (),
-  date: none,
-  abstract-title: none,
-  abstract: none,
-  thanks: none,
-  cols: 1,
-  lang: "en",
-  region: "US",
+  lang: "de",
+  region: "DE",
   font: none,
   fontsize: 11pt,
-  title-size: 1.5em,
-  subtitle-size: 1.25em,
-  heading-family: none,
-  heading-weight: "bold",
-  heading-style: "normal",
-  heading-color: black,
-  heading-line-height: 0.65em,
-  mathfont: none,
-  codefont: none,
-  linestretch: 1,
-  sectionnumbering: none,
-  linkcolor: none,
-  citecolor: none,
-  filecolor: none,
-  toc: false,
-  toc_title: none,
-  toc_depth: none,
-  toc_indent: 1.5em,
+  ..rest,
   doc,
 ) = {
-  // Set document metadata for PDF accessibility
-  set document(title: title, keywords: keywords)
-  set document(
-    author: authors.map(author => content-to-string(author.name)).join(", ", last: " & "),
-  ) if authors != none and authors != ()
-  set par(
-    justify: true,
-    leading: linestretch * 0.65em
-  )
-  set text(lang: lang,
-           region: region,
-           size: fontsize)
+  set document(title: title)
+  set text(lang: lang, region: region, size: fontsize)
   set text(font: font) if font != none
-  show math.equation: set text(font: mathfont) if mathfont != none
-  show raw: set text(font: codefont) if codefont != none
+  set par(justify: true, leading: 0.65em)
+  show heading: set block(below: 1em)
 
-  set heading(numbering: sectionnumbering)
-
-  show link: set text(fill: rgb(content-to-string(linkcolor))) if linkcolor != none
-  show ref: set text(fill: rgb(content-to-string(citecolor))) if citecolor != none
-  show link: this => {
-    if filecolor != none and type(this.dest) == label {
-      text(this, fill: rgb(content-to-string(filecolor)))
-    } else {
-      text(this)
-    }
-   }
-
-  let has-title-block = title != none or (authors != none and authors != ()) or date != none or abstract != none
-  if has-title-block {
-    place(
-      top,
-      float: true,
-      scope: "parent",
-      clearance: 4mm,
-      block(below: 1em, width: 100%)[
-
-        #if title != none {
-          align(left, block(inset: (y: 2em))[
-            #set par(leading: heading-line-height) if heading-line-height != none
-            #set text(font: heading-family) if heading-family != none
-            #set text(weight: heading-weight)
-            #set text(style: heading-style) if heading-style != "normal"
-            #set text(fill: heading-color) if heading-color != black
-
-            #text(size: title-size)[#title #if thanks != none {
-              footnote(thanks, numbering: "*")
-              counter(footnote).update(n => n - 1)
-            }]
-            #(if subtitle != none {
-              parbreak()
-              text(size: subtitle-size)[#subtitle]
-            })
-          ])
-        }
-
-        #if authors != none and authors != () {
-          let count = authors.len()
-          let ncols = calc.min(count, 3)
-          grid(
-            columns: (1fr,) * ncols,
-            row-gutter: 1.5em,
-            ..authors.map(author =>
-                align(left)[
-                  #author.name \
-                  #author.affiliation \
-                  #author.email
-                ]
-            )
-          )
-        }
-
-        #if date != none {
-          align(left)[#block(inset: (y: 1em))[
-            #date
-          ]]
-        }
-
-        #if abstract != none {
-          block(inset: 2em)[
-          #text(weight: "semibold")[#abstract-title] #h(1em) #abstract
-          ]
-        }
-      ]
-    )
-  }
-
-  if toc {
-    let title = if toc_title == none {
-      auto
-    } else {
-      toc_title
-    }
-    block(above: 0em, below: 2em)[
-    #outline(
-      title: toc_title,
-      depth: toc_depth,
-      indent: toc_indent
-    );
+  if title != none {
+    block(inset: (y: 0em), below: 3em)[
+      #set par(leading: 0.65em, spacing: 0.75em)
+      #text(size: 1.5em, weight: "bold", title)
+      #if subtitle != none {
+        parbreak()
+        text(size: 1.25em, subtitle)
+      }
     ]
   }
 
@@ -140,6 +33,12 @@
 }
 
 #set table(
-  inset: 6pt,
+  inset: 4pt,
   stroke: none
 )
+
+// gt-Tabellen kommen über Quartos CSS-Übersetzung mit fest 12pt (16px) an
+#show table: it => context {
+  if text.size == 12pt { set text(size: 0.8em); it } else { it }
+}
+

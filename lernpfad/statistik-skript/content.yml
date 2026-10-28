@@ -16,8 +16,8 @@ jobs:
   target: ../../_extensions
   link: _extensions
 - symlink:
-  target: ../../_brand.yml
-  link: _brand.yml
+  target: ../../_brand
+  link: _brand
 - copy:
   from: ${bcd-bausteine-statistik}/bcd-bausteine-statistik.bib
   to: bcd-bausteine-statistik.bib

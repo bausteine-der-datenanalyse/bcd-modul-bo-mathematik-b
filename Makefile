@@ -49,8 +49,10 @@ clean:
 bootstrap:
 	R -e "install.packages(\"remotes\", repos = \"https://cran.uni-muenster.de\"); remotes::install_deps(upgrade = \"always\")"
 
+# Update extension tinh (_extensions/) and brand of Hochschule Bochum (_brand/)
 update-extension:
 	quarto update matthiasbaitsch/quarto-tinh --no-prompt
+	quarto use brand matthiasbaitsch/hsbo-brand --force
 
 update-from-github:
 	git pull

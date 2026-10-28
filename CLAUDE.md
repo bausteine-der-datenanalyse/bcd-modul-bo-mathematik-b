@@ -19,7 +19,7 @@ auf `main`. Sieben Teile in `lernpfad/` (wie im Informatik-Projekt), benannt nac
 - `lernpfad/veranstaltung` – Folien, die nur zu dieser Veranstaltung gehören (Einführung, …), einzeln und als Zip
 - `lernpfad/weitere-unterlagen` – sonstiges Material
 
-Aufbau wie im Informatik-Projekt: Ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand.yml`,
+Aufbau wie im Informatik-Projekt: Ein Quarto-Projekt im Hauptordner (`_quarto.yml`, `_brand/`,
 `_extensions/`), nur die Books `statistik-skript` und `r-folien-alle` sowie `weitere-unterlagen` (eigenständige
 Projekte wie bei den Studierenden, nur `output-dir`) haben ein eigenes `_quarto.yml`. Die übrigen
 Ordner haben höchstens ein `_metadata.yml` (gilt auch für `c/`). Grundsatz: Einstellungen in den Projektordner,
@@ -72,11 +72,13 @@ Dateinamen bei `copy` (z. B. `_metadata.yml`) relativ zum Projektordner. Der `co
 z. B. die Klassen `.neuerbegriff`, `.ja`/`.nein`, `.up*`/`.down*`, `.framed`, `.raw`. Hintergrund und offene
 Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 
-- Was HSBO ausmacht (Logo), steht in der Brand `_brand.yml` im Hauptordner. Das Logo (`logo.medium`, als URL auf die Website der Hochschule)
-  erscheint auf der Titelfolie.
+- Was HSBO ausmacht (Logos, Farben), kommt wie in numPDE aus der Brand der Hochschule Bochum
+  ([hsbo-brand](https://github.com/matthiasbaitsch/hsbo-brand)), eingebunden in `_brand/` im Hauptordner und
+  zusammen mit der Extension aktualisiert durch `make update-extension` – nicht von Hand bearbeiten. Das Logo im
+  Querformat auf den Aufgabenblättern ist in `lernpfad/aufgaben/_metadata.yml` eingestellt.
 - Die Extension liegt einmal unter `_extensions/` im Hauptordner (eingecheckt). Bei `veranstaltung` und
   `r-folien` kopieren die `content.yml` sie zusätzlich in jedes Zip, damit Studierende lokal rendern können, ebenso
-  die Brand als `_brand.yml` und das `_metadata.yml` des Projekts als `_quarto.yml`.
+  die Brand als `_brand/` (zwei `copy`-Jobs, `_brand` und `_brand/logos`) und das `_metadata.yml` des Projekts als `_quarto.yml`.
 - Stiländerungen nur im Extension-Repo, dort Version erhöhen, pushen, dann hier `make update-extension`.
 - `statistik-skript` nutzt `tinh-notes-html`/`tinh-notes-pdf` (ebenfalls mit HSBO-Brand), `aufgaben` nutzt
   `tinh-assignments-html`/`tinh-assignments-typst`. Darin stecken CSS, LaTeX-Präambel und die Befehle

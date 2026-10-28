@@ -5,9 +5,16 @@
 - [X]  Extension an einer stelle installieren
 - [X]  _bcd-setup.R im Projektverzeichnis raus
 - [X]  Pre-render-skripte verteilen
+- [ ]  Tabelle in Aufgaben Einzelne Merkmale auf eine Seite, MuLö Verteilungsfunktion
 - [ ]  Besseres Beispiel für Diagrammtypen, die Energieträger sind keine Häufigkeitsverteilunge k
 - [ ]  Wasserwirtschaftsjahr, [www.enso.info/enso-lexikon/lemma/abflussjahr](https://www.enso.info/enso-lexikon/lemma/abflussjahr), Mail von Marco Noack vom 14.10.2026
 - [ ]
+- [ ]  Lösungen wie in numPDE als `::: {.tinh-solution}`-Block am Ende des `#exr-…`-Divs statt in eigenen
+  `.sol.qmd`-Dateien (35 Stück in `bcd-bausteine-statistik` und `bcd-bausteine-r`). Aufgabenblatt mit
+  `tinh-target: blank`, Lösungsblatt mit `tinh-target: solution` und `tinh-solution-task: title` (Filter
+  `solution-scaffold.lua` der Extension, „Keine Lösung.“ setzt der Filter). Dann vereinfacht sich
+  `assignment_paper_job_do` in `collect-content.R` (Blatt einmal zusammensetzen, Lösungsblatt nur anderer Kopf).
+  Vorher prüfen, ob andere Projekte die Bausteine oder `collect-content.R` mit `.sol.qmd` nutzen.
 - [ ]  Eigener Job für Foliensätze in `collect-content.R` (zurückgestellt, funktioniert im Moment auch so). Name
   z. B. `slides-project`, analog `assignment-paper`. Er legt fest, wie ein Foliensatz-Ordner aussieht (`folien.qmd`, `folien.code-workspace`,
   optional `bilder/`, `daten/`, `skripte/`), und erledigt Webfassung in `c/` und Zip (mit `_quarto.yml` aus
