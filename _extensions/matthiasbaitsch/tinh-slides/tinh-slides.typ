@@ -59,8 +59,9 @@
 #let down40 = down(40)
 #let down50 = down(50)
 
-// Tabellen ohne Typsts Standardraster
+// Tabellen ohne Typsts Standardraster, Text kleiner
 #set table(stroke: none)
+#show table: set text(size: 0.75em)
 
 // Abgesetzte Formeln linksbündig, 1em eingerückt
 #show math.equation.where(block: true): set align(left)
