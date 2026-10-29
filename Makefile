@@ -1,55 +1,81 @@
-PDF_JOBS ?= 4
+PDF_JOBS ?= 8
 DECKTAPE_ARGS ?=
 
-# Ordner mit Folien (relativ zu __output), aus denen PDFs erzeugt werden
-SLIDES_PDF_DIRS = lernpfad/r-folien/c
+DECKTAPE_DIRS = lernpfad/r-folien/c
 
-RENDER_TARGETS = render-veranstaltung render-r-folien render-r-folien-alle render-statistik-skript \
-                 render-statistik-folien render-aufgaben render-weitere-unterlagen
+SNAPSHOT_DIRS = lernpfad/aufgaben/c \
+                lernpfad/r-folien/c \
+                lernpfad/statistik-folien/c/folien \
+                lernpfad/statistik-skript
+
+RENDER_TARGETS = render-aufgaben \
+                 render-r-folien \
+                 render-r-folien-alle \
+                 render-statistik-folien \
+                 render-statistik-skript \
+                 render-veranstaltung \
+                 render-weitere-unterlagen
+
+publish: render render-decktape
 
 render: $(RENDER_TARGETS)
 
 $(RENDER_TARGETS): render-%:
 	cd lernpfad/$* && ../../bausteine/bcd-bausteine-montieren/collect-content.R
-	quarto render lernpfad/$*
+	quarto render lernpfad/$* --quiet
 
-render-folien-pdf:
-	for d in $(SLIDES_PDF_DIRS); do \
+render-decktape:
+	for d in $(DECKTAPE_DIRS); do \
 		find __output/$$d -maxdepth 1 -name '*.html' -print0; \
 	done | \
-		xargs -0 -P $(PDF_JOBS) -I {} sh -c 'decktape reveal $(DECKTAPE_ARGS) -s 1050x700 -p 200 "$$1" "$${1%.html}.pdf"' _ {}
+		xargs -0 -P $(PDF_JOBS) -I {} \
+			sh -c 'decktape reveal $(DECKTAPE_ARGS) -s 1050x700 -p 200 "$$1" "$${1%.html}.pdf"' _ {}
 
-save-folien-pdf:
-	for d in $(SLIDES_PDF_DIRS); do \
-		mkdir -p _vergleich/$$d; \
-		cp __output/$$d/*.pdf _vergleich/$$d/; \
+snapshot:
+	rm -rf __snapshot
+	for d in $(SNAPSHOT_DIRS); do \
+		p=$${d#lernpfad/}; p=$${p%%/*}; \
+		mkdir -p __snapshot/$$p; \
+		cp __output/$$d/*.pdf __snapshot/$$p/; \
 	done
 
-diff-folien-pdf:
-	for d in $(SLIDES_PDF_DIRS); do \
-		mkdir -p _vergleich/diff/$$d; \
-		for f in _vergleich/$$d/*.pdf; do \
+diff-snapshot:
+	rm -rf __snapshot-diff
+	for d in $(SNAPSHOT_DIRS); do \
+		p=$${d#lernpfad/}; p=$${p%%/*}; \
+		for f in __snapshot/$$p/*.pdf; do \
 			n=`basename "$$f"`; \
-			if diff-pdf -s -m --output-diff="_vergleich/diff/$$d/$$n" "$$f" "__output/$$d/$$n"; then \
-				echo "gleich:      $$d/$$n"; \
+			if [ ! -f "__output/$$d/$$n" ]; then \
+				echo "removed:   $$p/$$n"; \
+			elif diff-pdf -s "$$f" "__output/$$d/$$n"; then \
+				echo "same:      $$p/$$n"; \
 			else \
-				echo "verschieden: $$d/$$n"; \
+				mkdir -p __snapshot-diff/$$p; \
+				diff-pdf -m --output-diff="__snapshot-diff/$$p/$$n" "$$f" "__output/$$d/$$n"; \
+				echo "different: $$p/$$n"; \
 			fi; \
+		done; \
+		for f in __output/$$d/*.pdf; do \
+			n=`basename "$$f"`; \
+			[ -f "__snapshot/$$p/$$n" ] || echo "new:       $$p/$$n"; \
 		done; \
 	done
 
-publish: render render-folien-pdf
+quick-snapshot:
+	$(MAKE) render-statistik-skript & s=$$!; \
+	$(MAKE) render-r-folien render-statistik-folien render-aufgaben render-decktape && wait $$s
+	$(MAKE) snapshot
 
 clean:
 	rm -rf __output .quarto
 	for f in $(RENDER_TARGETS:render-%=lernpfad/%); do \
-		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/bcd-style-notes.css $$f/*_files $$f/index.html $$f/site_libs; \
+		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/bcd-style-notes.css \
+			$$f/*_files $$f/index.html $$f/site_libs; \
 	done
 
 bootstrap:
 	R -e "install.packages(\"remotes\", repos = \"https://cran.uni-muenster.de\"); remotes::install_deps(upgrade = \"always\")"
 
-# Update extension tinh (_extensions/) and brand of Hochschule Bochum (_brand/)
 update-extension:
 	quarto update matthiasbaitsch/quarto-tinh --no-prompt
 	quarto use brand matthiasbaitsch/hsbo-brand --force

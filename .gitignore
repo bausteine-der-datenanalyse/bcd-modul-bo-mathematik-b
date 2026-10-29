@@ -1,6 +1,7 @@
 # Ausgabe von quarto render und PDF-Vergleich
 __output
-_vergleich
+__snapshot
+__snapshot-diff
 
 # Arbeitsdateien von Quarto und Editoren
 .quarto

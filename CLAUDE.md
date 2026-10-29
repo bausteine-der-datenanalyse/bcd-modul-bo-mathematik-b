@@ -90,7 +90,9 @@ Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 ```bash
 make render           # rendert alle Projekte (render-<ordner>, z. B. render-r-folien, render-aufgaben, …),
                       # jeweils erst collect-content.R (füllt c/, legt Symlinks an), dann quarto render
-make render-folien-pdf # Folien (veranstaltung, r-folien) per decktape als PDF, save-/diff-folien-pdf zum Vergleich
+make render-decktape   # Folien (r-folien) per decktape als PDF
+make snapshot          # PDFs (Folien, Skript, Aufgaben) nach __snapshot/<projekt>, diff-snapshot zum Vergleich
+make quick-snapshot    # nur das Nötige rendern (Skript parallel), dann snapshot
 make update-extension  # Extension quarto-tinh im Hauptordner aktualisieren
 make clean             # entfernt __output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
@@ -114,7 +116,7 @@ R-Lint-Konfiguration liegt in `.lintr` (Zeilenlänge 120, Einrückung 2).
 
 ## CI
 
-`.github/workflows/build.yaml` (Job `render`) ruft `make publish` auf (`render` und `render-folien-pdf`, dafür
+`.github/workflows/build.yaml` (Job `render`) ruft `make publish` auf (`render` und `render-decktape`, dafür
 wird decktape installiert) und lädt `__output` als Pages-Artifact
 hoch; der Job `deploy` published anschließend auf GitHub Pages. Das Makefile ist damit die
 maßgebliche Quelle für den Renderprozess – Änderungen am Ablauf gehören dort hin, nicht in den
