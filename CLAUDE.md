@@ -93,7 +93,7 @@ make render           # rendert alle Projekte (render-<ordner>, z. B. render-r-f
 make render-decktape   # Folien (r-folien) per decktape als PDF
 make snapshot          # PDFs (Folien, Skript, Aufgaben) nach __snapshot/<projekt>, diff-snapshot zum Vergleich
 make quick-snapshot    # nur das Nötige rendern (Skript parallel), dann snapshot
-make update-extension  # Extension quarto-tinh im Hauptordner aktualisieren
+make update-extension  # Extension quarto-tinh im Hauptordner und in den Submodulen statistik und r aktualisieren
 make clean             # entfernt __output sowie alle generierten c/, .quarto, _bcd-setup.* etc.
 make update-from-github  # git pull + Submodule aktualisieren
 make bootstrap         # installiert R-Paketabhängigkeiten (aus DESCRIPTION)

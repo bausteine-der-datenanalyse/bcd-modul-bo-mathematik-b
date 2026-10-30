@@ -61,9 +61,11 @@ diff-snapshot:
 		done; \
 	done
 
-quick-snapshot:
+quick-publish:
 	$(MAKE) render-statistik-skript & s=$$!; \
 	$(MAKE) render-r-folien render-statistik-folien render-aufgaben render-decktape && wait $$s
+
+quick-snapshot: quick-publish
 	$(MAKE) snapshot
 
 clean:
@@ -77,7 +79,9 @@ bootstrap:
 	R -e "install.packages(\"remotes\", repos = \"https://cran.uni-muenster.de\"); remotes::install_deps(upgrade = \"always\")"
 
 update-extension:
-	quarto update matthiasbaitsch/quarto-tinh --no-prompt
+	for d in . bausteine/bcd-bausteine-statistik bausteine/bcd-bausteine-r; do \
+		(cd $$d && quarto update matthiasbaitsch/quarto-tinh --no-prompt) || exit 1; \
+	done
 	quarto use brand matthiasbaitsch/hsbo-brand --force
 
 update-from-github:
