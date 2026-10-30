@@ -1,6 +1,6 @@
 title: tinh-slides
 author: Matthias Baitsch
-version: 0.14.1
+version: 0.15.4
 quarto-required: ">=1.8.0"
 contributes:
   formats:
@@ -36,6 +36,10 @@ contributes:
         width: 0.9cm
         padding: 0.1cm
       lang: de
+      # Zitate und Literatur mit Pandoc (Chicago author-date) wie im Skript statt Typsts eigenem Stil
+      citeproc: true
+      # Zitate als Links auf den Eintrag im Literaturverzeichnis
+      link-citations: true
       # Typsts eigene Hervorhebung, damit Codeblöcke raw-Blöcke bleiben (Größe in tinh-slides.typ)
       syntax-highlighting: idiomatic
       # touying-Bridge, eingebettet mit
@@ -52,13 +56,21 @@ contributes:
       # Befehle aus tinh-slides.typ für environment.lua der Bridge
       commands:
         - neuerbegriff
+        - eng
         - ja
         - nein
+        - down5
         - down10
         - down20
         - down30
         - down40
         - down50
+        - up5
+        - up10
+        - up20
+        - up30
+        - up40
+        - up50
       include-in-header:
         - tinh-slides.typ
       theme-typst: tinh-clean-theme
