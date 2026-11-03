@@ -1,5 +1,19 @@
 # TODO
 
+- [ ]  Aufgaben als GitHub-Issues statt in `todo.md`: Punkte zu den Bausteinen (Inhalte, Aufgaben) und größere
+  Vorhaben als Issues im jeweiligen Repo, mit `Fixes #…` im Commit schließen. `todo.md` nur noch für kurze
+  Notizen zum Hauptrepo (Makefile, CI), Erledigtes bleibt abgehakt als Dokumentation stehen. Offene Punkte aus
+  `todo.md` übertragen.
+  Gilt auch für die anderen Projekte.
+- [ ]  R-Musterlösungen mit Ausgabe rendern (Plots, Zahlen), damit Studierende ihre Ergebnisse vergleichen können
+  und kaputte Lösungen beim Rendern auffallen. Bisher macht `read_assignment_lines` in `collect-content.R` in
+  `.tinh-solution`- und `.tinh-work`-Blöcken aus `{r}` `{.r}`. Dazu:
+  - Umwandlung nur noch für das Aufgabenblatt, im Lösungsblatt `{r}` lassen.
+  - Daten liegen im Zip-Ordner (`c/${idx}-${name}-aufgaben/daten/`), nicht neben dem Lösungsblatt. Im Kopf des
+    Lösungsblatts (`assignment-solution-header`) `knitr: opts_knit: root.dir: ${idx}-${name}-aufgaben` setzen.
+  - Inline-Code in der Lösung Lorenzkurve (`` `{{r}} n` ``) soll weiterhin als Text erscheinen.
+  - Folgen: längeres Rendern, alle Pakete in CI (`sf`, `giscoR`), Windenergie lädt die Karte aus dem Netz.
+  - Erst an Blatt 5 ausprobieren.
 - [X]  Tabellen in html
 - [X]  Aufbau umstellen, siehe `todo-umstellung-aufbau.md`
 - [X]  Extension an einer stelle installieren
@@ -8,6 +22,11 @@
 - [ ]  Tabelle in Aufgaben Einzelne Merkmale auf eine Seite, MuLö Verteilungsfunktion
 - [ ]  Besseres Beispiel für Diagrammtypen, die Energieträger sind keine Häufigkeitsverteilunge k
 - [ ]  Wasserwirtschaftsjahr, [www.enso.info/enso-lexikon/lemma/abflussjahr](https://www.enso.info/enso-lexikon/lemma/abflussjahr), Mail von Marco Noack vom 14.10.2026
+- [ ]  Aufgabe Windenergie (`bcd-bausteine-r/w-raeumliche-daten/aufgaben/10-windenergie-in-deutschland.qmd`):
+  Merkmale klein schreiben. `d_wind` aus `daten/mastr-data.RData` hat große Spaltennamen (`Bundesland`, …), dazu
+  das Skript in `skripte/` anpassen und die Daten neu erzeugen, dann auch die eigenen Spalten (`Betriebsjahr`,
+  `Anzahl`, `Leistung`, …, `laender`) klein. `Bundesland` ist Schlüssel für die Joins mit `laender` und der Karte.
+  Dabei Tippfehler `Betriebjahr` korrigieren.
 - [ ]
 - [X]  Lösungen wie in numPDE als `::: {.tinh-solution}`-Block am Ende des `#exr-…`-Divs statt in eigenen
   `.sol.qmd`-Dateien (35 Stück in `bcd-bausteine-statistik` und `bcd-bausteine-r`). Aufgabenblatt mit
