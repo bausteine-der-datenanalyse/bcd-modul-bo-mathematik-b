@@ -33,6 +33,10 @@ jobs-on-parts:
   from: ${part-folder}/folien.qmd
   to: ${target-folder}/folien/${idx}-${name}.qmd
 - copy:
+  from: ${part-folder}/notizen
+  to: ${target-folder}/folien/notizen
+  optional: yes
+- copy:
   from: ${part-folder}/../skript/00-bilder
   to: ${target-folder}/skript/00-bilder
   optional: yes

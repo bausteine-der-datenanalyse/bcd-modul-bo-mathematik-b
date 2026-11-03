@@ -74,7 +74,7 @@ jobs:
   sol: kjdf784
   files: 
   - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/*.qmd    
-  - ${bcd-bausteine-r}/w-kenngroessen/aufgaben/10.*.qmd
+  - ${bcd-bausteine-r}/w-kenngroessen/aufgaben/[0-9][0-9].*.qmd
   folders:
   - ${bcd-bausteine-statistik}/m-kenngroessen/aufgaben/*
 - increment-index:
