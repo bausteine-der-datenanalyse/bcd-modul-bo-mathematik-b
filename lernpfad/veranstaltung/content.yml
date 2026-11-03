@@ -71,6 +71,15 @@ jobs-on-parts:
 - copy:
   from: ${project-folder}/_extensions/matthiasbaitsch/tinh-slides
   to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-slides
+- copy:
+  from: ${project-folder}/_extensions/matthiasbaitsch/tinh-slides/_extensions/kazuyanagimoto/touying
+  to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-slides/_extensions/kazuyanagimoto/touying
+- copy:
+  from: ${project-folder}/_extensions/matthiasbaitsch/tinh-macros
+  to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-macros
+- copy:
+  from: ${project-folder}/_extensions/matthiasbaitsch/tinh-common
+  to: ${target-folder}/${idx}-${name}/_extensions/matthiasbaitsch/tinh-common
 - zip:
   zipfile: ${idx}-${name}.zip
   folder: ${idx}-${name}

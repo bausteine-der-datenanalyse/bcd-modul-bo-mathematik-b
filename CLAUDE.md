@@ -79,6 +79,7 @@ Schritte in `todo-quarto-extension-2.md` (löst `hsbo-maba` ab).
 - Die Extension liegt einmal unter `_extensions/` im Hauptordner (eingecheckt). Bei `veranstaltung` und
   `r-folien` kopieren die `content.yml` sie zusätzlich in jedes Zip, damit Studierende lokal rendern können, ebenso
   die Brand als `_brand/` (zwei `copy`-Jobs, `_brand` und `_brand/logos`) und das `_metadata.yml` des Projekts als `_quarto.yml`.
+  `tinh-slides` braucht dabei auch `tinh-macros`, `tinh-common` und das eingebettete `touying` (je ein `copy`-Job).
 - Stiländerungen nur im Extension-Repo, dort Version erhöhen, pushen, dann hier `make update-extension`.
 - `statistik-skript` nutzt `tinh-notes-html`/`tinh-notes-pdf` (ebenfalls mit HSBO-Brand), `aufgaben` nutzt
   `tinh-assignments-html`/`tinh-assignments-typst`. Darin stecken CSS, LaTeX-Präambel und die Befehle
