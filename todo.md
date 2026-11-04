@@ -5,15 +5,7 @@
   Notizen zum Hauptrepo (Makefile, CI), Erledigtes bleibt abgehakt als Dokumentation stehen. Offene Punkte aus
   `todo.md` übertragen.
   Gilt auch für die anderen Projekte.
-- [ ]  R-Musterlösungen mit Ausgabe rendern (Plots, Zahlen), damit Studierende ihre Ergebnisse vergleichen können
-  und kaputte Lösungen beim Rendern auffallen. Bisher macht `read_assignment_lines` in `collect-content.R` in
-  `.tinh-solution`- und `.tinh-work`-Blöcken aus `{r}` `{.r}`. Dazu:
-  - Umwandlung nur noch für das Aufgabenblatt, im Lösungsblatt `{r}` lassen.
-  - Daten liegen im Zip-Ordner (`c/${idx}-${name}-aufgaben/daten/`), nicht neben dem Lösungsblatt. Im Kopf des
-    Lösungsblatts (`assignment-solution-header`) `knitr: opts_knit: root.dir: ${idx}-${name}-aufgaben` setzen.
-  - Inline-Code in der Lösung Lorenzkurve (`` `{{r}} n` ``) soll weiterhin als Text erscheinen.
-  - Folgen: längeres Rendern, alle Pakete in CI (`sf`, `giscoR`), Windenergie lädt die Karte aus dem Netz.
-  - Erst an Blatt 5 ausprobieren.
+- [X]  R-Musterlösungen mit Ausgabe rendern, siehe Issue #11
 - [X]  Tabellen in html
 - [X]  Aufbau umstellen, siehe `todo-umstellung-aufbau.md`
 - [X]  Extension an einer stelle installieren
