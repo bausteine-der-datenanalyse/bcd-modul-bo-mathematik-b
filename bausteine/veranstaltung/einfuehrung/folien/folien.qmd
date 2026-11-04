@@ -582,7 +582,7 @@ a) Ausertung von Messwerten einer Versuchsreihe zu Stahlbetondecken, offensichtl
 
 ![](bilder/schaueble.jpg){fig-align="center"}
 
-Wolfgang Schäuble in seiner Haushaltsrede im Bundestag: „Man muss daran erinnern, dass die US-Ökonomen Rogoff und Reinhart vor kurzem in einer viel beachteten Untersuchung dargelegt haben, dass das Wirtschaftswachstum ab einem bestimmten Verschuldungsgrad der öffentlichen Haushalte durch öffentliche Verschuldung nicht mehr gesteigert, sondern gedämpft wird.“
+Wolfgang Schäuble in seiner Haushaltsrede im Bundestag: "Man muss daran erinnern, dass die US-Ökonomen Rogoff und Reinhart vor kurzem in einer viel beachteten Untersuchung dargelegt haben, dass das Wirtschaftswachstum ab einem bestimmten Verschuldungsgrad der öffentlichen Haushalte durch öffentliche Verschuldung nicht mehr gesteigert, sondern gedämpft wird."
 
 [Quelle: Deutscher Bundestag, [Plenarprotokoll 17/122](https://dserver.bundestag.de/btp/17/17122.pdf), 6.9.2011, S. 14351]{style="font-size: 0.6em"}
 
@@ -701,7 +701,7 @@ ggplot(data = df) +
 
 - Erklärvideos zu den Inhalten zu Hause anschauen
 - Neue Videos werden jeweils bis Ende der Woche freigeschaltet
-- Fragen diskutieren, Aufgaben lösen und „echte“ Daten analysieren in Präsenz
+- Fragen diskutieren, Aufgaben lösen und "echte" Daten analysieren in Präsenz
 
 ## Prüfungsleistung
 
