@@ -91,7 +91,7 @@ jobs:
   run-solutions: true
   files: 
   - ${bcd-bausteine-statistik}/m-dichtekurven-und-normalverteilung/aufgaben/*.qmd    
-  - ${bcd-bausteine-r}/w-dichtekurven-und-normalverteilung/aufgaben/10.*.qmd
+  - ${bcd-bausteine-r}/w-dichtekurven-und-normalverteilung/aufgaben/[0-9][0-9].*.qmd
   folders:
   - ${bcd-bausteine-statistik}/m-dichtekurven-und-normalverteilung/aufgaben/*
 - increment-index:
