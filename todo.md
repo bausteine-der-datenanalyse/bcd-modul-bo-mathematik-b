@@ -19,6 +19,8 @@
   das Skript in `skripte/` anpassen und die Daten neu erzeugen, dann auch die eigenen Spalten (`Betriebsjahr`,
   `Anzahl`, `Leistung`, …, `laender`) klein. `Bundesland` ist Schlüssel für die Joins mit `laender` und der Karte.
   Dabei Tippfehler `Betriebjahr` korrigieren.
+- [ ]  Video Normal-Quantil-Plots (Dichtekurven und Normalverteilung) neu aufnehmen: Folie „Idee Normal-Quantil-Plot“
+  erklärt jetzt die Stetigkeitskorrektur $p_i = (i - 0.5)/n$.
 - [ ]
 - [X]  Lösungen wie in numPDE als `::: {.tinh-solution}`-Block am Ende des `#exr-…`-Divs statt in eigenen
   `.sol.qmd`-Dateien (35 Stück in `bcd-bausteine-statistik` und `bcd-bausteine-r`). Aufgabenblatt mit
