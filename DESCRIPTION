@@ -33,6 +33,7 @@ Imports:
     ggforce,
     ggridges,
     latex2exp,
+    xdvir,
     tinytable,
     patchwork,
     rprojroot,
