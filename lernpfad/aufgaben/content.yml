@@ -102,11 +102,8 @@ jobs:
   sol: iuzert4
   run-solutions: true
   files: 
-  - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/01.*.qmd    
-  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/10.*.qmd
-  - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/0[2-5].*.qmd    
-  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/20.*.qmd
-  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/30.*.qmd
+  - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/*.qmd
+  - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/[0-9][0-9].*.qmd
   folders:
   - ${bcd-bausteine-statistik}/m-zwei-merkmale/aufgaben/*
   - ${bcd-bausteine-r}/w-zwei-merkmale/aufgaben/bilder
