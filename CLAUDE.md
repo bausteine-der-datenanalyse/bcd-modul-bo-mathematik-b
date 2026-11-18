@@ -162,6 +162,8 @@ Render-Schritte selbst auf statt des Makefiles. Bei Fragen zu Vergleich oder Ang
   Unzufriedenheit ausdrückt („das ist doch Fummelei").
 - Als Dezimaltrennzeichen wird bewusst der Punkt verwendet (in Folien, Grafiken und Inline-Ausgaben). Fehlende
   Dezimalkommas nicht als Fehler melden, keine `decimal.mark = ","`-Umstellung vorschlagen.
+- In Formeln werden mathematische Objekte, die mit Text beschrieben werden, bewusst durchgehend in Hochkommas
+  gesetzt (`\text{'Summe der blauen Flächen'}`). Nicht als Fehler melden, nicht durch „…“ ersetzen.
 - Beim Gegenlesen von Folien nur Inhalt, Text und sichtbares Ergebnis prüfen. Keine ungefragten Nebenprüfungen wie
   das Nachschlagen von CSS-Klassen in `style.scss` – selbst gesetzte Klassen/Styles als gewollt annehmen.
 
