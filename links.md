@@ -210,6 +210,10 @@ https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/
 
 https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/statistik-skript/c/04-dichtekurven-und-normalverteilung.html
 
+**Folien Statistik (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/statistik-folien/c/folien/04-dichtekurven-und-normalverteilung.pdf
+
 **Folien R**
 
 https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/05-dichtekurven-und-normalverteilung.html
@@ -241,3 +245,113 @@ https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/
 **Lösung (PDF)**
 
 https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-06-loesung-oa34alf.pdf
+
+## 07 Untersuchung von zwei Merkmalen
+
+**Skript**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/statistik-skript/c/05-zwei-merkmale.html
+
+**Folien Statistik (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/statistik-folien/c/folien/05-zwei-merkmale.pdf
+
+**Folien R**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/06-zwei-merkmale.html
+
+**Folien R (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/06-zwei-merkmale.pdf
+
+**Projekt zu den Folien R (Zip)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/06-zwei-merkmale.zip
+
+**Aufgaben**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-07.html
+
+**Aufgaben (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-07.pdf
+
+**Projekt zu den Aufgaben (Zip)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/07-zwei-merkmale-aufgaben.zip
+
+**Lösung**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-07-loesung-iuzert4.html
+
+**Lösung (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-07-loesung-iuzert4.pdf
+
+## 08 Weitere Geoms und Aufbereiten von Plots
+
+**Folien R**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/07-weitere-geoms-und-plots-aufbereiten.html
+
+**Folien R (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/07-weitere-geoms-und-plots-aufbereiten.pdf
+
+**Projekt zu den Folien R (Zip)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/07-weitere-geoms-und-plots-aufbereiten.zip
+
+**Aufgaben**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-08.html
+
+**Aufgaben (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-08.pdf
+
+**Projekt zu den Aufgaben (Zip)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/08-weitere-geoms-und-plots-aufbereiten-aufgaben.zip
+
+**Lösung**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-08-loesung-7aesh3y.html
+
+**Lösung (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-08-loesung-7aesh3y.pdf
+
+## 09 Basics der Programmiersprache R
+
+**Folien R**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/08-grundlagen-r.html
+
+**Folien R (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/08-grundlagen-r.pdf
+
+**Projekt zu den Folien R (Zip)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/r-folien/c/08-grundlagen-r.zip
+
+**Aufgaben**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-09.html
+
+**Aufgaben (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-09.pdf
+
+**Projekt zu den Aufgaben (Zip)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/09-grundlagen-r-aufgaben.zip
+
+**Lösung**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-09-loesung-ucxk1nv.html
+
+**Lösung (PDF)**
+
+https://bausteine-der-datenanalyse.github.io/bcd-modul-bo-mathematik-b/lernpfad/aufgaben/c/aufgabenblatt-09-loesung-ucxk1nv.pdf

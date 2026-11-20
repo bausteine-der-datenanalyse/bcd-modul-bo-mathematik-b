@@ -111,16 +111,24 @@ jobs:
 
 # 08
 - assignment-paper:
-  subtitle: "Plots aufbereiten und Grundlagen R"
+  subtitle: "Plots aufbereiten"
   sol: 7aesh3y
   run-solutions: true
-  files: 
+  files:
   - ${bcd-bausteine-r}/w-weitere-geoms-und-plots-aufbereiten/aufgaben/10.*.qmd
-  - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/10.*.qmd
   folders:
   - ${bcd-bausteine-r}/w-weitere-geoms-und-plots-aufbereiten/aufgaben/*
-  - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/*
 - increment-index:
+
+# 09
+- assignment-paper:
+  subtitle: "Grundlagen R"
+  sol: ucxk1nv
+  run-solutions: true
+  files:
+  - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/10.*.qmd
+  folders:
+  - ${bcd-bausteine-r}/w-grundlagen-r/aufgaben/*
 - increment-index:
 
 # 10
