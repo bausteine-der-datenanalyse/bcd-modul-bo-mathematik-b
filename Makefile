@@ -75,6 +75,24 @@ clean:
 			$$f/*_files $$f/index.html $$f/site_libs; \
 	done
 
+# Check the published pages from links.md and the links on them, with lychee (brew install lychee), also run on
+# GitHub after deploying. All URLs from links.md (also PDF and Zip) via stdin, the HTML pages also as input
+LINKS_URLS = grep -o 'https://bausteine-der-datenanalyse\.github\.io/[^[:space:]]*' links.md | sort -u
+
+check-links:
+	$(LINKS_URLS) | lychee --no-progress --max-retries 5 --retry-wait-time 10 - $$($(LINKS_URLS) | grep '\.html$$')
+
+# Check the links in the Moodle course (URL activities and texts) through the web service, only locally: token in
+# ~/.config/moodle/token (not in the repo), sent by POST. jq unescapes the JSON, links to Moodle itself are skipped
+MOODLE = https://moodle.hs-bochum.de/webservice/rest/server.php
+MOODLE_COURSE = 11679
+
+check-moodle-links:
+	curl -s "$(MOODLE)?moodlewsrestformat=json&wsfunction=core_course_get_contents&courseid=$(MOODLE_COURSE)" \
+		--data-urlencode "wstoken=$$(tr -d '[:space:]' < ~/.config/moodle/token)" \
+		| jq -r '.. | strings' \
+		| lychee --no-progress --exclude 'moodle\.hs-bochum\.de' -
+
 bootstrap:
 	R -e "install.packages(\"remotes\", repos = \"https://cran.uni-muenster.de\"); remotes::install_deps(upgrade = \"always\")"
 

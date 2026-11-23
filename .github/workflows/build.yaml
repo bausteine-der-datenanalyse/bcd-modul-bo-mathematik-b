@@ -71,3 +71,20 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v5
+
+  # make check-links on the published pages. The log is public: lychee without --verbose lists only broken links,
+  # so the URLs of the solutions (with hash) stay out of it
+  check-links:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v7
+
+    - name: Install lychee
+      run: |
+        curl -sSL https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-unknown-linux-gnu.tar.gz \
+          | sudo tar -xz -C /usr/local/bin --strip-components=1 lychee-x86_64-unknown-linux-gnu/lychee
+
+    - name: Check links
+      run: make check-links
