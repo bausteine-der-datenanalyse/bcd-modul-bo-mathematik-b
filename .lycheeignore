@@ -1,0 +1,12 @@
+# Links, die make check-links (lychee) überspringt, als reguläre Ausdrücke
+
+# Cloudflare-Schutz gegen Bots (403), je nach IP und Zufall
+data\.worldbank\.org
+doi\.org/10\.1080/
+tandfonline\.com
+doi\.org/10\.1145/
+dl\.acm\.org
+oecd\.org
+
+# Zeitüberschreitung von GitHub aus, lokal erreichbar
+bmv\.de
