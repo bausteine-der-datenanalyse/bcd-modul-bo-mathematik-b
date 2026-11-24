@@ -8,8 +8,7 @@ SNAPSHOT_DIRS = lernpfad/aufgaben/c \
                 lernpfad/statistik-folien/c/folien \
                 lernpfad/statistik-skript
 
-RENDER_TARGETS = render-aufgaben \
-                 render-r-folien \
+RENDER_TARGETS = render-r-folien \
                  render-r-folien-alle \
                  render-statistik-folien \
                  render-statistik-skript \
@@ -18,7 +17,11 @@ RENDER_TARGETS = render-aufgaben \
 
 publish: render render-decktape
 
-render: $(RENDER_TARGETS)
+render: render-aufgaben $(RENDER_TARGETS)
+
+# Aufgaben mit loi-moi (pre-render in lernpfad/aufgaben/_quarto.yml, Konfiguration in loimoi.yml)
+render-aufgaben:
+	quarto render lernpfad/aufgaben --quiet
 
 $(RENDER_TARGETS): render-%:
 	cd lernpfad/$* && ../../bausteine/bcd-bausteine-montieren/collect-content.R
@@ -70,6 +73,7 @@ quick-snapshot: quick-publish
 
 clean:
 	rm -rf __output .quarto
+	rm -rf lernpfad/aufgaben/c lernpfad/aufgaben/.quarto
 	for f in $(RENDER_TARGETS:render-%=lernpfad/%); do \
 		rm -rf $$f/c $$f/.quarto $$f/_bcd-setup.* $$f/*.bib $$f/bcd-style-notes.css \
 			$$f/*_files $$f/index.html $$f/site_libs; \

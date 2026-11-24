@@ -1,0 +1,27 @@
+product-naming: titles
+options:
+  work-files: folder
+
+products:
+  - ingredients: [bcd-bausteine-r/w-erste-schritte/aufgaben]
+    product-title: Erste Schritte
+  - ingredients: [bcd-bausteine-statistik/m-statistische-daten/aufgaben]
+    product-title: Statistische Daten
+  - ingredients: [bcd-bausteine-r/w-ggplot2/aufgaben]
+    product-title: Grundlagen von ggplot2
+  - ingredients: [bcd-bausteine-statistik/m-einzelne-merkmale/aufgaben, bcd-bausteine-r/w-einzelne-merkmale/aufgaben]
+    product-title: Untersuchung einzelner Merkmale
+  - ingredients: [bcd-bausteine-statistik/m-kenngroessen/aufgaben, bcd-bausteine-r/w-kenngroessen/aufgaben]
+    product-title: Kenngrößen und Beschreibung von Verteilungen
+  - ingredients: [bcd-bausteine-statistik/m-dichtekurven-und-normalverteilung/aufgaben, bcd-bausteine-r/w-dichtekurven-und-normalverteilung/aufgaben]
+    product-title: Dichtekurven und Normalverteilung
+  - ingredients: [bcd-bausteine-statistik/m-zwei-merkmale/aufgaben, bcd-bausteine-r/w-zwei-merkmale/aufgaben]
+    product-title: Untersuchung von zwei Merkmalen
+  - ingredients: [bcd-bausteine-r/w-weitere-geoms-und-plots-aufbereiten/aufgaben]
+    product-title: Plots aufbereiten
+  - ingredients: [bcd-bausteine-r/w-grundlagen-r/aufgaben]
+    product-title: Grundlagen R
+  - ingredients: [bcd-bausteine-r/w-daten-aufbereiten/aufgaben]
+    product-title: Dateien einlesen und aufbereiten
+  - ingredients: [bcd-bausteine-r/w-raeumliche-daten/aufgaben]
+    product-title: Räumliche Daten

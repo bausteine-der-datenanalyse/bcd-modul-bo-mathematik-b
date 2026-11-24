@@ -21,6 +21,9 @@
   Dabei Tippfehler `Betriebjahr` korrigieren.
 - [ ]  Video Normal-Quantil-Plots (Dichtekurven und Normalverteilung) neu aufnehmen: Folie „Idee Normal-Quantil-Plot“
   erklärt jetzt die Stetigkeitskorrektur $p_i = (i - 0.5)/n$.
+- [ ]  Grafiken in den Aufgaben Kenngrößen (`bcd-bausteine-statistik/m-kenngroessen/aufgaben`) mit R erzeugen statt
+  als SVG/PNG in `_bilder/` (`mittelwert-stange-ue`, `median-funktion-1…9`, `lorenzkurve(-e)`, Lösungen
+  `l-kenngroessen-*.png`), wie beim Skript (Vorbild: `m-zwei-merkmale`).
 - [ ]
 - [X]  Lösungen wie in numPDE als `::: {.tinh-solution}`-Block am Ende des `#exr-…`-Divs statt in eigenen
   `.sol.qmd`-Dateien (35 Stück in `bcd-bausteine-statistik` und `bcd-bausteine-r`). Aufgabenblatt mit

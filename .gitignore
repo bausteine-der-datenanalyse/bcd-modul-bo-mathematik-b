@@ -24,6 +24,10 @@ lernpfad/statistik-skript/bcd-style-notes.css
 lernpfad/*/_extensions
 lernpfad/*/_brand
 
+# Aufgaben (loi-moi): eigenes Quarto-Projekt, Symlinks eingecheckt
+!lernpfad/aufgaben/_extensions
+!lernpfad/aufgaben/_brand
+
 /.quarto/
 **/*.quarto_ipynb
 .claude/settings.json
