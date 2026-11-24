@@ -60,6 +60,13 @@ jobs:
         with:
           path: '__output'
 
+      # Link page of loi-moi with the published URLs, for check-links
+      - name: Upload link page
+        uses: actions/upload-artifact@v7
+        with:
+          name: links-site
+          path: lernpfad/links-site.html
+
   deploy:
     needs: render
     environment:
@@ -80,6 +87,12 @@ jobs:
     steps:
     - name: Check out
       uses: actions/checkout@v7
+
+    - name: Download link page
+      uses: actions/download-artifact@v8
+      with:
+        name: links-site
+        path: lernpfad
 
     - name: Install lychee
       run: |
