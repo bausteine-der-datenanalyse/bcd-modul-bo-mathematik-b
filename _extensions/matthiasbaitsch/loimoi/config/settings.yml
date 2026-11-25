@@ -3,6 +3,7 @@ output: c
 first-number: 1
 file-name: "${nn-name}-${exercises}"
 product-naming: path
+link-format: html
 options: {}
 lang:
 site:

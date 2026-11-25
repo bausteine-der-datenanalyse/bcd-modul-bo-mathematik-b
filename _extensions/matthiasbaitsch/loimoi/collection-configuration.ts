@@ -10,6 +10,7 @@ const settingsFile = new URL("./config/settings.yml", import.meta.url).pathname;
 export class CollectionConfiguration {
   readonly output: string;
   readonly fileName: string;
+  readonly linkFormat: string;
   readonly options: Record<string, string>;
   readonly lang: string;
   readonly site: string;
@@ -32,6 +33,11 @@ export class CollectionConfiguration {
     this.output = yaml.output as string;
     this.fileName = yaml["file-name"] as string;
     this.options = yaml.options as Record<string, string>;
+
+    this.linkFormat = yaml["link-format"] as string;
+    if (this.linkFormat !== "html" && this.linkFormat !== "pdf") {
+      throw new Error(`link-format must be html or pdf, not ${this.linkFormat}`);
+    }
 
     const productNaming = yaml["product-naming"] as ProductNaming;
     if (productNaming !== "path" && productNaming !== "titles") {

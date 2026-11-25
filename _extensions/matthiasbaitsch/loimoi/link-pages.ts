@@ -95,7 +95,7 @@ ${sections.join("\n\n")}
       const values = collection.placeholders(product);
       const files = linked.map((action) => ({
         label: replacePlaceholders(action.link as string, values),
-        file: join(renderedFolder, values["nn-name"], action.file(values).replace(/\.qmd$/, ".html")),
+        file: join(renderedFolder, values["nn-name"], action.file(values).replace(/\.qmd$/, `.${collection.configuration.linkFormat}`)),
       }));
       return { title: `${String(product.number).padStart(2, "0")} ${product.fullTitle}`, files };
     });
