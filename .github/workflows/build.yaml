@@ -22,6 +22,10 @@ jobs:
       - name: Schriften
         run: sudo apt-get update && sudo apt-get install -y fonts-liberation fonts-roboto fonts-firacode
 
+      # Deutsche Locale für Monats- und Wochentagsnamen (Sys.setlocale in _bcd-setup.R)
+      - name: Deutsche Locale
+        run: sudo locale-gen de_DE.UTF-8
+
       - name: Check out
         uses: actions/checkout@v7
         with:
